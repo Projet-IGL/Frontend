@@ -1,0 +1,71 @@
+<!-- Header Section -->
+<div class="top-right-image"></div>
+
+<header>
+  <div class="logo">
+    <img src="/logo.png" alt="Logo" width="118.59" height="42.36">
+  </div>
+
+  <!-- Conteneur de navigation (liens) -->
+  <nav>
+    <!-- Utilisation des ancres HTML pour les sections de la même page -->
+    <a href="#home">Home</a>
+    <a href="#about">À propos de nous</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Conteneur pour le bouton Se connecter -->
+  <div class="login-button">
+    <button (click)="openLogin()">Se connecter</button>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="text-content">
+    <h1><strong>Bienvenue sur notre site</strong></h1>
+  </div>
+  <div class="image-content">
+    <img src="/image1.png" alt="Image 1">
+  </div>
+</section>
+
+<!-- Section About -->
+<section id="about" class="about">
+  <div class="image-content">
+    <img src="/image2.jpg" alt="About Image">
+  </div>
+  <div class="text-content">
+    <h2><strong>À propos de nous</strong></h2>
+    <p>Notre site gère les Dossiers Patients Informatisés "DPI" qui facilitent la gestion des soins, améliorent la communication entre les professionnels de santé et permettent une meilleure continuité des soins.</p>
+  </div>
+</section>
+
+<!-- Section de Contact avec ligne de séparation -->
+<section class="separator">
+  <div class="line"></div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="footer">
+    <div class="logo-left">
+      <img src="/logo.png" alt="Logo" width="118.59" height="42.36">
+    </div>
+    <div class="contact-right">
+      <h3>Contactez-nous</h3>
+      <div class="contact-icons">
+        <div class="icon">
+          <i class="material-icons">email</i>
+          <p>Email</p>
+        </div>
+        <div class="icon">
+          <i class="material-icons">phone</i>
+          <p>Téléphone</p>
+        </div>
+        <div class="icon">
+          <i class="material-icons">location_on</i>
+          <p>Adresse</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
