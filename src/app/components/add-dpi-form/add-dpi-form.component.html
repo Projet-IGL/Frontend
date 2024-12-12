@@ -1,0 +1,40 @@
+
+<p class="mb-8 ml-8 text-3xl font-bold font-pop ">Créer un nouveau DPI</p>
+
+<form [formGroup]="dpiForm" (ngSubmit)="onSubmit()">
+    <div class="flex-col space-y-8 ml-8 font-pop">
+      <div class="flex space-x-8">
+        <input type="text" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Nom" formControlName="nom">
+        <input type="text" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Prénom" formControlName="prenom">
+      </div>
+      <div class="flex space-x-8">
+        <input type="text" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="NSS" formControlName="nss">
+        <input type="email" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Email" formControlName="email">
+      </div>
+      <div class="flex space-x-8">
+        <input type="text" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Numéro de téléphone" formControlName="telephone">
+        <input type="text" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Numéro de téléphone d'urgence" formControlName="telephoneUrgence">
+      </div>
+      <div class="flex space-x-8">
+        <input type="text" class="pl-4 border h-10 w-1/4 rounded-md" placeholder="Adresse" formControlName="adresse">
+        <input type="date" class="pl-4 border h-10 w-1/4 rounded-md" placeholder="Date de naissance" formControlName="dateNaissance">
+        <select class="border h-10 w-1/4 rounded-md pl-4 text-gray-700" formControlName="medecinTraitant">
+          <option value="" disabled selected>Médecin traitant</option>
+          <option value="doctor1">Doctor1</option>
+          <option value="doctor2">Doctor2</option>
+          <option value="doctor3">Doctor3</option>
+        </select>
+      </div>
+      <div class="flex space-x-8">
+        <input type="text" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Nom d'utilisateur" formControlName="nomUtilisateur">
+        <input type="password" class="pl-4 border h-10 w-2/5 rounded-md" placeholder="Mot de passe" formControlName="motDePasse">
+      </div>
+      <div class="flex space-x-8">
+        <textarea class="pl-4 border w-10/12 rounded-md" placeholder="Mutuelle" formControlName="mutuelle"></textarea>
+      </div>
+      <div class="flex justify-center items-center">
+        <button type="submit" class="bg-navyBlue w-1/5 h-10 text-white p-2  rounded-md" >Enregistrer</button>
+      </div>
+    </div>
+  </form>
+  

@@ -1,0 +1,255 @@
+/* Général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* En-tête */
+  .top-right-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 730px;
+    height: 700px;
+    background-image: url('/myshape.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    flex-wrap: wrap; /* Passe en colonne si nécessaire */
+  }
+  
+  .logo {
+    flex: 1;
+    text-align: left;
+  }
+  
+  nav {
+    flex: 2;
+    text-align: center;
+  }
+  
+  .login-button {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .logo img {
+    margin-top: -10px;
+  }
+  
+  nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #000000;
+    background-color: #C5DCFF;
+    padding-bottom: 8px;
+    border-radius: 10px;
+  }
+  
+  nav a:active {
+    color: #000000;
+    background-color: #C5DCFF;
+    padding-bottom: 8px;
+    border-radius: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #3D3BF3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #5A5AF7;
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 50px;
+    flex-wrap: wrap; /* Passe en colonne si nécessaire */
+    gap: 20px;
+  }
+  
+  .hero .text-content {
+    flex: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .hero .image-content img {
+    flex: 1;
+    max-width: 100%; /* Image responsive */
+    height: auto; /* Conserve les proportions */
+  }
+  
+  /* Section About */
+  .about {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .about .text-content {
+    flex: 1;
+    font-size: 1rem;
+  }
+  
+  .about .text-content h2 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .about .text-content p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  
+  .about .image-content img {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Ligne de séparation */
+  .separator {
+    padding: 50px 0;
+  }
+  
+  .line {
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+  
+  .logo-left img {
+    height: 40px;
+    margin-top: 50px;
+  }
+  
+  .contact-right {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .contact-right h3 {
+    font-size: 1.5rem;
+  }
+  
+  .contact-icons {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .contact-icons .icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .contact-icons .icon i {
+    font-size: 30px;
+    color: #3D3BF3;
+  }
+  
+  .contact-icons .icon p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav {
+      text-align: left;
+    }
+  
+    nav a {
+      font-size: 0.9rem;
+      margin: 5px 10px;
+    }
+  
+    .login-button {
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .hero, .about {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .contact-icons {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav a {
+      font-size: 0.8rem;
+      margin: 5px;
+    }
+  
+    button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  
+    .hero .text-content {
+      font-size: 1.2rem;
+    }
+  
+    .contact-right h3 {
+      font-size: 1.2rem;
+    }
+  }
+  

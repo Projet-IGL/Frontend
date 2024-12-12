@@ -1,0 +1,12 @@
+
+<div class="flex mt-8 justify-between space-x-2">
+    <button class= "rounded-md ml-4">
+        <img class="w-20 h-15 object-contain" src="/logo.png">
+    </button >
+        <div class="flex space-x-8">
+            <button (click)="goToAddStaffPage()" [ngClass]="getButtonCaseStaff('Staff')" class=" rounded-md text-sm w-fit p-2">Ajouter un nouveau personnel</button >
+            <button (click)="goToAddDpiPage()" [ngClass]="getButtonClasses('dpi')" class="bg-veryLightBlue text-sm w-fit p-2 rounded-md ">Ajouter un nouveau DPI</button >
+        </div>
+        <button (click)="goToLandingPage()"  class="bg-navyBlue w-32 text-white text-sm p-2 w-fit rounded-md "> Se déconnecter</button >
+
+</div>
