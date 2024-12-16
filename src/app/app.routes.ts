@@ -3,6 +3,10 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AddDpiPageComponent } from './pages/add-dpi-page/add-dpi-page.component';
 import { AddStaffPageComponent } from './pages/add-staff-page/add-staff-page.component';
+import { AjouterSoinPageComponent } from './pages/ajouter-soin-page/ajouter-soin-page.component';
+import {AjouterConsultationComponent} from './components/ajouter-consultation/ajouter-consultation.component';
+import { ProfilInfermierComponent } from './pages/profil-infermier/profil-infermier.component';
+import {ProfilStaffComponent} from './components/profil-staff/profil-staff.component';
 export const routes: Routes = [
     { 
         path: '',
@@ -30,5 +34,24 @@ export const routes: Routes = [
         path: 'add-staff', 
         component: AddStaffPageComponent ,
         pathMatch: 'full' 
+      },
+      { 
+        path: 'ajouterSoin', 
+        component: AjouterSoinPageComponent 
+      },
+     
+      { 
+        path: 'ajouterConsultation', 
+        component: AjouterConsultationComponent 
+      },
+
+      { 
+        path: 'profilInfermier', 
+        component: ProfilInfermierComponent 
+      },
+    
+      { 
+        path: 'ProfilStaff', 
+        component: ProfilStaffComponent 
       },
 ];
