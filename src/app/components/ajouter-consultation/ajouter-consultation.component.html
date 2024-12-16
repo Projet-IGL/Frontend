@@ -1,0 +1,45 @@
+<div *ngIf="isPopupVisible" class="popup-container">
+    <div class="popup-header">
+      <div class="circle-filled">1</div>
+      <div class="circle-empty"></div>
+    </div>
+  
+    <div class="popup-title">
+      <strong>Créer une nouvelle consultation</strong>
+    </div>
+  
+    <div class="datetime-picker">
+      <input type="datetime-local" id="datetime" name="datetime" #datetimeInput>
+    </div>
+  
+    <div class="resume-consultation">
+      <textarea
+        id="resume"
+        name="resume"
+        rows="6"
+        cols="50"
+        placeholder="Entrez le résumé de la consultation..."
+        #resumeInput
+      ></textarea>
+    </div>
+  
+    <div class="choice-container">
+      <div class="choices">
+        <label>
+          <input type="radio" name="action" value="ordonnance" (change)="selectAction('ordonnance')"> Établir ordonnance
+        </label>
+        <label>
+          <input type="radio" name="action" value="bilan" (change)="selectAction('bilan')"> Demander bilan
+        </label>
+        <label>
+          <input type="radio" name="action" value="aucun" (change)="selectAction('aucun')"> Aucun
+        </label>
+      </div>
+    </div>
+  
+    <div class="buttons">
+      <button class="cancel-button" (click)="annuler()">Annuler</button>
+      <button class="next-button" (click)="suivant(datetimeInput.value, resumeInput.value)">Suivant</button>
+    </div>
+  </div>
+  

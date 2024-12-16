@@ -1,0 +1,202 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #DEEBFF;
+  }
+  
+  .navbar .logo {
+    height: 40px;
+  }
+  
+  .navbar-buttons {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 20px;
+  }
+  
+  .navbar button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px; /* Arrondi augmenté */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar .se-deconnecter {
+    background-color: #2A2BF2; /* Couleur pour "Se déconnecter" */
+    color: white;
+    font-weight: normal; /* Enlève le gras sur le bouton "Se déconnecter" */
+    border-radius: 10px;
+    font-size: 1rem;
+    
+  
+  }
+  
+  .navbar .active {
+    background-color: #AE9DFD;
+    color: black;
+    font-size: 1rem;
+  
+  }
+  
+  /* Main section styles */
+  .main-section {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #DEEBFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Form field styles */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .form-field {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  
+  .input-field,
+  .textarea-field,
+  .select-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .textarea-field {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .form-row.align {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  #datetime,
+  #nss {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  /* Checkbox styles */
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    gap: 15px; /* Espacement entre la checkbox et le texte */
+    font-size: 16px; /* Police harmonisée avec les autres champs */
+    color: #333333;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    width: 20px; /* Largeur augmentée */
+    height: 20px; /* Hauteur augmentée */
+    accent-color: #3D3BF3; /* Couleur personnalisée pour la checkbox */
+    border: 1px solid #ccc;
+  }
+  
+  /* Button group styles */
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Espace entre les boutons */
+  }
+  
+  
+  .button-group button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group .cancel {
+    background-color: red;
+    color: white;
+  }
+  
+  .button-group .cancel:hover {
+    background-color: #cc0000;
+  }
+  
+  .button-group .save {
+    background-color: #3D3BF3;
+    color: white;
+  }
+  
+  .button-group .save:hover {
+    background-color: #2A2BF2;
+  }
+  
+  /* Success message styles */
+  .success-message {
+    background-color: #D4EDDA;
+    color: #155724;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #C3E6CB;
+  }
+  
+  /* Error message styles */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  
+    .main-section {
+      padding: 15px;
+    }
+  
+    .navbar {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
