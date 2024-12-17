@@ -1,0 +1,12 @@
+<div class="navbar">
+    <img src="/logo.png" class="logo" alt="Logo">
+    <div class="navbar-buttons">
+     
+      <button class="active">Mon profile</button>
+      <button (click)="ouvrirDPIs()">Mes DPIs</button>
+    </div>
+    <button class="se-deconnecter" (click)="logout()">Se déconnecter</button>
+  </div>
+  <div class="main-content">
+    <app-profil-staff/>
+  </div>

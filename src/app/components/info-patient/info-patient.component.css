@@ -1,0 +1,36 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Centrer les boîtes sur la page */
+  }
+  
+  .profile-box {
+    display: flex;
+    align-items: center;
+    background-color: #DEEBFF;
+    border-radius: 170px;
+    padding: 15px;
+    gap: 20px;
+    width: 80%; /* Limiter la largeur des boîtes à 80% de la largeur de la page */
+    max-width: 600px; /* Optionnel : limiter à une largeur maximale */
+    margin: 0 auto; /* Centrer les boîtes horizontalement */
+  }
+  
+  .profile-box .icon {
+    font-size: 30px;
+  }
+  
+  .profile-box .info {
+    font-size: 18px;
+  }
+  
+  h3 {
+    margin: 0;
+  }
+  
+  p {
+    margin: 0;
+    color: #555;
+  }
+  
