@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {ProfilStaffComponent} from '../../components/profil-staff/profil-staff.component';;
+import {ProfilStaffComponent} from '../../components/profil-staff/profil-staff.component';
 
 @Component({
   selector: 'app-profil-infermier',

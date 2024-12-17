@@ -7,6 +7,11 @@ import { AjouterSoinPageComponent } from './pages/ajouter-soin-page/ajouter-soin
 import {AjouterConsultationComponent} from './components/ajouter-consultation/ajouter-consultation.component';
 import { ProfilInfermierComponent } from './pages/profil-infermier/profil-infermier.component';
 import {ProfilStaffComponent} from './components/profil-staff/profil-staff.component';
+import {InfoPatientComponent} from './components/info-patient/info-patient.component';
+import { ProfilMedecinComponent } from './pages/profil-medecin/profil-medecin.component';
+import { ProfilPatientComponent } from './pages/profil-patient/profil-patient.component';
+
+
 export const routes: Routes = [
     { 
         path: '',
@@ -53,5 +58,20 @@ export const routes: Routes = [
       { 
         path: 'ProfilStaff', 
         component: ProfilStaffComponent 
+      },
+
+      { 
+        path: 'profilMedecin', 
+        component: ProfilMedecinComponent 
+      },
+
+      { 
+        path: 'profilPatient', 
+        component: ProfilPatientComponent 
+      },
+
+      { 
+        path: 'infoPatient', 
+        component: InfoPatientComponent 
       },
 ];
