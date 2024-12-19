@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service'; // Import du service
 
 @Component({
   selector: 'app-login-form',
@@ -11,51 +12,26 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-  username: string = '';
+  username: string = ''; // Utilisé pour l'email
   password: string = '';
   errorMessage: string = '';
 
-  mockUsers = [
-    { username: 'admin', password: 'admin123', role: 'admin' },
-    { username: 'infirmier', password: 'infirmier123', role: 'infirmier' },
-    { username: 'medecin', password: 'medecin123', role: 'medecin' },
-    { username: 'patient', password: 'patient123', role: 'patient' },
-    { username: 'radiologue', password: 'radiologue123', role: 'radiologue' },
-    { username: 'laborantin', password: 'laborantin123', role: 'laborantin' },
-  ];
+  constructor(private router: Router, private authService: AuthService) {}
 
-  constructor(private router: Router) {}
-
+  // Méthode pour gérer la connexion
   login() {
-    const user = this.mockUsers.find(
-      u => u.username === this.username && u.password === this.password
-    );
-
-    if (user) {
-      switch (user.role) {
-        case 'admin':
-          this.router.navigate(['/add-dpi']);
-          break;
-        case 'infirmier':
-          this.router.navigate(['/profilInfermier']);
-          break;
-        case 'medecin':
-          this.router.navigate(['/profilMedecin']);
-          break;
-        case 'patient':
-          this.router.navigate(['/profilPatient']);
-          break;
-        case 'radiologue':
-          this.router.navigate(['/radiologue-page']);
-          break;
-        case 'laborantin':
-          this.router.navigate(['/laborantin-page']);
-          break;
-        default:
-          this.errorMessage = 'Rôle inconnu.';
+    this.authService.login(this.username, this.password).subscribe(
+      (response) => {
+        // Traitement en cas de succès
+        const token = response.access; // Jeton d'authentification reçu
+        localStorage.setItem('token', token); // Sauvegarde du token
+        this.router.navigate(['/profilMedecin']); // Rediriger après connexion
+      },
+      (error) => {
+        // Gestion des erreurs
+        this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect.';
+        console.error('Erreur de connexion :', error);
       }
-    } else {
-      this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect.';
-    }
+    );
   }
 }
