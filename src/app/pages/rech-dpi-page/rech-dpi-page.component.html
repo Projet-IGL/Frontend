@@ -1,0 +1,73 @@
+<div class="">
+    <app-add-dpi-nav-bar></app-add-dpi-nav-bar>
+    <div class="Rech-container">
+        <div class="bar">
+              <div class="flex items-center">
+               <input type="text" placeholder="NSS" class="search-bar">
+               <span class="material-symbols-outlined search-icone"> search</span>
+              </div>
+               <button (click)="toggleScanner()" class="scanner-btn">Scanner <span class="material-symbols-outlined"> qr_code_scanner</span></button>
+        </div>
+        <div class="scanner-container" *ngIf="isScanning">
+               <zxing-scanner #scannerRef class="scanner" [enable]="isScanning" (scanSuccess)="onCodeScanned($event)"></zxing-scanner>
+                        <!-- Icône close pour fermer le scanner -->
+               <span *ngIf="isScanning" class="material-symbols-outlined close-icon" (click)="closeScanner()">close</span>
+        </div>
+        <!-- <qrcode [qrdata]="dataToEncode" [width]="200" [errorCorrectionLevel]="'M'"></qrcode> -->
+
+        <div class="blue-container">
+           <h3 class="Rech-title">Recherche DPI :</h3>
+          <div class="white-container">
+          <table>
+          <thead>
+          <tr>
+            <th>Patient</th> 
+            <th>NSS</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Nom Prenom</td>
+            <td>NSS</td>
+            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+            <td class="align" (click)="goToPatientPage()">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+          </tr>
+          <tr>
+            <td>Nom Prenom</td>
+            <td>NSS</td>
+            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+          </tr>
+          <tr>
+            <td>Nom Prenom</td>
+            <td>NSS</td>
+            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+          </tr>
+          <tr>
+            <td>Nom Prenom</td>
+            <td>NSS</td>
+            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+          </tr>
+          <tr>
+            <td>Nom Prenom</td>
+            <td>NSS</td>
+            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+          </tr>
+          <tr>
+            <td>Nom Prenom</td>
+            <td>NSS</td>
+            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+       </div>
+    </div>
+  </div>
+  

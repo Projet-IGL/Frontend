@@ -1,0 +1,19 @@
+.bg-violet{
+    background-color: #AE9DFD;
+}
+.back-icone{
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    cursor: pointer;
+} 
+.menu-icone{
+    font-size: 35px;
+}
+.hover{
+    transition: 0.3s;
+}
+.hover:hover{
+    background-color: #ece8ff;
+}
