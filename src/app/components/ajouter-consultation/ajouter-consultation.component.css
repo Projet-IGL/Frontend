@@ -1,0 +1,220 @@
+/* Style global pour le popup */
+.popup-container {
+    background-color: #DEEBFF;
+    border-radius: 20px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Poppins', sans-serif; /* Police Arial */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pour s'assurer que tout est aligné */
+    height: 500px; /* Hauteur fixe pour centrer verticalement */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrer le popup à l'écran */
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Style pour les cercles dans l'en-tête */
+  .circle-filled,
+  .circle-empty {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    background-color: #3D3BF3; /* Couleur bleue claire */
+    width: 10px; /* Plus petit que le premier cercle */
+    height: 10px;
+  }
+  
+  .circle-filled {
+    color: white;
+    width: 20px; 
+    height: 20px;
+    gap: 2px;
+  }
+  
+  .popup-title {
+    font-size: 1.2em;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Style du champ datetime */
+  .datetime-picker input[type="datetime-local"],
+  .resume-consultation textarea {
+    width: 100%;
+  }
+  
+  .datetime-picker input[type="datetime-local"]{
+    width: 100%;
+    height: 30px; /* Agrandir le champ résumé */
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px; /* Agrandir le champ résumé */
+  }
+  
+  /* Espacement du deuxième cercle */
+  .popup-header .circle-empty {
+    margin-top: 5px; /* Déplacer le deuxième cercle légèrement vers le bas */
+  }
+  
+  /* Style pour la zone de texte résumé */
+  .resume-consultation {
+    margin-top: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px; /* Agrandir le champ résumé */
+  }
+  
+  /* Style pour les éléments radio */
+  .choice-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    accent-color: #3D3BF3; /* Couleur personnalisée pour la checkRadio */
+  }
+  
+  .choices label {
+    display: inline-block;
+    margin-right: 20px; /* Espacer davantage les éléments */
+    font-size: 1em;
+  }
+  
+  .choices input[type="radio"]:checked + label {
+    color: #3D3BF3; /* Changer la couleur du texte quand sélectionné */
+    font-weight: bold; /* Mettre en gras */
+  }
+  
+  .choices label:hover {
+    cursor: pointer;
+  }
+  
+  /* Style pour les boutons */
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Assure un espacement en bas */
+  }
+  
+  .cancel-button,
+  .next-button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  
+  .cancel-button {
+    background-color: red;
+    color: white;
+    border: none;
+  }
+  
+  .next-button {
+    background-color: #3D3BF3;
+    color: white;
+    border: none;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .popup-container {
+      width: 90%; /* Width adjustment on smaller screens */
+      height: auto; /* Allow height to adjust based on content */
+      padding: 15px; /* Slightly reduce padding */
+    }
+  
+    .popup-header {
+      gap: 5px; /* Reduce gap between circles */
+    }
+  
+    .circle-filled,
+    .circle-empty {
+      width: 15px;
+      height: 15px;
+      font-size: 14px;
+    }
+  
+    .popup-title {
+      font-size: 1.1em;
+    }
+  
+    /* Adjust input fields and textarea for smaller screens */
+    .datetime-picker input[type="datetime-local"],
+    .resume-consultation textarea {
+      height: 35px;
+    }
+  
+    .resume-consultation textarea {
+      height: 100px; /* Smaller height for text area */
+    }
+  
+    /* Adjust radio button container */
+    .choice-container {
+      margin-top: 15px;
+      flex-direction: column; /* Stack radio buttons vertically */
+      justify-content: flex-start;
+    }
+  
+    .choices label {
+      margin-right: 0;
+      margin-bottom: 10px; /* Add spacing between radio buttons */
+    }
+  
+    .buttons {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center;
+      margin-top: 15px;
+    }
+  
+    .cancel-button,
+    .next-button {
+      width: 100%; /* Full-width buttons on smaller screens */
+      padding: 12px 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .popup-container {
+      width: 95%; /* Even smaller width for very small screens */
+      padding: 10px; /* Reduce padding */
+    }
+  
+    .popup-title {
+      font-size: 1em; /* Make title text smaller */
+    }
+  
+    .datetime-picker input[type="datetime-local"],
+    .resume-consultation textarea {
+      height: 30px;
+    }
+  
+    .resume-consultation textarea {
+      height: 80px; /* Further reduce textarea height */
+    }
+  
+    .buttons {
+      gap: 5px; /* Reduce space between buttons */
+    }
+  
+    .cancel-button,
+    .next-button {
+      padding: 10px 15px; /* Smaller buttons on very small screens */
+    }
+  }
+  

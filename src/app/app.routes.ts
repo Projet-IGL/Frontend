@@ -13,6 +13,14 @@ import { OrdonnancePageComponent } from './pages/ordonnance-page/ordonnance-page
 import { BilanRadioPageComponent } from './pages/bilan-radio-page/bilan-radio-page.component';
 import { BilanBioPageComponent } from './pages/bilan-bio-page/bilan-bio-page.component';
 import { CompteRenduPageComponent } from './pages/compte-rendu-page/compte-rendu-page.component';
+import { AjouterSoinPageComponent } from './pages/ajouter-soin-page/ajouter-soin-page.component';
+import { AjouterConsultationComponent } from './components/ajouter-consultation/ajouter-consultation.component';
+import { ProfilInfermierComponent } from './pages/profil-infermier/profil-infermier.component';
+import { ProfilStaffComponent } from './components/profil-staff/profil-staff.component';
+import { ProfilMedecinComponent } from './pages/profil-medecin/profil-medecin.component';
+import { ProfilPatientComponent } from './pages/profil-patient/profil-patient.component';
+import { InfoPatientComponent } from './components/info-patient/info-patient.component';
+
 export const routes: Routes = [
     { 
         path: '',
@@ -90,5 +98,40 @@ export const routes: Routes = [
         path: 'Rech-dpi/Consultations/Compte-Rendu',
         component: CompteRenduPageComponent,
         pathMatch: 'full'
+      },
+      {
+        path: 'ajouterSoin', 
+        component: AjouterSoinPageComponent 
+      },
+     
+      { 
+        path: 'ajouterConsultation', 
+        component: AjouterConsultationComponent 
+      },
+
+      { 
+        path: 'profilInfermier', 
+        component: ProfilInfermierComponent 
+      },
+    
+      { 
+        path: 'ProfilStaff', 
+        component: ProfilStaffComponent 
+      },
+
+      { 
+        path: 'profilMedecin', 
+        component: ProfilMedecinComponent 
+      },
+
+      { 
+        path: 'profilPatient', 
+        component: ProfilPatientComponent 
+      },
+
+      { 
+        path: 'infoPatient', 
+        component: InfoPatientComponent 
+
       },
 ];
