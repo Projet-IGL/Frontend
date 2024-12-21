@@ -1,0 +1,20 @@
+.bg-violet{
+    background-color: #AE9DFD;
+}
+.hover{
+  transition: 0.3s;
+}
+.hover:hover{
+  background-color: #ece8ff;
+}
+.menu-icone{
+  margin-top: 40px;
+  font-size: 35px;
+}
+@media (max-width: 640px) {
+    .navbar-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

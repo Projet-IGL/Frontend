@@ -1,5 +1,6 @@
 .personnel-form{
     margin-left: 55px;
+    flex-wrap: wrap;
 }
 .input{
     padding: 20px 15px;
@@ -15,9 +16,7 @@
 }
 .align{
     display:inline-flex;
-}
-.spe{
-    width: 580px;
+    flex-wrap: wrap;
 }
 .login-btn{
     padding: 15px 10px;
@@ -40,4 +39,10 @@
 }
 .btn-div{
     text-align: center;
+}
+
+@media (max-width: 600px) {
+    .input{
+        width: 400px;
+    }
 }

@@ -16,13 +16,13 @@ export class AddDpiNavBarComponent {
     if (buttonType === 'dpi') {
       return currentRoute === '/add-dpi'
         ? 'bg-veryLightBlue '
-        : 'bg-white';
+        : 'bg-transparent';
     }
 
     else{
       return currentRoute === '/add-staff'
         ? 'bg-white'
-        : 'bg-white';
+        : 'bg-transparent';
     }
 
   }
@@ -32,15 +32,31 @@ export class AddDpiNavBarComponent {
     if (buttonType === 'Staff') {
       return currentRoute === '/add-staff'
         ? 'bg-veryLightBlue '
-        : 'bg-white';
+        : 'bg-transparent';
     }
 
     else{
       return currentRoute === '/add-dpi'
         ? 'bg-white'
-        : 'bg-white';
+        : 'bg-transparent';
     }
 
+  }
+  getButtonCaseRech(buttonType: string): string {
+    const currentRoute = this.router.url;
+
+    if (buttonType === 'Rech') {
+      return currentRoute === '/Rech-dpi'
+        ? 'bg-veryLightBlue '
+        : 'bg-transparent';
+    }
+
+    else{
+      return currentRoute === '/add-dpi'
+        ? 'bg-white'
+        : 'bg-transparent';
+    }
+ 
   }
   goToLandingPage() {
     this.router.navigate(['/Landing-page']);
@@ -50,5 +66,8 @@ export class AddDpiNavBarComponent {
   }
   goToAddStaffPage() {
     this.router.navigate(['/add-staff']);
+  }
+  goToRechDpiPage() {
+    this.router.navigate(['/Rech-dpi']);
   }
 }

@@ -1,0 +1,19 @@
+<div class="flex items-center justify-between">
+    <div class="sm:hidden">
+        <button (click)="toggleMenu()" class="material-symbols-outlined menu-icone">menu</button>
+      </div>
+<span class="material-symbols-outlined back-icone" (click)="goToConsultationPage()"> arrow_back </span>
+</div>
+<div [class.hidden]="!menuOpen" class="flex justify-center flex-col space-y-2 mt-2 sm:flex sm:flex-row sm:space-y-0 sm:space-x-4">
+<div class="flex flex-wrap z-10 items-center h-10 mt-5 justify-center space-y-2 sm:space-y-0 sm:space-x-4 mx-6 font-semibold">
+    <div class="flex flex-col sm:flex-row justify-center sm:space-x-20 w-full sm:w-auto bg-white rounded-xl">
+        <button (click)="goToMedecinPage()" [ngClass]="getButtonClass('Medecin')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Médecin</button >
+        <button (click)="goToResumePage()" [ngClass]="getButtonClass('Resume')" class=" rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Résumé</button >
+        <button (click)="goToOrdonnancePage()" [ngClass]="getButtonClass('Ordonnance')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Ordonnance</button >
+        <button (click)="goToBilanRadioPage()" [ngClass]="getButtonClass('Bilan-Radiologique')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Bilan Radiologique</button >
+        <button (click)="goToBilanBioPage()" [ngClass]="getButtonClass('Bilan-Biologique')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Bilan Biologique</button >
+        <button (click)="goToCompteRenduPage()" [ngClass]="getButtonClass('Compte-Rendu')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Compte Rendu</button >
+    </div>
+</div>  
+</div>
+
