@@ -1,0 +1,231 @@
+/* Styles généraux */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #DEEBFF;
+  }
+  
+  .navbar .logo {
+    height: 40px;
+  }
+  
+  .navbar-buttons {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 20px;
+  }
+  
+  .navbar button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar .se-deconnecter {
+    background-color: #2A2BF2;
+    color: white;
+    font-weight: normal;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  
+  .navbar .active {
+    background-color: #AE9DFD;
+    color: black;
+    font-size: 1rem;
+  }
+  
+  
+  /* Section principale */
+  .main-section {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #DEEBFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Form row styles */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .form-field {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  
+  .input-field,
+  .datetime-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  /* Section des résultats */
+  .result-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    display: flex; /* Utiliser flex pour aligner les éléments enfants */
+    flex-direction: column; /* Aligner les éléments dans une colonne */
+    align-items: center; /* Centrer le bouton horizontalement */
+    justify-content: center; /* Facultatif pour centrer verticalement */
+  }
+  
+  .result-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .result-table th,
+  .result-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .result-table .header-row {
+    background-color: #DEEBFF;
+    font-weight: bold;
+  }
+  
+  .result-table .colored-row {
+    background-color: #F9F9F9;
+  }
+  
+  .result-input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  /* Graph container */
+  .graph-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Boutons */
+  .button-generate {
+    display: inline-flex;  /* Utiliser inline-flex pour que le bouton prenne la largeur de son contenu */
+    justify-content: center; /* Centrer le texte à l'intérieur du bouton */
+    background-color: #D1C3FD; /* Nouvelle couleur */
+    color: black;
+    font-weight: normal;
+    font-size: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    text-align: center;  /* Centrer le texte */
+    padding: 10px 20px; /* Padding pour la taille du bouton */
+    margin-top: 20px; /* Espacement par rapport aux éléments précédents */
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .button-group button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group .cancel {
+    background-color: red;
+    color: white;
+  }
+  
+  .button-group .cancel:hover {
+    background-color: #cc0000;
+  }
+  
+  .button-group .save {
+    background-color: #3D3BF3;
+    color: white;
+  }
+  
+  .button-group .save:hover {
+    background-color: #2A2BF2;
+  }
+  
+  /* Success message */
+  .success-message {
+    background-color: #D4EDDA;
+    color: #155724;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #C3E6CB;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  
+    .main-section {
+      padding: 15px;
+    }
+  
+    .navbar {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  

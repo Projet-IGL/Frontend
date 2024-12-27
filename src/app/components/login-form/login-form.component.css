@@ -84,3 +84,9 @@
     top: 0px;
 
 }
+
+.error-message {
+    color: red; /* Définit la couleur du texte en rouge */
+    font-size: 14px; /* Taille du texte pour l'erreur */
+    margin-top: 10px; /* Ajoute un espacement au-dessus du message */
+}
