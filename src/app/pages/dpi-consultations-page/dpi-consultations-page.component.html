@@ -1,58 +1,74 @@
-<app-empty-navbar></app-empty-navbar>
-<app-dpi-navbar></app-dpi-navbar>
-<div class="flex justify-center">
-<div class="blue-container">
-    <h3 class="Rech-title">Consultations récentes :</h3>
-   <div class="white-container">
-   <table>
-   <thead> 
-   <tr>
-     <th>Médecin</th>
-     <th>Date</th>
-     <th></th>
-     <th></th>
-   </tr>
-   </thead> 
-   <tbody>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align" (click)="goToMedecinPage()">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   </tbody>
-   </table>
-   </div>
-   <button class="add-btn">Ajouter Consultation</button>
-   </div>
+
+<app-ajouter-consultation 
+ [popOutVisible]="popOutVisible2"
+(popOutVisibilityChange)="updatePopOutVisibility2($event)"
+(openOtherPopout)="openOtherPopout($event)"/>
+<app-add-ordonnance 
+[popOutVisible]="popOutVisible1"
+[initialConsultationData]="consultationData"
+(popOutVisibilityChange)="updatePopOutVisibility1($event)">
+
+</app-add-ordonnance>
+<div  [ngClass]="{'blur-sm': popOutVisible1||popOutVisible2}">
+  
+  <app-empty-navbar></app-empty-navbar>
+  <app-dpi-navbar></app-dpi-navbar>
+
+  <div class="flex justify-center">
+  <div class="blue-container">
+      <h3 class="Rech-title">Consultations récentes :</h3>
+     <div class="white-container">
+     <table>
+     <thead> 
+     <tr>
+       <th>Médecin</th>
+       <th>Date</th>
+       <th></th>
+       <th></th>
+     </tr>
+     </thead> 
+     <tbody>
+     <tr>
+       <td>Nom Prenom</td>
+       <td>jj/mm/aa</td>
+       <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+       <td class="align" (click)="goToMedecinPage()">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     </tr>
+     <tr>
+       <td>Nom Prenom</td>
+       <td>jj/mm/aa</td>
+       <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+       <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     </tr>
+     <tr>
+       <td>Nom Prenom</td>
+       <td>jj/mm/aa</td>
+       <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+       <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     </tr>
+     <tr>
+       <td>Nom Prenom</td>
+       <td>jj/mm/aa</td>
+       <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+       <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     </tr>
+     <tr>
+       <td>Nom Prenom</td>
+       <td>jj/mm/aa</td>
+       <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+       <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     </tr>
+     <tr>
+       <td>Nom Prenom</td>
+       <td>jj/mm/aa</td>
+       <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
+       <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     </tr>
+     </tbody>
+     </table>
+     </div>
+     <button (click)="updatePopOutVisibility2(true)" class="add-btn">Ajouter Consultation</button>
+     </div>
+  </div>
+
 </div>
