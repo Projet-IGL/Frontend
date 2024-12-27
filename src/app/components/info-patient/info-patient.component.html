@@ -4,7 +4,7 @@
         <i class="fa fa-user" style="color: #3D3BF3;"></i>
       </div>
       <div class="info">
-        <h3>{{ patient.nom }} {{ patient.prenom }}</h3>
+        <h3>{{ patient.last_name }} {{ patient.first_name }}</h3>
       </div>
     </div>
   
@@ -15,6 +15,16 @@
       <div class="info">
         <h3>NSS</h3>
         <p>{{ patient.nss }}</p>
+      </div>
+    </div>
+
+    <div class="profile-box">
+      <div class="icon">
+        <i class="fas fa-calendar-alt" style="color: #3D3BF3;"></i>
+      </div>
+      <div class="info">
+        <h3>Date de naissance</h3>
+        <p>{{ patient.date_naissance }}</p>
       </div>
     </div>
   
@@ -34,7 +44,7 @@
       </div>
       <div class="info">
         <h3>Numéro de téléphone</h3>
-        <p>{{ patient.telephone }}</p>
+        <p>{{ patient.numero_telephone }}</p>
       </div>
     </div>
   
@@ -44,7 +54,7 @@
       </div>
       <div class="info">
         <h3>Téléphone d'urgence</h3>
-        <p>{{ patient.telephoneUrgence }}</p>
+        <p>{{ patient.telephone_urgence }}</p>
       </div>
     </div>
   
@@ -54,7 +64,7 @@
       </div>
       <div class="info">
         <h3>Médecin traitant</h3>
-        <p>{{ patient.medecinTraitant }}</p>
+        <p>{{ patient.medecin_traitant }}</p>
       </div>
     </div>
   

@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service'; // Importer AuthService
 
 @Component({
   selector: 'app-info-patient',
-  imports: [],
+  imports: [], // Aucun module supplémentaire ici
   templateUrl: './info-patient.component.html',
-  styleUrl: './info-patient.component.css'
+  styleUrls: ['./info-patient.component.css']
 })
-export class InfoPatientComponent {
-  patient: any = {
-    nom: 'Aouissi',
-    prenom: 'Bouchra',
-    nss: '123456789',
-    email: 'mb_aouissi@esi.dz',
-    telephone: '0555 123 456',
-    telephoneUrgence: '0666 789 101',
-    medecinTraitant: 'Dr. Amel Kaci',
-    mutuelle: 'CNAS'
-  };
+export class InfoPatientComponent implements OnInit {
+  patient: any = null; // Informations du patient
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const user = this.authService.getUser(); // Récupère les informations de l'utilisateur connecté
 
+    if (user && user.role === 'Patient') {
+      // Si l'utilisateur est un patient, récupère ses informations
+      this.patient = user;
+    } else {
+      // Si l'utilisateur n'est pas un patient, redirige vers une page d'erreur ou autre gestion
+      console.error("Utilisateur non autorisé à accéder à cette page.");
+    }
+  }
 }
