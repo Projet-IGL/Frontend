@@ -1,9 +1,8 @@
-// src/app/components/login-form/login-form.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service'; // Import du service AuthService
 
 @Component({
   selector: 'app-login-form',
@@ -13,26 +12,46 @@ import { AuthService } from '../../services/auth.service'; // Import du service 
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-  username: string = ''; // Utilisé pour l'email
+  username: string = '';
   password: string = '';
   errorMessage: string = '';
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  // Méthode pour gérer la connexion
   login() {
-    console.log('Nom d\'utilisateur:', this.username);  // Affiche le nom d'utilisateur saisi
-    console.log('Mot de passe:', this.password);         // Affiche le mot de passe saisi
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        // Traitement en cas de succès
-        const token = response.access; // Le jeton d'authentification reçu
-        this.authService.saveToken(token); // Sauvegarde du jeton dans un cookie
-        console.log('Jeton d\'authentification:', token);
-        this.router.navigate(['/profilMedecin']); // Redirection après la connexion réussie
+        const { access, user } = response; // Récupère le token et l'utilisateur
+        this.authService.saveToken(access); // Sauvegarde du token
+        this.authService.saveUser(user); // Sauvegarde de l'utilisateur et de ses informations
+        
+        // Redirection selon le rôle de l'utilisateur
+        switch (user.role) {
+          case 'Admin':
+            this.router.navigate(['/profilAdmin']);
+            break;
+          case 'Médecin':
+            this.router.navigate(['/profilMedecin']);
+            break;
+          case 'Infirmier':
+            this.router.navigate(['/profilInfermier']);
+            break;
+          case 'Patient':
+            this.router.navigate(['/profilPatient']);  // Redirection vers profil patient
+            break;
+          case 'Laborantin':
+            this.router.navigate(['/profilLaborantin']);  // Redirection vers profil laborantin
+            break;
+          case 'Radiologue':
+            this.router.navigate(['/profilRadiologue']);  // Redirection vers profil radiologue
+            break;
+          default:
+            this.errorMessage = 'Rôle inconnu';
+            console.error('Rôle non reconnu:', user.role);
+            break;
+        }
       },
       (error) => {
-        // Gestion des erreurs
         this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect.';
         console.error('Erreur de connexion :', error);
       }

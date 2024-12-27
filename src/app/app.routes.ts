@@ -20,7 +20,11 @@ import { ProfilStaffComponent } from './components/profil-staff/profil-staff.com
 import { ProfilMedecinComponent } from './pages/profil-medecin/profil-medecin.component';
 import { ProfilPatientComponent } from './pages/profil-patient/profil-patient.component';
 import { InfoPatientComponent } from './components/info-patient/info-patient.component';
-
+import { ProfilAdminComponent } from './pages/profil-admin/profil-admin.component';
+import { ProfilLaborantinComponent } from './pages/profil-laborantin/profil-laborantin.component';
+import { ProfilRadiologueComponent } from './pages/profil-radiologue/profil-radiologue.component';
+import { AjouterBilanRadiologiqueComponent } from './pages/ajouter-bilan-radiologique/ajouter-bilan-radiologique.component';
+import { AjouterBilanBiologiqueComponent } from './pages/ajouter-bilan-biologique/ajouter-bilan-biologique.component';
 export const routes: Routes = [
     { 
         path: '',
@@ -47,6 +51,11 @@ export const routes: Routes = [
       { 
         path: 'add-staff', 
         component: AddStaffPageComponent ,
+        pathMatch: 'full' 
+      },
+      { 
+        path: 'profilAdmin', 
+        component: ProfilAdminComponent ,
         pathMatch: 'full' 
       },
       { 
@@ -103,6 +112,15 @@ export const routes: Routes = [
         path: 'ajouterSoin', 
         component: AjouterSoinPageComponent 
       },
+      {
+        path: 'ajouterBilanRadio', 
+        component: AjouterBilanRadiologiqueComponent 
+      },
+      {
+        path: 'ajouterBilanBio', 
+        component: AjouterBilanBiologiqueComponent 
+      },
+     
      
       { 
         path: 'ajouterConsultation', 
@@ -112,6 +130,14 @@ export const routes: Routes = [
       { 
         path: 'profilInfermier', 
         component: ProfilInfermierComponent 
+      },
+      { 
+        path: 'profilLaborantin', 
+        component: ProfilLaborantinComponent 
+      },
+      { 
+        path: 'profilRadiologue', 
+        component: ProfilRadiologueComponent 
       },
     
       { 

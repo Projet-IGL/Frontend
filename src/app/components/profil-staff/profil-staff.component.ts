@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profil-staff',
+  standalone: true,
+  imports: [CommonModule, FormsModule], // Import des modules nécessaires
   templateUrl: './profil-staff.component.html',
   styleUrls: ['./profil-staff.component.css']
 })
 export class ProfilStaffComponent implements OnInit {
-  staff: any = {
-    nom: 'Aouissi',
-    prenom: 'Bouchra',
-    nss: '123456789',
-    email: 'mb_aouissi@esi.dz',
-    adresse: 'adresse',
-    specialite: 'Infermier',
-    nomUtilisateur: 'userName'
-  };
+  user: any = null; // Informations utilisateur
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void { }
+  ngOnInit() {
+    this.user = this.authService.getUser(); // Récupère les informations de l'utilisateur
+  }
 }

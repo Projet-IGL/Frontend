@@ -12,7 +12,7 @@ export class ProfilInfermierComponent {
   
     // Méthode pour rediriger vers la page de déconnexion
     constructor(private router: Router) {}
-  
+
     logout() {
       this.router.navigate(['/Landing-page']);
     }
