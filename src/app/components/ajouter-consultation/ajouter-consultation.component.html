@@ -1,4 +1,4 @@
-<div *ngIf="isPopupVisible" class="popup-container">
+<div *ngIf="popOutVisible" class="popup-container shadow-lg z-20">
     <div class="popup-header">
       <div class="circle-filled">1</div>
       <div class="circle-empty"></div>
@@ -29,9 +29,14 @@
           <input type="radio" name="action" value="ordonnance" (change)="selectAction('ordonnance')"> Établir ordonnance
         </label>
         <label>
-          <input type="radio" name="action" value="bilan" (change)="selectAction('bilan')"> Demander bilan
+          <input type="radio" name="action" value="bilan2" (change)="selectAction('bilan2')"> Demander bilan radiologique et biologique        </label>
+        <label>
+        <label>
+          <input type="radio" name="action" value="bilanRadio" (change)="selectAction('bilanRadio')"> Demander bilan radiologique
         </label>
         <label>
+          <input type="radio" name="action" value="bilanBio" (change)="selectAction('bilanBio')"> Demander bilan biologique
+        </label>
           <input type="radio" name="action" value="aucun" (change)="selectAction('aucun')"> Aucun
         </label>
       </div>

@@ -1,0 +1,52 @@
+
+<div *ngIf="popOutVisible" class=" popup-container shadow-lg font-pop z-30">
+   
+    <div class="popup-header">
+      <div class="circle-empty"></div>
+      <div class="circle-filled">2</div>
+    </div>
+  
+   
+    <div class="popup-title">
+      <strong>Etablir Ordonnance</strong>
+    </div>
+  
+    <div class="overflow-auto">
+
+
+      <div *ngFor="let med of medications; let i = index" class=" flex justify-center space-x-8 pt-6 rounded-lg w-full">
+        <input
+          class="w-1/4 p-2 h-8 border rounded-lg"
+          type="text"
+          placeholder="Médicament"
+          [(ngModel)]="med.medicament"
+        />
+        <input
+          class="w-1/4 p-2 h-8 border rounded-lg"
+          type="text"
+          placeholder="Dose"
+          [(ngModel)]="med.dose"
+        />
+        <input
+          class="w-1/4 p-2 h-8 border rounded-lg"
+          type="text"
+          placeholder="Durée"
+          [(ngModel)]="med.duree"
+        />
+      </div>
+    
+    </div>
+
+    <div class="flex justify-center pt-4">
+      <button (click)="onAddMedicament()" class="bg-lightPurple text-white rounded-md w-1/3 h-10">
+        + Ajouter médicament
+      </button>
+    </div>
+  
+    
+    <div class="buttons flex justify-center space-x-4 mt-4">
+      <button (click)="onCancel()" class="bg-red-500 text-white rounded-md w-1/4 h-10">Annuler</button>
+      <button (click)="onSave()" class="bg-blue-500 text-white rounded-md w-1/4 h-10">Enregistrer</button>
+    </div>
+  </div>
+  

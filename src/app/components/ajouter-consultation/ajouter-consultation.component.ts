@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { ConsultationService } from './../../services/consultation.service';
 import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -9,16 +10,22 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule] // Ajoutez ici CommonModule
 })
 export class AjouterConsultationComponent {
+  @Input() popOutVisible = false;
+  @Output() popOutVisibilityChange = new EventEmitter<boolean>();
+  @Output() openOtherPopout = new EventEmitter<any>();
   // Variables pour stocker les états
-  isPopupVisible: boolean = true; // La pop-up est visible par défaut
+  
   action: string = ''; // L'action sélectionnée (ordonnance, bilan, aucun)
+  consultationData = { dateTime: '', resume: '', bilan: '' }; // To store entered data
 
-  constructor() {}
+  constructor(private ConsultationService:ConsultationService) {}
 
   // Méthode pour fermer la pop-up
   closePopup(): void {
-    this.isPopupVisible = false;
-  }
+   this.popOutVisible=false
+   this.popOutVisibilityChange.emit(this.popOutVisible);
+
+   }
 
   // Méthode pour gérer la sélection de l'action
   selectAction(selectedAction: string): void {
@@ -51,17 +58,30 @@ export class AjouterConsultationComponent {
     console.log('Date et Heure:', datetime);
     console.log('Résumé:', resume);
     console.log('Action choisie:', this.action);
+    this.popOutVisible=false;
+    this.popOutVisibilityChange.emit(this.popOutVisible);
+    this.consultationData = { dateTime: datetime, resume: resume, bilan: this.action };
 
+    // Open the next popout and send data
+    
     // Gestion des actions sélectionnées
     switch (this.action) {
       case 'ordonnance':
-        console.log('Navigation vers Établir ordonnance');
+        this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
         break;
-
-      case 'bilan':
-        console.log('Navigation vers Demander bilan');
-        break;
-
+      case 'bilan2':
+      case 'bilanBio':
+      case 'bilanRadio':
+        this.ConsultationService.saveConsultation(this.consultationData).subscribe(
+          (response) => {
+            console.log('Data saved successfully:', response);
+          },
+          (error) => {
+            console.error('Error saving data:', error);
+          }
+        );
+          break;
+    
       case 'aucun':
         this.closePopup();
         break;
