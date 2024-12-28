@@ -4,7 +4,7 @@
         <i class="fa fa-user" style="color: #3D3BF3;"></i>
       </div>
       <div class="info">
-        <h3>{{ patient.last_name }} {{ patient.first_name }}</h3>
+        <h3>{{ patient.data.last_name }} {{ patient.data.first_name }}</h3>
       </div>
     </div>
   
@@ -14,7 +14,7 @@
       </div>
       <div class="info">
         <h3>NSS</h3>
-        <p>{{ patient.nss }}</p>
+        <p>{{ patient.data.nss }}</p>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
       </div>
       <div class="info">
         <h3>Date de naissance</h3>
-        <p>{{ patient.date_naissance }}</p>
+        <p>{{ patient.data.date_naissance }}</p>
       </div>
     </div>
   
@@ -34,7 +34,7 @@
       </div>
       <div class="info">
         <h3>Email</h3>
-        <p>{{ patient.email }}</p>
+        <p>{{ patient.data.email }}</p>
       </div>
     </div>
   
@@ -44,7 +44,7 @@
       </div>
       <div class="info">
         <h3>Numéro de téléphone</h3>
-        <p>{{ patient.numero_telephone }}</p>
+        <p>{{ patient.data.numero_telephone }}</p>
       </div>
     </div>
   
@@ -54,7 +54,7 @@
       </div>
       <div class="info">
         <h3>Téléphone d'urgence</h3>
-        <p>{{ patient.telephone_urgence }}</p>
+        <p>{{ patient.data.telephone_urgence }}</p>
       </div>
     </div>
   
@@ -64,7 +64,7 @@
       </div>
       <div class="info">
         <h3>Médecin traitant</h3>
-        <p>{{ patient.medecin_traitant }}</p>
+        <p>Dr.{{ patient.data.medecin_traitant.last_name }}</p>
       </div>
     </div>
   
@@ -74,7 +74,7 @@
       </div>
       <div class="info">
         <h3>Mutuelle</h3>
-        <p>{{ patient.mutuelle }}</p>
+        <p>{{ patient.data.mutuelle }}</p>
       </div>
     </div>
   </div>

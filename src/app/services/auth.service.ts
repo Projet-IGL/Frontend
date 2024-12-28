@@ -21,30 +21,26 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = '/Tests/login.json'; 
+  private apiUrl = 'http://127.0.0.1:8000/api/login/'; 
 
   private user: User | null = null; // Informations de l'utilisateur connecté
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   // Méthode pour envoyer les identifiants au backend et récupérer les informations utilisateur
-  login(username: string, password: string): Observable<any> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map(data => {
-        // Recherche l'utilisateur, qu'il soit patient ou autre
-        const user = data.users.find((u: User) => 
-          (u.username === username || u.nss === username) && u.password === password
-        );
-
-        if (user) {
-          return { access: user.access, user }; // Retourne le token et les informations utilisateur
-        } else {
-          throw new Error('Utilisateur ou mot de passe incorrect');
+  login(username: string, password: string): Observable<User> {
+    return this.http.post<User>(this.apiUrl, { username, password }).pipe(
+      map(user => {
+        console.log('Réponse du backend :', user); // Vérifiez la structure ici
+        if (user && user.role) {
+          this.saveToken(user.access);
+          this.saveUser(user);
         }
+        return user;
       })
     );
   }
-
+  
   // Sauvegarder le token dans un cookie
   saveToken(token: string) {
     this.cookieService.set('token', token, { secure: true, sameSite: 'Strict' });
@@ -63,6 +59,7 @@ export class AuthService {
    // Sauvegarder les informations de l'utilisateur dans un cookie
    saveUser(user: any) {
     this.cookieService.set('user', JSON.stringify(user), { secure: true, sameSite: 'Strict' });
+    console.log(user)
   }
 
   // Récupérer les informations de l'utilisateur depuis le cookie

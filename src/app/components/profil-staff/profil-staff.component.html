@@ -6,7 +6,7 @@
       <i class="fa fa-user" style="color: #3D3BF3;"></i>
     </div>
     <div class="info">
-      <h3><span class="black-text">{{ user?.first_name }} {{ user?.last_name }}</span></h3> <!-- Application de la classe black-text -->
+      <h3><span class="black-text">{{ user?.data.first_name }} {{ user?.data.last_name }}</span></h3> <!-- Application de la classe black-text -->
       
     </div>
   </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="info">
       <h3>Email</h3>
-      <p>{{ user?.email }}</p>
+      <p>{{ user?.data.email }}</p>
     </div>
   </div>
 
@@ -29,7 +29,7 @@
     </div>
     <div class="info">
       <h3>Adresse</h3>
-      <p>{{ user?.adresse }}</p>
+      <p>{{ user?.data.adresse }}</p>
     </div>
   </div>
 

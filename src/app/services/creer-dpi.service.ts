@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CreerDPIService {
-  private apiUrl = 'http://localhost:3000/Dpis'; // Ensure the path is correct
+  private apiUrl = 'http://127.0.0.1:8000/api/creer_patient/'; // Ensure the path is correct
 
   constructor(private http: HttpClient) { }
 
@@ -23,9 +23,8 @@ export class CreerDPIService {
     adresse:String,
     medecin:String,
     mutuelle:String,
-    qrCode:String,
   ): Observable<any> {
-    const newDpi = { nom, prenom, email, nss, numtel, numtelurg, username, password,dateDeNaissance,adresse,medecin,mutuelle,qrCode };
+    const newDpi = { nom, prenom, email, nss, numtel, numtelurg, username, password,dateDeNaissance,adresse,medecin,mutuelle };
     console.log('Mocking a request with:', newDpi);
     return this.http.post<any>(this.apiUrl, newDpi); 
   }

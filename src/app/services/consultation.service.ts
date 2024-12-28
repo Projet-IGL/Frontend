@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ConsultationService {
-  private apiUrl = 'http://localhost:3000/consultations'; // Update the URL to match your json-server setup
+  private apiUrl = 'http://127.0.0.1:8000/api/creer_consultation/'; // Update the URL to match your json-server setup
 
   constructor(private Http: HttpClient) {}
 

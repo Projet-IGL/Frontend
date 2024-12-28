@@ -55,7 +55,6 @@ export class AddDpiFormComponent {
         this.dpiForm.value.adresse,
         this.dpiForm.value.medecinTraitant,
         this.dpiForm.value.mutuelle,
-        this.qrCodeUrl
       
       ).subscribe(
         (response) => {

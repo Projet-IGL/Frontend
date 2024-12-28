@@ -20,17 +20,15 @@ export class LoginFormComponent {
 
   login() {
     this.authService.login(this.username, this.password).subscribe(
-      (response) => {
-        const { access, user } = response; // Récupère le token et l'utilisateur
-        this.authService.saveToken(access); // Sauvegarde du token
-        this.authService.saveUser(user); // Sauvegarde de l'utilisateur et de ses informations
+      (user) => {
+        
         
         // Redirection selon le rôle de l'utilisateur
         switch (user.role) {
-          case 'Admin':
+          case 'Administrateur':
             this.router.navigate(['/profilAdmin']);
             break;
-          case 'Médecin':
+          case 'Medecin':
             this.router.navigate(['/profilMedecin']);
             break;
           case 'Infirmier':
