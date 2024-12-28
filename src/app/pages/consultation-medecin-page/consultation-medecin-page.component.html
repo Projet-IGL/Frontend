@@ -4,10 +4,10 @@
     <div class="blue-container flex flex-col sm:flex-row">
        <img src="/medecin.png" width="400" class="medecin">
        <div class="info">
-           <h1>Nom Prenom</h1>
-           <h2>Spécialité et Service</h2>
-           <h2>Adresse Email</h2>
-           <h2>Numéro de Téléphone</h2>
+           <h1> {{consultation.medecin.nom}} {{" "}} {{consultation.medecin.prenom}}</h1>
+           <h2>{{consultation.medecin.specialite}}</h2>
+           <h2>{{consultation.medecin.email}}</h2>
+           <h2>{{consultation.medecin.tel}}</h2>
        </div>
     </div>
 </div>

@@ -145,6 +145,17 @@ tr:nth-child(odd):hover {
   color: #C82222;
   cursor: pointer;
 }
+.photo-scanner {
+  padding: 15px 20px;
+  background-color: #8c80c5;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 3px 5px rgba(180, 180, 180, 0.765);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 
 /* Media Queries pour les écrans plus petits */
 @media (max-width: 768px) {

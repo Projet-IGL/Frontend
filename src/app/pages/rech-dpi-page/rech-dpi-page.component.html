@@ -3,10 +3,20 @@
     <div class="Rech-container">
         <div class="bar">
               <div class="flex items-center">
-               <input type="text" placeholder="NSS" class="search-bar">
-               <span class="material-symbols-outlined search-icone"> search</span>
+               <input type="text" [(ngModel)]="searchValue" placeholder="Entrez un NSS" class="search-bar">
+               <span (click)="filter()" class="material-symbols-outlined search-icone"> search</span>
               </div>
                <button (click)="toggleScanner()" class="scanner-btn">Scanner <span class="material-symbols-outlined"> qr_code_scanner</span></button>
+               <div>
+                <button (click)="fileInput.click()" class="photo-scanner">Charger un QRcode</button>
+                <input
+                  type="file"
+                  #fileInput
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  hidden
+                />
+              </div>
         </div>
         <div class="scanner-container" *ngIf="isScanning">
                <zxing-scanner #scannerRef class="scanner" [enable]="isScanning" (scanSuccess)="onCodeScanned($event)"></zxing-scanner>
@@ -28,41 +38,11 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Nom Prenom</td>
-            <td>NSS</td>
+          <tr *ngFor="let patient of filteredPatientsList">
+            <td>{{ patient.patient_data.last_name }}{{" "}}{{ patient.patient_data.first_name }}</td>
+            <td>{{ patient.patient_data.nss }}</td>
             <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-            <td class="align" (click)="goToPatientPage()">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-          </tr>
-          <tr>
-            <td>Nom Prenom</td>
-            <td>NSS</td>
-            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-          </tr>
-          <tr>
-            <td>Nom Prenom</td>
-            <td>NSS</td>
-            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-          </tr>
-          <tr>
-            <td>Nom Prenom</td>
-            <td>NSS</td>
-            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-          </tr>
-          <tr>
-            <td>Nom Prenom</td>
-            <td>NSS</td>
-            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-          </tr>
-          <tr>
-            <td>Nom Prenom</td>
-            <td>NSS</td>
-            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-            <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+            <td class="align" (click)="goToPatientPage(patient)">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
           </tr>
           </tbody>
           </table>

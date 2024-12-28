@@ -1,0 +1,17 @@
+[
+    {
+        "nom": "med1",
+        "dose":"dose1",
+        "dure": "dure1"
+    },
+    {
+        "nom": "med2",
+        "dose":"dose2",
+        "dure": "dure2"
+    },
+    {
+        "nom": "med3",
+        "dose":"dose3",
+        "dure": "dure3"
+    }
+]

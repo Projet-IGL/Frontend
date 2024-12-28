@@ -13,34 +13,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-             <td>Paramètre</td>
-             <td>Résultat</td>
-             <td>Remarque</td>
-            </tr>
-            <tr>
-             <td>Paramètre</td>
-             <td>Résultat</td>
-             <td>Remarque</td>
-            </tr>
-            <tr>
-             <td>Paramètre</td>
-             <td>Résultat</td>
-             <td>Remarque</td>
-            </tr>
-            <tr>
-             <td>Paramètre</td>
-             <td>Résultat</td>
-             <td>Remarque</td>
-            <tr>
-             <td>Paramètre</td>
-             <td>Résultat</td>
-             <td>Remarque</td>
-            </tr>
-            <tr>
-             <td>Paramètre</td>
-             <td>Résultat</td>
-             <td>Remarque</td>
+              <tr *ngFor="let bilan of bilanBioList">
+                <td>{{bilan.parametre}}</td>
+                <td>{{bilan.resultat}}</td>
+                <td>{{bilan.remarque}}</td>
             </tr>
             </tbody>
             </table>
@@ -48,11 +24,11 @@
        <div class="flex justify-between items-center mt-10 w-full max-w-4xl mx-auto">
          <div class="flex items-center gap-2">
            <h2>Signature :</h2>
-           <p>Dr.Malek</p>
+           <p>Dr.{{consultation.medecin.nom}}</p>
          </div>
          <div class="flex items-center gap-2">
            <h2>Date :</h2>
-           <p>jj/mm/aa</p>
+           <p>{{consultation.date}}</p>
          </div>
        </div>    
     </div>

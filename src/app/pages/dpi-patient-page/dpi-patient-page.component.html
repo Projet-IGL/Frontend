@@ -9,36 +9,36 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
         <div class="flex flex-col sm:flex-row items-center gap-2">
           <h4>NSS</h4>
-          <p>23456784567</p>
+          <p>{{patient.patient_data.nss}}</p>
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-2">
-          <h4>Email</h4>
-          <p>address mail</p>
+          <h4>Email</h4> 
+          <p>{{patient.patient_data.email}}</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
         <div class="flex flex-col sm:flex-row items-center gap-2">
           <h4>Num Tel</h4>
-          <p>055234567</p>
+          <p>{{patient.patient_data.numero_telephone}}</p>
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-2">
           <h4>Num Tel Urgent</h4>
-          <p>023456783</p>
+          <p></p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
         <div class="flex flex-col sm:flex-row items-center gap-2">
           <h4>Date de naissance</h4>
-          <p>jj/mm/aa</p>
+          <p>{{patient.patient_data.date_naissance}}</p>
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-2">
           <h4>Adresse</h4>
-          <p>Alger</p>
+          <p>{{patient.patient_data.adresse}}</p>
         </div>
       </div>
       <div class="flex flex-col sm:flex-row items-center gap-2 mt-10 sm:mt-20">
         <h4>Mutuelle</h4>
-        <p class="txt">mutuelle</p>
+        <p class="txt">{{patient.patient_data.mutuelle}}</p>
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@ export class LoginFormComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   // Méthode pour gérer la connexion
-  login() {
+  login() { 
     console.log('Nom d\'utilisateur:', this.username);  // Affiche le nom d'utilisateur saisi
     console.log('Mot de passe:', this.password);         // Affiche le mot de passe saisi
     this.authService.login(this.username, this.password).subscribe(
@@ -29,7 +29,7 @@ export class LoginFormComponent {
         const token = response.access; // Le jeton d'authentification reçu
         this.authService.saveToken(token); // Sauvegarde du jeton dans un cookie
         console.log('Jeton d\'authentification:', token);
-        this.router.navigate(['/profilMedecin']); // Redirection après la connexion réussie
+        this.router.navigate(['/Rech-dpi']); // Redirection après la connexion réussie
       },
       (error) => {
         // Gestion des erreurs

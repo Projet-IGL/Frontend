@@ -10,45 +10,15 @@
      <th>Médecin</th>
      <th>Date</th>
      <th></th>
-     <th></th>
+     <th></th> 
    </tr>
    </thead> 
    <tbody>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
+    <tr *ngFor="let consultation of consultationList">
+     <td>{{consultation.medecin.nom}}{{" "}}{{consultation.medecin.prenom}} </td>
+     <td> {{consultation.date}} </td>
      <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align" (click)="goToMedecinPage()">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
-   </tr>
-   <tr>
-     <td>Nom Prenom</td>
-     <td>jj/mm/aa</td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
-     <td class="align">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
+     <td class="align" (click)="goToMedecinPage(consultation)">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
    </tr>
    </tbody>
    </table>
