@@ -1,0 +1,14 @@
+[
+    {
+        "soin" : "soin1",
+        "infermier":"infermier1",
+        "date":"date1",	
+        "heure":"heure1"
+    },
+    {
+        "soin" : "soin2",
+        "infermier":"infermier2",
+        "date":"date2",	
+        "heure":"heure2"
+    }
+]

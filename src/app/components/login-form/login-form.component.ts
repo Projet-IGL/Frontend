@@ -48,6 +48,7 @@ export class LoginFormComponent {
             console.error('Rôle non reconnu:', user.role);
             break;
         }
+
       },
       (error) => {
         this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect.';

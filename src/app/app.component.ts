@@ -5,10 +5,17 @@ import { AddStaffPageComponent } from './pages/add-staff-page/add-staff-page.com
 import { AddDpiPageComponent } from './pages/add-dpi-page/add-dpi-page.component';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root', 
-  imports: [AddDpiPageComponent, LoginPageComponent, AddStaffPageComponent, RouterOutlet,QRCodeComponent, ZXingScannerModule],
+  imports: [AddDpiPageComponent,
+     LoginPageComponent, 
+     AddStaffPageComponent, 
+     RouterOutlet,
+     QRCodeComponent, 
+     ZXingScannerModule,
+     FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

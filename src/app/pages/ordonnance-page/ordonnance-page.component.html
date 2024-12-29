@@ -7,52 +7,27 @@
        <table>
        <thead> 
        <tr>
-         <th>Médicament</th>
+         <th>Médicament</th> 
          <th>Dose</th>
          <th>Duré</th>
        </tr>
        </thead>
        <tbody>
-       <tr>
-        <td>Médicament</td>
-        <td>Dose</td>
-        <td>Duré</td>
-       </tr>
-       <tr>
-        <td>Médicament</td>
-        <td>Dose</td>
-        <td>Duré</td>
-       </tr>
-       <tr>
-        <td>Médicament</td>
-        <td>Dose</td>
-        <td>Duré</td>
-       </tr>
-       <tr>
-        <td>Médicament</td>
-        <td>Dose</td>
-        <td>Duré</td>
-       <tr>
-        <td>Médicament</td>
-        <td>Dose</td>
-        <td>Duré</td>
-       </tr>
-       <tr>
-        <td>Médicament</td>
-        <td>Dose</td>
-        <td>Duré</td>
-       </tr>
+        <tr *ngFor="let medicament of ordoList">
+        <td>{{medicament.nom}}</td>
+        <td>{{medicament.dose}}</td>
+        <td>{{medicament.dure}}</td>
        </tbody>
        </table>
        </div> 
        <div class="flex justify-between items-center mt-10 w-full max-w-4xl mx-auto">
          <div class="flex items-center gap-2">
            <h2>Signature :</h2>
-           <p>Dr.Malek</p>
+           <p>Dr.{{consultation.medecin.nom}}</p>
          </div>
          <div class="flex items-center gap-2">
            <h2>Date :</h2>
-           <p>jj/mm/aa</p>
+           <p>{{consultation.date}}</p>
          </div>
        </div>    
     </div>

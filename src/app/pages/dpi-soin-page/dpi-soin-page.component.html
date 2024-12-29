@@ -7,48 +7,18 @@
    <table>
    <thead> 
    <tr>
-     <th>Soin</th>
-     <th>Inférmier</th>
+     <th>Soin</th> 
+     <th>Inférmier</th> 
      <th>Date</th>
      <th>Heure</th>
    </tr>
    </thead>
    <tbody>
-   <tr>
-     <td>soin</td>
-     <td>Inférmier</td>
-     <td>jj/mm/aa</td>
-     <td>HH:MM</td>
-   </tr>
-   <tr>
-    <td>soin</td>
-    <td>Inférmier</td>
-    <td>jj/mm/aa</td>
-    <td>HH:MM</td>
-   </tr>
-   <tr>
-    <td>soin</td>
-    <td>Inférmier</td>
-    <td>jj/mm/aa</td>
-    <td>HH:MM</td>
-   </tr>
-   <tr>
-    <td>soin</td>
-     <td>Inférmier</td>
-     <td>jj/mm/aa</td>
-     <td>HH:MM</td>
-   </tr>
-   <tr>
-    <td>soin</td>
-    <td>Inférmier</td>
-    <td>jj/mm/aa</td>
-    <td>HH:MM</td>
-   </tr>
-   <tr>
-    <td>soin</td>
-    <td>Inférmier</td>
-    <td>jj/mm/aa</td>
-    <td>HH:MM</td>
+    <tr *ngFor="let soin of soinsList">
+     <td>{{soin.soin}}</td>
+     <td> {{soin.infermier}} </td>
+     <td> {{soin.date}} </td>
+     <td> {{soin.heure}} </td>
    </tr>
    </tbody>
    </table>
