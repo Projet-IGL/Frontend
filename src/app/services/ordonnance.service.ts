@@ -6,10 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OrdonnanceService {
+  private apiUrl = 'http://localhost:3001/ordonnances'; 
+  constructor(private Http: HttpClient ) {}
 
-  constructor(private http: HttpClient) { };
-
+  saveOrdonnance(ordonnanceData: any): Observable<any> {
+    console.log('Saving ordonnance data:', ordonnanceData);
+    return this.Http.post<any>(this.apiUrl, ordonnanceData); 
+  }
   getData(): Observable<any> {
-      return this.http.get('/Tests/Ordonnance.json');
+      return this.Http.get('/Tests/Ordonnance.json');
     }
 }
