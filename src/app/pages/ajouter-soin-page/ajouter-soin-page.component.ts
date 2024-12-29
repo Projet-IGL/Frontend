@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AjouterSoinService } from '../../services/ajouter-soin.service'; // Import du service
+import { AuthService } from '../../services/auth.service'; // Import du AuthService
 
 @Component({
   selector: 'app-ajouter-soin-page',
@@ -10,52 +12,83 @@ import { Router } from '@angular/router';
   templateUrl: './ajouter-soin-page.component.html',
   styleUrls: ['./ajouter-soin-page.component.css']
 })
-export class AjouterSoinPageComponent {
-  // Propriétés du formulaire
-  time: string = ''; // Remplace la propriété "date"
-  nss: string = ''; // Numéro NSS du patient
+export class AjouterSoinPageComponent implements OnInit {
+  time: string = ''; 
+  nss: string = '';
   details: string = '';
   observations: string = '';
   medicamentAdministre: boolean = false;
 
-  // Variable pour gérer l'affichage du message de succès
   isSaved: boolean = false;
-  isNssInvalid: boolean = false; // Indicateur d'erreur pour le NSS
+  isNssInvalid: boolean = false;
+  existingNss = ['123456789', '987654321', '112233445'];
 
-  // Liste des numéros de patients (NSS)
-  existingNss = [
-    '123456789', 
-    '987654321', 
-    '112233445', // NSS d'exemple
-  ];
+  infirmierId: string | null = null; // ID de l'infirmier
+  user: any = null; // Informations utilisateur
 
-  // Méthode pour vérifier si le NSS existe
-  checkNssExistence() {
-    this.isNssInvalid = !this.existingNss.includes(this.nss);
+  constructor(
+    private router: Router,
+    private ajouterSoinService: AjouterSoinService,
+    private authService: AuthService // Injection du AuthService
+  ) {}
+
+  ngOnInit() {
+    this.user = this.authService.getUser(); // Récupère les informations de l'utilisateur
+    console.log('Utilisateur récupéré:', this.user); // Affiche les informations de l'utilisateur dans la console
+    if (this.user && this.user.role === 'Infirmier') {
+      this.infirmierId = this.user.id; // Récupérer l'ID de l'infirmier
+    }
   }
 
-  // Méthode pour vérifier la validité du formulaire
+
+  // Méthode pour vérifier si le NSS existe via le backend
+  checkNssExistence() {
+    if (this.nss.trim() !== '') {
+      this.ajouterSoinService.checkNssExistence(this.nss).subscribe(
+        (response) => {
+          this.isNssInvalid = !response.exists;
+        },
+        (error) => {
+          console.error('Erreur lors de la vérification du NSS:', error);
+          this.isNssInvalid = true;
+        }
+      );
+    } else {
+      this.isNssInvalid = true;
+    }
+  }
+  
+
+  // Validation du formulaire
   isFormValid(): boolean {
     return this.time.trim() !== '' && this.nss.trim() !== '' && !this.isNssInvalid;
   }
 
-  // Méthode pour enregistrer les données
+  // Sauvegarde des données
   onSave() {
     if (this.isFormValid()) {
-      console.log('Données du formulaire :', {
+      // Créer un objet soin avec l'ID de l'infirmier
+      const soin = {
         time: this.time,
         nss: this.nss,
         details: this.details,
         observations: this.observations,
         medicamentAdministre: this.medicamentAdministre,
-      });
+        infirmierId: this.infirmierId, // Ajouter l'ID de l'infirmier
+      };
 
-      this.isSaved = true;
-      this.resetForm();
-
-      setTimeout(() => {
-        this.isSaved = false;
-      }, 3000);
+      this.ajouterSoinService.addSoin(soin).subscribe(
+        (response) => {
+          console.log('Soin enregistré avec succès:', response);
+          this.isSaved = true;
+          this.resetForm();
+          setTimeout(() => (this.isSaved = false), 3000);
+        },
+        (error) => {
+          console.error('Erreur lors de l\'enregistrement du soin:', error);
+          alert('Erreur lors de l\'enregistrement, veuillez réessayer.');
+        }
+      );
     } else {
       alert('Veuillez remplir tous les champs obligatoires et vérifier le NSS.');
     }
@@ -67,23 +100,20 @@ export class AjouterSoinPageComponent {
     this.resetForm();
   }
 
-  // Réinitialiser les champs du formulaire
+  // Réinitialisation du formulaire
   resetForm() {
     this.time = '';
-    this.nss = ''; // Réinitialisation du NSS
+    this.nss = '';
     this.details = '';
     this.observations = '';
     this.medicamentAdministre = false;
-    this.isNssInvalid = false; // Réinitialisation du message d'erreur NSS
+    this.isNssInvalid = false;
   }
-  constructor(private router: Router) {}
 
-  // Méthode pour rediriger vers la page de profil
+  // Navigation
   voirProfile() {
     this.router.navigate(['/profilInfermier']);
   }
-
-  // Méthode pour rediriger vers la page de déconnexion
 
   logout() {
     this.router.navigate(['/Landing-page']);

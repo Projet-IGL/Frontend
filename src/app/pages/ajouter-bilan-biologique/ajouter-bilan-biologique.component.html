@@ -1,65 +1,70 @@
 <div class="navbar">
-    <img src="/logo.png" class="logo" alt="Logo">
-    <div class="navbar-buttons">
-      <button (click)="voirProfile()">Mon profile</button>
-      <button class="active">Ajouter Bilan Biologique</button>
-    </div>
-    <button class="se-deconnecter" (click)="logout()">Se déconnecter</button>
+  <img src="/logo.png" class="logo" alt="Logo">
+  <div class="navbar-buttons">
+    <button (click)="voirProfile()">Mon profile</button>
+    <button class="active">Ajouter Bilan Biologique</button>
   </div>
-  
-  <div class="main-section">
-    <!-- Formulaire d'ajout de bilan biologique -->
-    <div class="form-row">
-      <div class="form-field">
-        <input id="datetime" class="datetime-input" type="datetime-local" [(ngModel)]="time" placeholder="Date et Heure" required>
-      </div>
-      <div class="form-field">
-        <input id="nss" class="input-field" [(ngModel)]="nss" placeholder="NSS du patient" required (blur)="checkNssExistence()">
-        <div *ngIf="isNssInvalid" class="error-message">Le numéro de patient (NSS) n'existe pas.</div>
-      </div>
+  <button class="se-deconnecter" (click)="logout()">Se déconnecter</button>
+</div>
+ 
+<div class="main-section">
+  <!-- Formulaire d'ajout de bilan biologique -->
+  <div class="form-row">
+    <div class="form-field">
+      <input id="datetime" class="datetime-input" type="datetime-local" [(ngModel)]="time" placeholder="Date et Heure" required>
     </div>
-  
-    <!-- Section des résultats -->
-    <div class="result-section">
-      <table class="result-table">
-        <thead>
-          <tr class="header-row">
-            <th>Paramètre</th>
-            <th>Résultat</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Glycémie (mg/dL)</td>
-            <td><input id="glycemie" class="result-input" type="number" [(ngModel)]="glycemie" min="1" placeholder="Valeur positive" required></td>
-          </tr>
-          <tr class="colored-row">
-            <td>Pression Artérielle (mmHg)</td>
-            <td><input id="pression" class="result-input" type="number" [(ngModel)]="pression" min="1" placeholder="Valeur positive" required></td>
-          </tr>
-          <tr>
-            <td>Cholestérol (mg/dL)</td>
-            <td><input id="cholesterol" class="result-input" type="number" [(ngModel)]="cholesterol" min="1" placeholder="Valeur positive" required></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="button-generate">
-        <button class="generate-button" (click)="generateGraph()">Générer Graphique</button>
-      </div>
-      <div *ngIf="showGraph" class="graph-container">
-        <canvas id="resultGraph"></canvas>
-      </div>
-    </div>
-  
-    <!-- Boutons Effacer et Enregistrer -->
-    <div class="button-group">
-      <button class="cancel" (click)="onCancel()">Effacer</button>
-      <button class="save" (click)="onSave()">Enregistrer</button>
-    </div>
-  
-    <!-- Message de succès -->
-    <div *ngIf="isSaved" class="success-message">
-      Enregistré avec succès !
+    <div class="form-field">
+      <input id="nss" class="input-field" [(ngModel)]="nss" placeholder="NSS du patient" required (blur)="checkNssExistence()">
+      <div *ngIf="isNssInvalid" class="error-message">Le numéro de patient (NSS) n'existe pas.</div>
     </div>
   </div>
-  
+
+  <div class="form-field">
+    <label for="datecons" class="form-label">Entrer la date de consultation :</label>
+    <input id="datecons" class="datetime-input" type="datetime-local" [(ngModel)]="datecons" placeholder="Date de consultation" required (blur)="checkConsultationExistence()">
+    <div *ngIf="isConsInvalid" class="error-message">La date de consultation est invalide.</div>
+  </div>
+
+  <!-- Section des résultats -->
+  <div class="result-section">
+    <table class="result-table">
+      <thead>
+        <tr class="header-row">
+          <th>Paramètre</th>
+          <th>Résultat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Glycémie (mg/dL)</td>
+          <td><input id="glycemie" class="result-input" type="number" [(ngModel)]="glycemie" min="1" placeholder="Valeur positive" required></td>
+        </tr>
+        <tr class="colored-row">
+          <td>Pression Artérielle (mmHg)</td>
+          <td><input id="pression" class="result-input" type="number" [(ngModel)]="pression" min="1" placeholder="Valeur positive" required></td>
+        </tr>
+        <tr>
+          <td>Cholestérol (mg/dL)</td>
+          <td><input id="cholesterol" class="result-input" type="number" [(ngModel)]="cholesterol" min="1" placeholder="Valeur positive" required></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="button-generate">
+      <button class="generate-button" (click)="generateGraph()">Générer Graphique</button>
+    </div>
+    <div *ngIf="showGraph" class="graph-container">
+      <canvas id="resultGraph"></canvas>
+    </div>
+  </div>
+
+  <!-- Boutons Effacer et Enregistrer -->
+  <div class="button-group">
+    <button class="cancel" (click)="onCancel()">Effacer</button>
+    <button class="save" (click)="onSave()">Enregistrer</button>
+  </div>
+
+  <!-- Message de succès -->
+  <div *ngIf="isSaved" class="success-message">
+    Enregistré avec succès !
+  </div>
+</div>
