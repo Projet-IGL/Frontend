@@ -1,4 +1,4 @@
-import { ConsultationService } from './../../services/consultation.service';
+import { OrdonnanceService } from '../../services/ordonnance.service';
 import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,9 +11,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddOrdonnanceComponent {
   @Input() popOutVisible = false;
-  @Input() initialConsultationData: any; // Data received from the first popout
+  @Input() initialordonnanceData: any; // Data received from the first popout
   @Output() popOutVisibilityChange = new EventEmitter<boolean>();
-  constructor(private ConsultationService:ConsultationService){};
+  constructor(private ordonnanceService : OrdonnanceService){};
   medications = [{ medicament: '', dose: '', duree: '' }];
 
   onAddMedicament() {
@@ -22,14 +22,14 @@ export class AddOrdonnanceComponent {
 
   onSave() {
     const combinedData = {
-      ...this.initialConsultationData,
+      consultationDate:this.initialordonnanceData.dateTime,
       medications: this.medications,
     };
 
     console.log('Combined data to save:', combinedData);
     this.popOutVisible = false;
     this.popOutVisibilityChange.emit(this.popOutVisible);
-    this.ConsultationService.saveConsultation(combinedData).subscribe(
+    this.ordonnanceService.saveOrdonnance(combinedData).subscribe(
       (response) => {
         console.log('Data saved successfully:', response);
       },

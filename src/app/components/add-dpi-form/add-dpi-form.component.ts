@@ -12,6 +12,7 @@ import { CreerDPIService } from '../../services/creer-dpi.service';
 })
 export class AddDpiFormComponent {
   dpiForm: FormGroup;
+  errorMsg:String='';
   constructor(private fb: FormBuilder, private CreerDPIService:CreerDPIService) {
     this.dpiForm = this.fb.group({
       nom: ['', Validators.required],
@@ -61,6 +62,7 @@ export class AddDpiFormComponent {
           console.log('Mock response received:', response);
         },
         (error) => {
+          this.errorMsg=error;
           console.error('An error occurred:', error);
         }
       );

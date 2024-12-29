@@ -1,53 +1,21 @@
 <div *ngIf="popOutVisible" class="popup-container  font-pop z-30">
-  <div class="popup-header">
-      <div class="circle-empty"></div>
-    <div class="circle-filled">2</div>
+    <div class="popup-header">
+        <div class="circle-empty"></div>
+      <div class="circle-filled">2</div>
+    </div>
+  
+    <div class="popup-title">
+      <strong>Demander Bilan</strong>
+    </div>
+    <div class="bg-white rounded-lg w-full h-full">
+        <div class="flex justify-center space-x-12 pt-4 bg-white rounded-lg w-full h-20">
+           <textarea class="border rounded-lg m-4" placeholder="Ecrire votre demande"></textarea>
+        </div> 
+    </div>
+    <div class="buttons">
+      <button (click)="onCancel()" class="cancel-button" >Annuler</button>
+      <button (click)="onSave()" class="next-button" >Enregistrer</button>
+    </div>
   </div>
-
-  <div class="popup-title">
-    <strong>Demander Bilan</strong>
-  </div>
-  <div class="bg-white rounded-lg w-full h-25">
-      <h2 class="font-light mt-4 ml-4">Selectionner le(s) bilan(s) biologique(s) à effectuer</h2>
-      <div class="flex justify-center space-x-12 pt-4 bg-white rounded-lg w-full h-20">
-          <div>
-              <input (change)="onCheckboxChange($event, 'Glycémie')" type="checkbox" id="Glycémie" name="Glycémie" value="Glycémie">
-              <label for="Glycémie"> Glycémie</label>
-          </div>
-          <div>
-              <input (change)="onCheckboxChange($event,'Pression-Artérielle')" type="checkbox" id="Pression-Artérielle" name="Pression-Artérielle" value="Pression Artérielle">
-              <label for="Pression-Artérielle"> Pression Artérielle</label>
-          </div>
-          <div>
-              <input (change)="onCheckboxChange($event, 'Niveaux-Cholestérol')" type="checkbox" id="Niveaux-Cholestérol" name="Niveaux-Cholestérol" value="Niveaux-Cholestérol">
-              <label for="Niveaux-Cholestérol"> Niveaux de Cholestérol</label>
-          </div>
-      </div> 
-  </div>
-  <div class="bg-white rounded-lg w-full h-25">
-      <h2 class="font-light mt-4 ml-4">Selectionner le(s) bilan(s) radiologique(s) à effectuer</h2>
-      <div class="flex justify-center space-x-12 pt-4 bg-white rounded-lg w-full h-20">
-          <div>
-              <input (change)="onCheckboxChange($event, 'IRM')" type="checkbox" id="IRM" name="IRM" value="IRM">
-              <label for="IRM">IRM</label>
-          </div>
-          <div>
-              <input (change)="onCheckboxChange($event, 'échographies')" type="checkbox" id="échographies" name="échographies" value="échographies">
-              <label for="échographies"> Echographies</label>
-          </div>
-          <div>
-              <input (change)="onCheckboxChange($event, 'Radiographies')" type="checkbox" id="Radiographies" name="Radiographies" value="Radiographies">
-              <label for="Radiographies"> Radiographies</label>
-          </div>
-      </div> 
-  </div>
-
   
   
-
-  <div class="buttons">
-    <button (click)="onCancel()" class="cancel-button" >Annuler</button>
-    <button (click)="onSave()" class="next-button" >Enregistrer</button>
-  </div>
-</div>
-

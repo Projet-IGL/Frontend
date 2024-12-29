@@ -1,7 +1,7 @@
+import { PatientService } from './../../services/patient.service';
 import { ConsultationService } from './../../services/consultation.service';
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
 
 @Component({
   selector: 'app-ajouter-consultation',
@@ -16,10 +16,10 @@ export class AjouterConsultationComponent {
   // Variables pour stocker les états
   
   action: string = ''; // L'action sélectionnée (ordonnance, bilan, aucun)
-  consultationData = { dateTime: '', resume: '', bilan: '' }; // To store entered data
-
-  constructor(private ConsultationService:ConsultationService) {}
-
+  consultationData = { dateTime: '', resume: '', bilan: '',dpi:'' }; // To store entered data
+  constructor(private ConsultationService:ConsultationService, private PatientService:PatientService) {}
+  //patient:any={data:{nss:120}};
+  patient:any;
   // Méthode pour fermer la pop-up
   closePopup(): void {
    this.popOutVisible=false
@@ -51,7 +51,7 @@ export class AjouterConsultationComponent {
     }
 
     if (!this.action) {
-      alert('Veuillez sélectionner une des options: "Etablir ordonnance", "Demander bilan", "Aucun".');
+      alert('Veuillez sélectionner une des options: "Etablir ordonnance", "Demander les bilans", "Aucun".');
       return;
     }
 
@@ -60,11 +60,17 @@ export class AjouterConsultationComponent {
     console.log('Action choisie:', this.action);
     this.popOutVisible=false;
     this.popOutVisibilityChange.emit(this.popOutVisible);
-    this.consultationData = { dateTime: datetime, resume: resume, bilan: this.action };
-
-    // Open the next popout and send data
-    
-    // Gestion des actions sélectionnées
+    console.log("hada patient",this.PatientService.getPatient());
+    this.patient=this.PatientService.getPatient();
+    this.consultationData = { dateTime: datetime, resume: resume, bilan: this.action,dpi:this.patient.patient_data.nss };
+    this.ConsultationService.saveConsultation(this.consultationData).subscribe(
+      (response) => {
+        console.log('Data saved successfully:', response);
+      },
+      (error) => {
+        console.error('Error saving data:', error);
+      }
+    );
     switch (this.action) {
       case 'ordonnance':
         this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
@@ -72,16 +78,8 @@ export class AjouterConsultationComponent {
       case 'bilan2':
       case 'bilanBio':
       case 'bilanRadio':
-        this.ConsultationService.saveConsultation(this.consultationData).subscribe(
-          (response) => {
-            console.log('Data saved successfully:', response);
-          },
-          (error) => {
-            console.error('Error saving data:', error);
-          }
-        );
-          break;
-    
+        this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
+        break;
       case 'aucun':
         this.closePopup();
         break;

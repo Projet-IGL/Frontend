@@ -42,11 +42,14 @@ export class DpiConsultationsPageComponent implements OnInit{
   
   }
   openOtherPopout(event:any): void {
-    console.log('Received event in parent:', event);
     this.consultationData = event.consultationData;
+    console.log('consu:', this.consultationList);
   
     if (event.action === 'ordonnance') {
       this.popOutVisible1 = true; // Open AddOrdonnance popout
+    }
+    else if(event.action==='bilan2'||event.action==='bilanBio'||event.action==='bilanRadio'){
+      this.popOutVisible = true;
     }
   }
  

@@ -1,15 +1,18 @@
-
+<app-add-bilan
+[popOutVisible]="popOutVisible"
+(popOutVisibilityChange)="updatePopOutVisibility($event)"
+/>
  <app-ajouter-consultation 
  [popOutVisible]="popOutVisible2"
 (popOutVisibilityChange)="updatePopOutVisibility2($event)"
 (openOtherPopout)="openOtherPopout($event)"/>
 <app-add-ordonnance 
 [popOutVisible]="popOutVisible1"
-[initialConsultationData]="consultationData"
+[initialordonnanceData]="consultationData"
 (popOutVisibilityChange)="updatePopOutVisibility1($event)">
 
 </app-add-ordonnance>
-<div  [ngClass]="{'blur-sm': popOutVisible1||popOutVisible2}">
+<div  [ngClass]="{'blur-sm': popOutVisible||popOutVisible1||popOutVisible2}">
 <app-empty-navbar></app-empty-navbar>
 <app-dpi-navbar></app-dpi-navbar>
 <div class="flex justify-center">
@@ -35,7 +38,7 @@
    </tbody>
    </table>
    </div>
-   <button class="add-btn">Ajouter Consultation</button>
+   <button (click)="updatePopOutVisibility2(true)"  class="add-btn">Ajouter Consultation</button>
    </div>
   </div>
 </div>
