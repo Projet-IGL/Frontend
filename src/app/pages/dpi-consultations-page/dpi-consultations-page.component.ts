@@ -3,19 +3,20 @@ import { DpiNavbarComponent } from "../../components/dpi-navbar/dpi-navbar.compo
 import { EmptyNavbarComponent } from "../../components/empty-navbar/empty-navbar.component";
 import { Router } from '@angular/router';
 import { ConsultationService } from '../../services/consultation.service';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { AddOrdonnanceComponent } from '../../components/add-ordonnance/add-ordonnance.component';
 import { AddBilanComponent } from '../../components/add-bilan/add-bilan.component';
 import { AjouterConsultationComponent } from '../../components/ajouter-consultation/ajouter-consultation.component';
+import { PatientService } from '../../services/patient.service';
 @Component({
   selector: 'app-dpi-consultations-page',
 imports: [DpiNavbarComponent, EmptyNavbarComponent,CommonModule,AjouterConsultationComponent,AddOrdonnanceComponent,AddBilanComponent],
   templateUrl: './dpi-consultations-page.component.html',
   styleUrl: './dpi-consultations-page.component.css'
-}) 
+})
 export class DpiConsultationsPageComponent implements OnInit{
 
-  constructor(private router: Router,private consultationService: ConsultationService) {}
+  constructor(private router: Router,private consultationService: ConsultationService,private patientService: PatientService) {}
 
   goToMedecinPage(consultation: any){
     this.consultationService.setConsultation(consultation);
@@ -31,7 +32,7 @@ export class DpiConsultationsPageComponent implements OnInit{
     console.log("visible",this.popOutVisible);
   }
   updatePopOutVisibility1(data:boolean): void {
-    
+
     this.popOutVisible1 = data;
     console.log("visible1",this.popOutVisible1);
 
@@ -39,12 +40,12 @@ export class DpiConsultationsPageComponent implements OnInit{
   updatePopOutVisibility2(visible: boolean): void {
     this.popOutVisible2 = visible;
     console.log("visible2",this.popOutVisible2);
-  
+
   }
   openOtherPopout(event:any): void {
     this.consultationData = event.consultationData;
     console.log('consu:', this.consultationList);
-  
+
     if (event.action === 'ordonnance') {
       this.popOutVisible1 = true; // Open AddOrdonnance popout
     }
@@ -52,13 +53,17 @@ export class DpiConsultationsPageComponent implements OnInit{
       this.popOutVisible = true;
     }
   }
- 
 
+  consultationList: any[] = [];  // Liste des consultations à afficher
 //-------------------------------------------integration-------------------------------------------------
-  consultationList: any[] = []; 
-  ngOnInit(): void {
-      this.consultationService.getData().subscribe((data)=>{
-        this.consultationList=data;
-      })
-  }
+ngOnInit(): void {
+  // Récupérer le NSS du patient depuis le service patient
+  const nss = this.patientService.getPatient().patient_data.nss;
+
+  // Appeler leservice pour obtenir les consultations en fonction du NSS
+  this.consultationService.getData(nss).subscribe((data) => {
+    this.consultationList = data;  // Stocker les consultations dans le tableau
+    console.log(this.consultationList);  // Afficher la liste des consultations dans la console pour débogage
+  });
+}
 }

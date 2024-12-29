@@ -23,7 +23,7 @@ export class RechDpiPageComponent implements OnInit {
 
   isScanning: boolean = false; // Contrôle l'état du scanner
   dataToEncode: string = '123';
- 
+
   toggleScanner(): void {
     this.isScanning = !this.isScanning; // Bascule l'état du scanner
   }
@@ -84,18 +84,56 @@ onFileSelected(event: Event): void {
 searchValue: string = ''; // Propriété liée à l'input
 patients: any[] = []; // Tableau pour stocker les données des patients
 filteredPatientsList: any[] = []; // Liste filtrée des patients
-
 ngOnInit(): void {
   // Récupérer les données des patients
-  this.rechercheService.getData().subscribe((data) => {
+  this.rechercheService.getData(this.searchValue).subscribe((data) => {
     this.patients = data; // Stocker les données des patients
     this.filteredPatientsList = [...this.patients]; // Initialiser la liste filtrée avec tous les patients
   });
 }
-
+/*
 filter(): void {
   // Filtrer les patients selon la valeur saisie dans l'input
-  this.filteredPatientsList = this.patients.filter(patient =>patient.patient_data.nss.includes(this.searchValue) );
+  // this.filteredPatientsList = this.patients.filter(patient =>patient.patient_data.nss.includes(this.searchValue) );
+  console.log("NSS VALUE ",this.searchValue)
+  this.rechercheService.getData(this.searchValue).subscribe((data) => {
+    this.patients = data; // Stocker les données des patients
+    this.filteredPatientsList = [...this.patients]; // Initialiser la liste filtrée avec tous les patients
+ });
+}*/
+
+filter(): void {
+   //Vérifier si la valeur saisie est vide
+  if (!this.searchValue) {
+    console.log("Aucune valeur NSS saisie");
+    this.filteredPatientsList = []; // Réinitialiser la liste filtrée
+    return;
+  }
+
+  console.log("NSS VALUE", this.searchValue);
+
+  // Appeler le service pour rechercher les données
+  this.rechercheService.getData(this.searchValue).subscribe(
+    (response) => {
+      console.log("Données reçues du backend :", response);
+
+      // Le backend renvoie une seule structure avec les données du patient
+      const patient = response;
+
+      // Initialiser les listes avec le patient trouvé
+      this.patients = [patient];
+      this.filteredPatientsList = [...this.patients];
+    },
+    (error) => {
+      console.error("Erreur lors de la recherche des patients : ", error);
+
+      // Réinitialiser les listes en cas d'erreur
+      this.patients = [];
+      this.filteredPatientsList = [];
+    }
+  );
 }
+
+
 
 }

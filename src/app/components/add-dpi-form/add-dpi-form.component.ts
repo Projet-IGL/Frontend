@@ -6,7 +6,7 @@ import { CreerDPIService } from '../../services/creer-dpi.service';
 @Component({
   selector: 'app-add-dpi-form',
   imports: [CommonModule, ReactiveFormsModule],
-  standalone: true, 
+  standalone: true,
   templateUrl: './add-dpi-form.component.html',
   styleUrl: './add-dpi-form.component.css'
 })
@@ -30,7 +30,7 @@ export class AddDpiFormComponent {
     });
   }
   qrCodeUrl: string = '';
- 
+
 
   generateQRCode(inputNumber: number): void {
     if (isNaN(inputNumber)) {
@@ -43,6 +43,7 @@ export class AddDpiFormComponent {
     if (this.dpiForm.valid) {
       console.log('Form Data:', this.dpiForm.value);
       this.generateQRCode(this.dpiForm.value.nss);
+      console.log('le QR code ',this.qrCodeUrl);
       this.CreerDPIService.CreerDpi(
         this.dpiForm.value.nom,
         this.dpiForm.value.prenom,
@@ -56,7 +57,7 @@ export class AddDpiFormComponent {
         this.dpiForm.value.adresse,
         this.dpiForm.value.medecinTraitant,
         this.dpiForm.value.mutuelle,
-      
+
       ).subscribe(
         (response) => {
           console.log('Mock response received:', response);

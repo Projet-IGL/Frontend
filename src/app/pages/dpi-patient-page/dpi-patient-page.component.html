@@ -4,7 +4,7 @@
     <div class="blue-container w-full max-w-screen-lg px-4 sm:px-8">
       <div class="flex flex-col items-center sm:flex-row sm:justify-between gap-4 up">
         <span class="material-symbols-outlined user_attributes">user_attributes</span>
-        <h1 class="text-center sm:text-left">Nom Prenom</h1>
+        <h1 class="text-center sm:text-left">{{patient.patient_data.last_name}} {{patient.patient_data.first_name}}</h1>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
         <div class="flex flex-col sm:flex-row items-center gap-2">
@@ -12,7 +12,7 @@
           <p>{{patient.patient_data.nss}}</p>
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-2">
-          <h4>Email</h4> 
+          <h4>Email</h4>
           <p>{{patient.patient_data.email}}</p>
         </div>
       </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-2">
           <h4>Num Tel Urgent</h4>
-          <p></p>
+          <p>{{patient.patient_data.telephone_urgence}}</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
@@ -42,4 +42,3 @@
       </div>
     </div>
   </div>
-  

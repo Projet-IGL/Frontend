@@ -16,7 +16,7 @@ interface Soin {
   providedIn: 'root'
 })
 export class AjouterSoinService {
-  private apiUrl = 'http://localhost:3002/soins'; // URL de votre API backend
+  private apiUrl = 'http://127.0.0.1:8000/api/faire_soin/'; // URL de votre API backend
 
   constructor(private http: HttpClient) {}
 
@@ -27,6 +27,6 @@ export class AjouterSoinService {
 
   // Vérifier l'existence d'un NSS
   checkNssExistence(nss: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/checkNss/${nss}`);
+    return this.http.get<any>(`http://127.0.0.1:8000/api/checkNss/?nss=${nss} `);
   }
 }

@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class ConsultationService{
 
-  constructor(private http: HttpClient) { } 
-  
+  constructor(private http: HttpClient) { }
+
   private apiUrl = 'http://127.0.0.1:8000/api/creer_consultation/'; // Update the URL to match your json-server setup
 
   saveConsultation(consultationData: any): Observable<any> {
@@ -42,10 +42,11 @@ export class ConsultationService{
   private removeFromStorage(): void {
     localStorage.removeItem(this.storageKey); // Suppression du stockage
   }
-  
-    getData(): Observable<any> {
-      return this.http.get('/Tests/Consultation.json');
-    }
+
+  getData(nss: string): Observable<any> {
+    const url = 'http://127.0.0.1:8000/api/ConsultationbyNSS/';
+    return this.http.post(url, { nss });
+  }
 
 
 
