@@ -1,0 +1,64 @@
+<div class="navbar">
+    <img src="/logo.png" class="logo" alt="Logo">
+    <div class="navbar-buttons">
+      <button (click)="voirProfile()">Mon profile</button>
+      <button class="active">Ajouter Bilan Radiologique</button>
+    </div>
+    <button class="se-deconnecter" (click)="logout()">Se déconnecter</button>
+  </div>
+  
+  <div class="main-section">
+    <!-- Formulaire d'ajout de bilan radiologique -->
+    <div class="form-row">
+      <div class="form-field">
+        <input id="datetime" class="datetime-input" type="datetime-local" [(ngModel)]="time" placeholder="Date et Heure" required>
+      </div>
+      <div class="form-field">
+        <input id="nss" class="input-field" [(ngModel)]="nss" placeholder="NSS du patient" required (blur)="checkNssExistence()">
+        <div *ngIf="isNssInvalid" class="error-message">Le numéro de patient (NSS) n'existe pas.</div>
+      </div>
+    </div>
+  
+    <!-- Compte rendu -->
+    <div class="form-field">
+      <textarea id="compteRendu" class="textarea-field" [(ngModel)]="compteRendu" placeholder="Compte rendu" required></textarea>
+    </div>
+  
+    <!-- Upload des images -->
+    <div class="form-row">
+      <div class="form-field">
+        <button type="button" class="upload-btn" (click)="triggerFileInput('IRM')"> Attacher<br>IRM </button>        <input id="imageIRM" type="file" (change)="onImageUpload($event, 'IRM')" accept="image/*" class="file-upload" />
+        <div *ngIf="imageIRM" class="image-preview">
+          <img [src]="imageIRM" alt="IRM" />
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <button type="button" class="upload-btn" (click)="triggerFileInput('Radiographie')">Attacher <br> Radiographie</button>
+        <input id="imageRadiographie" type="file" (change)="onImageUpload($event, 'Radiographie')" accept="image/*" class="file-upload" />
+        <div *ngIf="imageRadiographie" class="image-preview">
+          <img [src]="imageRadiographie" alt="Radiographie" />
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <button type="button" class="upload-btn" (click)="triggerFileInput('Echographie')">Attacher <br> Echographie</button>
+        <input id="imageEchographie" type="file" (change)="onImageUpload($event, 'Echographie')" accept="image/*" class="file-upload" />
+        <div *ngIf="imageEchographie" class="image-preview">
+          <img [src]="imageEchographie" alt="Echographie" />
+        </div>
+      </div>
+    </div>
+  
+    <!-- Boutons -->
+    <div class="button-group">
+      <button class="cancel" (click)="onCancel()">Effacer</button>
+      <button class="save" (click)="onSave()">Enregistrer</button>
+    </div>
+  
+    <!-- Message de succès -->
+    <div *ngIf="isSaved" class="success-message">
+      Enregistré avec succès !
+    </div>
+  </div>
+  

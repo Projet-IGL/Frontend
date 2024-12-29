@@ -9,6 +9,7 @@ module.exports = {
         'navyBlue':'#150078',
         'veryLightBlue':'#DEEBFF',
         'lightBlue' :'#3D3BF3',
+        'lightPurple':'#AE9DFD',
       },
       fontFamily:{
         'pop':'Poppins',

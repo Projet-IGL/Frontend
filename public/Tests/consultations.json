@@ -1,0 +1,28 @@
+{
+  "consultations": [
+    {
+      "id": "b391",
+      "dateTime": "2024-12-26T23:47",
+      "resume": "ffff",
+      "bilan": "bilanRadio"
+    },
+    {
+      "id": "1c7a",
+      "dateTime": "2024-12-27T00:08",
+      "resume": "helo",
+      "bilan": "ordonnance",
+      "medications": [
+        {
+          "medicament": "med1",
+          "dose": "10",
+          "duree": "55"
+        },
+        {
+          "medicament": "dd",
+          "dose": "ddd",
+          "duree": "dd"
+        }
+      ]
+    }
+  ]
+}

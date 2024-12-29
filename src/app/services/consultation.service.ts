@@ -1,3 +1,4 @@
+
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,7 +9,13 @@ import { Observable } from 'rxjs';
 export class ConsultationService{
 
   constructor(private http: HttpClient) { } 
+  
+  private apiUrl = 'http://127.0.0.1:8000/api/creer_consultation/'; // Update the URL to match your json-server setup
 
+  saveConsultation(consultationData: any): Observable<any> {
+    console.log('Saving consultation data:', consultationData);
+    return this.http.post<any>(this.apiUrl, consultationData); // Save the data in the JSON file
+  }
     private storageKey = 'currentConsultation';
 
   setConsultation(consultation: any): void {
@@ -39,4 +46,7 @@ export class ConsultationService{
     getData(): Observable<any> {
       return this.http.get('/Tests/Consultation.json');
     }
+
+
+
 }

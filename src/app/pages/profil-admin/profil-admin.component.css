@@ -1,0 +1,18 @@
+/* Cibler uniquement app-profil-staff pour le déplacer */
+.below-form {
+    display: block;
+    margin-top: 600px; /* Espace initial entre app-up-form et app-profil-staff */
+}
+
+/* Rendre l'affichage responsive */
+@media (max-width: 768px) {
+    .below-form {
+        margin-top: 400px; /* Réduire l'espace sur les tablettes ou petits écrans */
+    }
+}
+
+@media (max-width: 480px) {
+    .below-form {
+        margin-top: 250px; /* Réduire encore plus l'espace sur les petits écrans mobiles */
+    }
+}
