@@ -2,11 +2,11 @@
 [popOutVisible]="popOutVisible"
 (popOutVisibilityChange)="updatePopOutVisibility($event)"
 />
- <app-ajouter-consultation 
+ <app-ajouter-consultation
  [popOutVisible]="popOutVisible2"
 (popOutVisibilityChange)="updatePopOutVisibility2($event)"
 (openOtherPopout)="openOtherPopout($event)"/>
-<app-add-ordonnance 
+<app-add-ordonnance
 [popOutVisible]="popOutVisible1"
 [initialordonnanceData]="consultationData"
 (popOutVisibilityChange)="updatePopOutVisibility1($event)">
@@ -20,18 +20,18 @@
     <h3 class="Rech-title">Consultations récentes :</h3>
    <div class="white-container">
    <table>
-   <thead> 
+   <thead>
    <tr>
-     <th>Médecin</th>
+     <th>Numéro consultation </th>
      <th>Date</th>
      <th></th>
-     <th></th> 
+     <th></th>
    </tr>
-   </thead> 
+   </thead>
    <tbody>
     <tr *ngFor="let consultation of consultationList">
-     <td>{{consultation.medecin.nom}}{{" "}}{{consultation.medecin.prenom}} </td>
-     <td> {{consultation.date}} </td>
+     <td>{{consultation.numero_consultation}}</td>
+     <td> {{consultation.date_consultation}} </td>
      <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
      <td class="align" (click)="goToMedecinPage(consultation)">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
    </tr>

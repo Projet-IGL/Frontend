@@ -11,11 +11,11 @@ import {ProfilStaffComponent} from '../../components/profil-staff/profil-staff.c
 export class ProfilMedecinComponent {
 // Méthode pour rediriger vers la page de déconnexion
 constructor(private router: Router) {}
-  
+
 logout() {
   this.router.navigate(['/Landing-page']);
 }
 ouvrirDPIs() {
-  this.router.navigate(['/Landing-page']);
+  this.router.navigate(['/Rech-dpi']);
 }
 }
