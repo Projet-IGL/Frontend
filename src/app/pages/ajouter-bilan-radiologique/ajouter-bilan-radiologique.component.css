@@ -103,11 +103,30 @@ body {
   box-sizing: border-box;
 }
 
+
+/* Style pour le champ datecons */
+.form-field #datecons {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style pour l'étiquette (label) */
+.form-field label[for="datecons"] {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
 /* Button d'attachement d'image */
 .upload-btn {
   display: inline-block;
-  width: 150px; /* Largeur fixe pour uniformiser les boutons */
-  height: 60px; /* Hauteur fixe pour uniformiser les boutons */
+  width: 150px;
+  height: 60px;
   padding: 10px;
   background-color: #D1C3FD;
   color: black;
@@ -115,14 +134,14 @@ body {
   cursor: pointer;
   font-size: 16px;
   text-align: center;
-  line-height: 1.2; /* Espacement vertical entre les lignes */
-  white-space: nowrap; /* Empêche le texte de se couper automatiquement */
+  line-height: 1.2;
+  white-space: nowrap;
   display: flex;
-  flex-direction: column; /* Permet de gérer les lignes du texte */
-  justify-content: center; /* Centre le texte verticalement */
-  align-items: center; /* Centre le texte horizontalement */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Ajouté pour centrer */
 }
-
 
 .upload-btn:hover {
   background-color: #D1C3FD;
@@ -136,15 +155,16 @@ body {
 /* Prévisualisation de l'image */
 .image-preview {
   margin-top: 10px;
-  max-width: 100%;
+  max-width: 100%; /* Assure que l'image ne dépasse pas la largeur du conteneur */
 }
 
 .image-preview img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
+  width: 100%; /* L'image s'adapte à la largeur de son conteneur */
+  max-height: none; /* Supprimer la contrainte de hauteur */
+  object-fit: contain; /* Permet à l'image de s'adapter à son conteneur sans être coupée */
   border-radius: 5px;
 }
+
 
 /* Button group styles */
 .button-group {

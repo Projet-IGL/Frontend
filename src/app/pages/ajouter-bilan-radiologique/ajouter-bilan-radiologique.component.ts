@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AjouterBilanRadiologiqueService } from '../../services/ajouter-bilan-rdiologique.service';
+import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-ajouter-bilan-radiologique',
@@ -10,21 +13,63 @@ import { Router } from '@angular/router';
   templateUrl: './ajouter-bilan-radiologique.component.html',
   styleUrls: ['./ajouter-bilan-radiologique.component.css']
 })
-export class AjouterBilanRadiologiqueComponent {
+export class AjouterBilanRadiologiqueComponent implements OnInit {
   time: string = '';
   nss: string = '';
   compteRendu: string = '';
+  datecons: string = '';  // Date de consultation
   isSaved: boolean = false;
   isNssInvalid: boolean = false;
-
-  imageIRM: string | null = null;
-  imageRadiographie: string | null = null;
-  imageEchographie: string | null = null;
-
+  isConsInvalid: boolean = false;
+  imageRadiographie: File | null = null;  // L'image Radiographie à envoyer sous forme de fichier
+  imageRadiographiePreview: string | null = null;  // Prévisualisation de l'image
+  imageType: string = 'Radiographie';  // Le type d'image à utiliser
+  user: any = null;  // Informations utilisateur
+  radiologueId: string | null = null;  // ID de l'utilisateur, spécifiquement un laborantin
   existingNss = ['123456789', '987654321', '112233445'];
+  existingConsultations = ['2024-01-01T10:00', '2024-01-15T14:30', '2024-02-01T08:45']; // Simuler des consultations valides
 
+  constructor(
+    private router: Router,
+    private ajouterBilanRadiologiqueService: AjouterBilanRadiologiqueService,
+    private authService: AuthService,
+    private http: HttpClient
+  ) {}
+
+  ngOnInit() {
+    this.user = this.authService.getUser();
+    if (this.user && this.user.role === 'Radiologue') {
+      console.log(this.user);
+      this.radiologueId = this.user.id;  // Assurez-vous que l'utilisateur est authentifié
+    }
+  }
+
+  // Vérification du NSS
   checkNssExistence() {
-    this.isNssInvalid = !this.existingNss.includes(this.nss);
+    this.ajouterBilanRadiologiqueService.checkNssExistence(this.nss).subscribe(
+      (response) => {
+        this.isNssInvalid = !response.exists;
+      },
+      (error) => {
+        console.error('Erreur lors de la vérification du NSS:', error);
+        this.isNssInvalid = true;
+
+      }
+    );
+  }
+
+  // Vérification du numéro de consultation
+  checkConsultationExistence() {
+    this.ajouterBilanRadiologiqueService.checkConsultationExistence(this.datecons).subscribe(
+      (response) => {
+        this.isConsInvalid = !response.exists;
+      },
+      (error) => {
+        console.error('Erreur lors de la vérification de la consultation:', error);
+        this.isConsInvalid = true;
+
+      }
+    );
   }
 
   onSave() {
@@ -32,28 +77,59 @@ export class AjouterBilanRadiologiqueComponent {
       this.time.trim() !== '' &&
       this.nss.trim() !== '' &&
       !this.isNssInvalid &&
-      this.imageIRM &&
-      this.imageRadiographie &&
-      this.imageEchographie
+      this.datecons.trim() !== '' &&
+      !this.isConsInvalid &&
+      this.imageRadiographie  // Vérifiez uniquement l'image Radiographie
     ) {
-      console.log('Bilan Radiologique:', {
-        time: this.time,
-        nss: this.nss,
-        compteRendu: this.compteRendu,
-        imageIRM: this.imageIRM,
-        imageRadiographie: this.imageRadiographie,
-        imageEchographie: this.imageEchographie,
-      });
-  
-      this.isSaved = true;
-      setTimeout(() => {
-        this.isSaved = false;
-      }, 3000);
+      if (!this.radiologueId) {
+        alert('Utilisateur non authentifié ou rôle incorrect.');
+        return;
+      }
+
+      // Créer un objet FormData pour envoyer les données et l'image au backend
+      const formData = new FormData();
+      formData.append('time', this.time);
+      formData.append('nss', this.nss);
+      formData.append('datecons', this.datecons);
+      formData.append('compteRendu', this.compteRendu);
+      formData.append('radiologueId', this.radiologueId);  // Ajouter l'ID du radiologue
+      // Afficher les données dans la console avant l'envoi
+    console.log('Données à envoyer :');
+    console.log('Time:', this.time);
+    console.log('NSS:', this.nss);
+    console.log('Date de consultation:', this.datecons);
+    console.log('Compte rendu:', this.compteRendu);
+    console.log('Radiologue ID:', this.radiologueId);
+    if (this.imageRadiographie) {
+      formData.append('imageRadiographie', this.imageRadiographie, this.imageRadiographie.name);  // Ajouter l'image sous forme de fichier
+      console.log('Nom de l\'image:', this.imageRadiographie.name);
+      console.log('Taille de l\'image:', this.imageRadiographie.size, 'octets');
+    }
+
+      
+
+
+      // Appel du service pour sauvegarder le bilan radiologique
+      this.ajouterBilanRadiologiqueService.addBilan(formData).subscribe(
+        (response) => {
+          console.log('Bilan Radiologique enregistré avec succès!', response);
+          this.isSaved = true;
+          setTimeout(() => {
+            this.isSaved = false;
+          }, 3000);
+        },
+        (error) => {
+          console.error('Erreur lors de l\'ajout du bilan:', error);
+          if (error.status === 500) {
+            console.error('Erreur interne du serveur:', error.message);
+          }
+          alert('Erreur lors de l\'ajout du bilan, veuillez réessayer.');
+        }
+      );
     } else {
-      alert('Veuillez remplir tous les champs obligatoires et attacher les trois images.');
+      alert('Veuillez remplir tous les champs obligatoires et attacher l\'image de Radiographie.');
     }
   }
-  
 
   onCancel() {
     console.log('Formulaire annulé');
@@ -64,16 +140,15 @@ export class AjouterBilanRadiologiqueComponent {
     this.time = '';
     this.nss = '';
     this.compteRendu = '';
-    this.imageIRM = null;
     this.imageRadiographie = null;
-    this.imageEchographie = null;
+    this.imageRadiographiePreview = null;
+    this.datecons = '';
   }
 
-  // Fonction pour déclencher l'upload de fichier
   triggerFileInput(imageType: string) {
-    const inputElement = document.getElementById(`image${imageType}`) as HTMLInputElement;
+    const inputElement = document.getElementById('image' + imageType) as HTMLInputElement;
     if (inputElement) {
-      inputElement.click();  // Ouvre la fenêtre de sélection de fichier
+      inputElement.click();
     }
   }
 
@@ -82,28 +157,24 @@ export class AjouterBilanRadiologiqueComponent {
     const file = input.files ? input.files[0] : null;
 
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (imageType === 'IRM') {
-          this.imageIRM = reader.result as string;
-        } else if (imageType === 'Radiographie') {
-          this.imageRadiographie = reader.result as string;
-        } else if (imageType === 'Echographie') {
-          this.imageEchographie = reader.result as string;
-        }
-      };
-      reader.readAsDataURL(file);
+      // Assigner le fichier à l'image
+      if (imageType === 'Radiographie') {
+        this.imageRadiographie = file;
+
+        // Créer une prévisualisation de l'image en base64 pour l'affichage
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imageRadiographiePreview = reader.result as string;
+        };
+        reader.readAsDataURL(file);
+      }
     }
   }
 
-  constructor(private router: Router) {}
-
-  // Méthode pour rediriger vers la page de profil
   voirProfile() {
     this.router.navigate(['/profilRadiologue']);
   }
 
-  // Méthode pour rediriger vers la page de déconnexion
   logout() {
     this.router.navigate(['/Landing-page']);
   }

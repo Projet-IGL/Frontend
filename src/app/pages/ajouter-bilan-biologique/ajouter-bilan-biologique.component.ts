@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AjouterBilanBiologiqueService } from '../../services/ajouter-bilan-biologique.service';
+import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -11,21 +14,39 @@ import Chart from 'chart.js/auto';
   templateUrl: './ajouter-bilan-biologique.component.html',
   styleUrls: ['./ajouter-bilan-biologique.component.css'],
 })
-export class AjouterBilanBiologiqueComponent {
+export class AjouterBilanBiologiqueComponent implements OnInit {
   time: string = '';
   nss: string = '';
+  datecons: string = '';
   glycemie: number | null = null;
   pression: number | null = null;
   cholesterol: number | null = null;
-
+  imageFile: File | null = null;  // Stocke le fichier image
   isSaved: boolean = false;
   isNssInvalid: boolean = false;
+  isConsInvalid: boolean = false;
   showGraph: boolean = false;
-  graphImage: string | null = null; // Stocke l'image du graphique
-
+  graphImage: string | null = null;
+  laborantinId: string | null = null; // ID du laborantin
   existingNss = ['123456789', '987654321', '112233445'];
+  existingConsultations = ['2024-01-01T10:00', '2024-01-15T14:30', '2024-02-01T08:45']; // Simuler des consultations valides
 
-  constructor(private router: Router) {}
+  user: any = null; // Informations utilisateur
+
+  constructor(
+    private router: Router,
+    private ajouterBilanBiologiqueService: AjouterBilanBiologiqueService,
+    private authService: AuthService,
+    private http: HttpClient
+  ) {}
+
+  ngOnInit() {
+    this.user = this.authService.getUser();
+    if (this.user && this.user.role === 'Laborantin') {
+      console.log(this.user);
+      this.laborantinId = this.user.id;
+    }
+  }
 
   // Méthodes de navigation
   voirProfile() {
@@ -36,10 +57,33 @@ export class AjouterBilanBiologiqueComponent {
     this.router.navigate(['/Landing-page']);
   }
 
-  // Validation NSS
-  checkNssExistence() {
-    this.isNssInvalid = !this.existingNss.includes(this.nss);
-  }
+    // Vérification du NSS
+    checkNssExistence() {
+      this.ajouterBilanBiologiqueService.checkNssExistence(this.nss).subscribe(
+        (response) => {
+          this.isNssInvalid = !response.exists;
+        },
+        (error) => {
+          console.error('Erreur lors de la vérification du NSS:', error);
+          this.isNssInvalid = true;
+  
+        }
+      );
+    } 
+  
+    // Vérification du numéro de consultation
+    checkConsultationExistence() {
+      this.ajouterBilanBiologiqueService.checkConsultationExistence(this.datecons).subscribe(
+        (response) => {
+          this.isConsInvalid = !response.exists;
+        },
+        (error) => {
+          console.error('Erreur lors de la vérification de la consultation:', error);
+          this.isConsInvalid = true;
+  
+        }
+      );
+    }
 
   // Sauvegarde
   onSave() {
@@ -47,6 +91,8 @@ export class AjouterBilanBiologiqueComponent {
       this.time.trim() !== '' &&
       this.nss.trim() !== '' &&
       !this.isNssInvalid &&
+      this.datecons.trim() !== '' &&
+      !this.isConsInvalid &&
       this.glycemie !== null &&
       this.pression !== null &&
       this.cholesterol !== null &&
@@ -54,15 +100,44 @@ export class AjouterBilanBiologiqueComponent {
       this.pression > 0 &&
       this.cholesterol > 0
     ) {
-      this.isSaved = true;
-      setTimeout(() => {
-        this.isSaved = false;
-      }, 3000);
+      if (!this.laborantinId) {
+        alert('Utilisateur non authentifié ou rôle incorrect.');
+        return;
+      }
+
+      // Créer un objet de bilan biologique avec l'ID du laborantin et l'image
+      const formData = new FormData();
+      formData.append('time', this.time);
+      formData.append('nss', this.nss);
+      formData.append('datecons', this.datecons);
+      formData.append('glycemie', this.glycemie.toString());
+      formData.append('pression', this.pression.toString());
+      formData.append('cholesterol', this.cholesterol.toString());
+      if (this.imageFile) {
+        formData.append('image', this.imageFile, this.imageFile.name);
+      }
+      formData.append('laborantin_id', this.laborantinId);
+
+      // Appel du service pour sauvegarder le bilan avec une image
+      this.ajouterBilanBiologiqueService.addBilan(formData).subscribe(
+        (response) => {
+          console.log('Bilan enregistré avec succès!', response);
+          this.isSaved = true;
+          setTimeout(() => {
+            this.isSaved = false;
+          }, 3000);
+        },
+        (error) => {
+          console.error('Erreur lors de l\'ajout du bilan:', error);
+          if (error.status === 500) {
+            console.error('Erreur interne du serveur:', error.message);
+          }
+          alert('Erreur lors de l\'ajout du bilan, veuillez réessayer.');
+        }
+      );
     } else {
       alert('Veuillez remplir tous les champs avec des valeurs valides.');
     }
-    this.saveGraph();
-
   }
 
   // Annulation
@@ -73,11 +148,20 @@ export class AjouterBilanBiologiqueComponent {
   resetForm() {
     this.time = '';
     this.nss = '';
+    this.datecons = '';
     this.glycemie = null;
     this.pression = null;
     this.cholesterol = null;
     this.showGraph = false;
-    this.graphImage = null;  // Reset the saved graph image
+    this.graphImage = null;
+    this.imageFile = null; // Réinitialiser le fichier image
+  }
+
+  // Gestion de l'image
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.imageFile = event.target.files[0];
+    }
   }
 
   // Génération du graphique
@@ -90,7 +174,6 @@ export class AjouterBilanBiologiqueComponent {
       this.pression > 0 &&
       this.cholesterol > 0
     ) {
-      // Stocker les données du graphique
       const graphData = {
         labels: ['Glycémie', 'Pression Artérielle', 'Cholestérol'],
         datasets: [
@@ -103,11 +186,8 @@ export class AjouterBilanBiologiqueComponent {
         ],
       };
 
-      console.log('Données du graphique:', graphData); // Afficher les données dans la console
-
       this.showGraph = true;
 
-      // Forcer le rafraîchissement du DOM pour s'assurer que le canvas est bien visible
       setTimeout(() => {
         const ctx = document.getElementById('resultGraph') as HTMLCanvasElement;
         const chart = new Chart(ctx, {
@@ -125,30 +205,9 @@ export class AjouterBilanBiologiqueComponent {
 
         // Sauvegarder le graphique en tant qu'image après sa création
         this.graphImage = ctx.toDataURL('image/png');
-      }, 0); // Forcer un léger délai pour attendre que le canvas soit bien visible
+      }, 0);
     } else {
       alert('Veuillez entrer des valeurs strictement positives pour tous les champs.');
-    }
-  }
-
-  // Enregistrer le graphique et afficher dans la console au clic
-  saveGraph() {
-    const formData = {
-      time: this.time,
-      nss: this.nss,
-      glycemie: this.glycemie,
-      pression: this.pression,
-      cholesterol: this.cholesterol,
-    };
-
-    // Afficher les données du formulaire dans la console
-    console.log('Données du formulaire enregistrées:', formData);
-
-    // Afficher le graphique en base64 dans la console
-    if (this.graphImage) {
-      console.log('Graphique enregistré en image:', this.graphImage);
-    } else {
-      console.log('Aucun graphique généré.');
     }
   }
 }
