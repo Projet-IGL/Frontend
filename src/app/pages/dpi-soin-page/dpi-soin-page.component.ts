@@ -20,7 +20,7 @@ export class DpiSoinPageComponent implements OnInit {
 
 ngOnInit(): void {
   const nss = this.patientService.getPatient().patient_data.nss;
-  this.soinService.setPatient(this.patient);
+  //this.soinService.setPatient(this.patient);
   // Récupérer les données des patients
   this.soinService.getData(nss).subscribe((data) => {
     this.soinsList = data; // Stocker les données des patients

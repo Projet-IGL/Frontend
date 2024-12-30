@@ -17,7 +17,7 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
   time: string = '';
   nss: string = '';
   compteRendu: string = '';
-  datecons: string = '';  // Date de consultation
+  numcons: string = '';  // Date de consultation
   isSaved: boolean = false;
   isNssInvalid: boolean = false;
   isConsInvalid: boolean = false;
@@ -40,7 +40,7 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     this.user = this.authService.getUser();
     if (this.user && this.user.role === 'Radiologue') {
       console.log(this.user);
-      this.radiologueId = this.user.id;  // Assurez-vous que l'utilisateur est authentifié
+      this.radiologueId = this.user.data.id;  // Assurez-vous que l'utilisateur est authentifié
     }
   }
 
@@ -49,6 +49,7 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     this.ajouterBilanRadiologiqueService.checkNssExistence(this.nss).subscribe(
       (response) => {
         this.isNssInvalid = !response.exists;
+        console.log('isNssInvalid ', this.isNssInvalid);
       },
       (error) => {
         console.error('Erreur lors de la vérification du NSS:', error);
@@ -60,24 +61,27 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
 
   // Vérification du numéro de consultation
   checkConsultationExistence() {
-    this.ajouterBilanRadiologiqueService.checkConsultationExistence(this.datecons).subscribe(
+    this.ajouterBilanRadiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
       (response) => {
-        this.isConsInvalid = !response.exists;
+        this.isConsInvalid = !response.exists; // Utilisez le champ 'exists'
+        if (!response.exists && response.message) {
+          alert(response.message); // Affichez le message d'erreur retourné par le backend
+        }
       },
       (error) => {
         console.error('Erreur lors de la vérification de la consultation:', error);
-        this.isConsInvalid = true;
-
+        this.isConsInvalid = true; // Considérer comme invalide en cas d'erreur
       }
     );
   }
+  
 
   onSave() {
     if (
       this.time.trim() !== '' &&
       this.nss.trim() !== '' &&
       !this.isNssInvalid &&
-      this.datecons.trim() !== '' &&
+      this.numcons.trim() !== '' &&
       !this.isConsInvalid &&
       this.imageRadiographie  // Vérifiez uniquement l'image Radiographie
     ) {
@@ -90,14 +94,14 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
       const formData = new FormData();
       formData.append('time', this.time);
       formData.append('nss', this.nss);
-      formData.append('datecons', this.datecons);
+      formData.append('numcons', this.numcons);
       formData.append('compteRendu', this.compteRendu);
       formData.append('radiologueId', this.radiologueId);  // Ajouter l'ID du radiologue
       // Afficher les données dans la console avant l'envoi
     console.log('Données à envoyer :');
     console.log('Time:', this.time);
     console.log('NSS:', this.nss);
-    console.log('Date de consultation:', this.datecons);
+    console.log('Date de consultation:', this.numcons);
     console.log('Compte rendu:', this.compteRendu);
     console.log('Radiologue ID:', this.radiologueId);
     if (this.imageRadiographie) {
@@ -142,7 +146,7 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     this.compteRendu = '';
     this.imageRadiographie = null;
     this.imageRadiographiePreview = null;
-    this.datecons = '';
+    this.numcons = '';
   }
 
   triggerFileInput(imageType: string) {

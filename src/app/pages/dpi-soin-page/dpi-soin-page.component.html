@@ -8,17 +8,17 @@
    <thead> 
    <tr>
      <th>Soin</th> 
-     <th>Inférmier</th> 
+     <th>Infirmier</th> 
      <th>Date</th>
-     <th>Heure</th>
+     <th>Médicament administré</th>
    </tr>
    </thead>
    <tbody>
     <tr *ngFor="let soin of soinsList">
      <td>{{soin.soin}}</td>
-     <td> {{soin.infermier}} </td>
-     <td> {{soin.date}} </td>
-     <td> {{soin.heure}} </td>
+     <td> {{soin.infirmier}} </td>
+     <td> {{soin.date_soin}} </td>
+     <td> {{soin.medicament_pris}} </td>
    </tr>
    </tbody>
    </table>

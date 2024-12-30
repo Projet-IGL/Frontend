@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 interface BilanRadiologique {
   time: string;
   nss: string;
-  datecons: string;
+  numcons: string;
   compteRendu: string;
-  imageRadiographie: string | null;
+  imageRadiographie: File | null;
   radiologueId: string ; 
 
 }
@@ -16,7 +16,7 @@ interface BilanRadiologique {
   providedIn: 'root'
 })
 export class AjouterBilanRadiologiqueService {
-  private apiUrl = 'http://localhost:3006/bilans-radiologiques'; // URL de votre API backend
+  private apiUrl = 'http://127.0.0.1:8000/api/creer_bilan_radiologique/'; // URL de votre API backend
 
   constructor(private http: HttpClient) {}
 
@@ -27,11 +27,16 @@ export class AjouterBilanRadiologiqueService {
 
   // Méthode pour vérifier si un NSS existe côté backend
   checkNssExistence(nss: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/checkNss/${nss}`);
+    return this.http.get<any>(`http://127.0.0.1:8000/api/checkNss/?nss=${nss}`);
   }
 
-  // Méthode pour vérifier si un numéro de consultation existe côté backend
-  checkConsultationExistence(numcons: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/checkConsultation/${numcons}`);
+  // Méthode pour vérifier si un numéro de consultation existe
+  checkConsultationExistence(nss: string, numeroConsultation: string): Observable<{ exists: boolean; message?: string }> {
+    const formData = new FormData();
+    formData.append('nss', nss);
+    formData.append('numcons', numeroConsultation);
+  
+    const apiUrl = 'http://127.0.0.1:8000/api/check_consultation_existence/'; // Nouvelle route
+    return this.http.post<{ exists: boolean; message?: string }>(apiUrl, formData);
   }
 }

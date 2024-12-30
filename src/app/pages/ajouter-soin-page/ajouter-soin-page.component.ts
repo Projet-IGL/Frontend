@@ -36,7 +36,8 @@ export class AjouterSoinPageComponent implements OnInit {
     this.user = this.authService.getUser(); // Récupère les informations de l'utilisateur
     console.log('Utilisateur récupéré:', this.user); // Affiche les informations de l'utilisateur dans la console
     if (this.user && this.user.role === 'Infirmier') {
-      this.infirmierId = this.user.id; // Récupérer l'ID de l'infirmier
+      this.infirmierId = this.user.data.id; // Récupérer l'ID de l'infirmier
+      console.log(this.infirmierId);
     }
   }
 
@@ -80,6 +81,7 @@ export class AjouterSoinPageComponent implements OnInit {
       this.ajouterSoinService.addSoin(soin).subscribe(
         (response) => {
           console.log('Soin enregistré avec succès:', response);
+          console.log('Soin enregistré avec succès:', soin);
           this.isSaved = true;
           this.resetForm();
           setTimeout(() => (this.isSaved = false), 3000);

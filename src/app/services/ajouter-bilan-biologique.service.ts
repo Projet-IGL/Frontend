@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 interface BilanBiologique {
   time: string;
   nss: string;
-  datecons: string; // Ajout du champ numcons
+  numcons: string; // Ajout du champ numcons
   glycemie: number;
   pression: number;
   cholesterol: number;
-  graphImage: string | null; // Propriété pour l'image du graphique
+  graphImage: File | null; // Propriété pour l'image du graphique
   laborantinId: string ; 
 }
 
@@ -17,7 +17,7 @@ interface BilanBiologique {
   providedIn: 'root',
 })
 export class AjouterBilanBiologiqueService {
-  private apiUrl = 'http://localhost:3000/bilans'; // URL de votre API backend json-server
+  private apiUrl = 'http://127.0.0.1:8000/api/creer_bilan_biologique/'; // URL de votre API backend json-server
 
   constructor(private http: HttpClient) {}
 
@@ -43,11 +43,13 @@ export class AjouterBilanBiologiqueService {
 
   // Méthode pour vérifier si un NSS existe
   checkNssExistence(nss: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/checkNss/${nss}`);
+    return this.http.get<any>(`http://127.0.0.1:8000/api/checkNss/?nss=${nss}`);
   }
 
   // Méthode pour vérifier si un numéro de consultation existe
-  checkConsultationExistence(numcons: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/checkConsultation/${numcons}`);
+  checkConsultationExistence(nss: string, numcons: string): Observable<any> {
+    const body = { nss, numcons };  // Envoi des deux paramètres dans le corps de la requête
+    return this.http.post<any>('http://127.0.0.1:8000/api/check_consultation_existence_bilan_biologique/', body);
   }
+  
 }
