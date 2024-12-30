@@ -17,7 +17,7 @@ import Chart from 'chart.js/auto';
 export class AjouterBilanBiologiqueComponent implements OnInit {
   time: string = '';
   nss: string = '';
-  datecons: string = '';
+  numcons: string = '';
   glycemie: number | null = null;
   pression: number | null = null;
   cholesterol: number | null = null;
@@ -44,7 +44,8 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
     this.user = this.authService.getUser();
     if (this.user && this.user.role === 'Laborantin') {
       console.log(this.user);
-      this.laborantinId = this.user.id;
+      this.laborantinId = this.user.data.id;
+      console.log(' ID ',this.laborantinId)
     }
   }
 
@@ -73,13 +74,15 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
   
     // Vérification du numéro de consultation
     checkConsultationExistence() {
-      this.ajouterBilanBiologiqueService.checkConsultationExistence(this.datecons).subscribe(
+      this.ajouterBilanBiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
         (response) => {
           this.isConsInvalid = !response.exists;
+          console.log('this.isConsInvalid',this.isConsInvalid );
         },
         (error) => {
           console.error('Erreur lors de la vérification de la consultation:', error);
           this.isConsInvalid = true;
+          console.log('this.isConsInvalid',this.isConsInvalid );
   
         }
       );
@@ -91,7 +94,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       this.time.trim() !== '' &&
       this.nss.trim() !== '' &&
       !this.isNssInvalid &&
-      this.datecons.trim() !== '' &&
+      this.numcons.trim() !== '' &&
       !this.isConsInvalid &&
       this.glycemie !== null &&
       this.pression !== null &&
@@ -103,20 +106,23 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       if (!this.laborantinId) {
         alert('Utilisateur non authentifié ou rôle incorrect.');
         return;
-      }
+      } 
 
       // Créer un objet de bilan biologique avec l'ID du laborantin et l'image
       const formData = new FormData();
       formData.append('time', this.time);
       formData.append('nss', this.nss);
-      formData.append('datecons', this.datecons);
+      formData.append('numcons', this.numcons);
       formData.append('glycemie', this.glycemie.toString());
       formData.append('pression', this.pression.toString());
       formData.append('cholesterol', this.cholesterol.toString());
       if (this.imageFile) {
-        formData.append('image', this.imageFile, this.imageFile.name);
+        formData.append('imageFile', this.imageFile, this.imageFile.name);
       }
-      formData.append('laborantin_id', this.laborantinId);
+      formData.append('laborantinId', this.laborantinId);
+      //console.log('formData ', formData);
+      console.log('IMAGEFILE', this.imageFile);
+      //console.log('IMAGEFILENAME', this.imageFile.name);
 
       // Appel du service pour sauvegarder le bilan avec une image
       this.ajouterBilanBiologiqueService.addBilan(formData).subscribe(
@@ -148,7 +154,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
   resetForm() {
     this.time = '';
     this.nss = '';
-    this.datecons = '';
+    this.numcons = '';
     this.glycemie = null;
     this.pression = null;
     this.cholesterol = null;

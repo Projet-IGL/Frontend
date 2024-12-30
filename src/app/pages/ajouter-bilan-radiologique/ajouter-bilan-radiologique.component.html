@@ -17,14 +17,13 @@
       <input id="nss" class="input-field" [(ngModel)]="nss" placeholder="NSS du patient" required (blur)="checkNssExistence()">
       <div *ngIf="isNssInvalid" class="error-message">Le numéro de patient (NSS) n'existe pas.</div>
     </div>
+    <div class="form-field">
+      <input id="numcons" class="input-field" [(ngModel)]="numcons" placeholder="N° consultation" required (blur)="checkConsultationExistence()">
+      <div *ngIf="isConsInvalid" class="error-message">Le numéro de consultation est invalide.</div>
+    </div>
   </div>
   
-  <!-- Date de consultation -->
-  <div class="form-field">
-    <label for="datecons" class="form-label">Entrer la date de consultation :</label>
-    <input id="datecons" class="datetime-input" type="datetime-local" [(ngModel)]="datecons" placeholder="Date de consultation" required (blur)="checkConsultationExistence()">
-    <div *ngIf="isConsInvalid" class="error-message">La date de consultation est invalide.</div>
-  </div>
+  
 
   <!-- Compte rendu -->
   <div class="form-field">

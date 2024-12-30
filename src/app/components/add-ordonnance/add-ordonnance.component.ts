@@ -23,6 +23,7 @@ export class AddOrdonnanceComponent {
   onSave() {
     const combinedData = {
       consultationDate:this.initialordonnanceData.dateTime,
+      nss:this.initialordonnanceData.dpi,
       medications: this.medications,
     };
 
@@ -37,7 +38,12 @@ export class AddOrdonnanceComponent {
         console.error('Error saving data:', error);
       }
     );
+    //this.resetForm();
   }
+
+  resetForm() {
+    this.medications = [];
+   }
 
   onCancel() {
     this.popOutVisible = false;
