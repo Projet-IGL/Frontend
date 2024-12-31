@@ -32,13 +32,12 @@
     <tr *ngFor="let consultation of consultationList">
      <td>{{consultation.numero_consultation}}</td>
      <td> {{consultation.date_consultation}} </td>
-     <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
      <td class="align" (click)="goToMedecinPage(consultation)">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
    </tr>
    </tbody>
    </table>
    </div>
-   <button (click)="updatePopOutVisibility2(true)"  class="add-btn">Ajouter Consultation</button>
-   </div>
+<!-- Affiche le bouton "Ajouter Consultation" uniquement si l'utilisateur est un médecin -->
+<button *ngIf="isMedecin" (click)="updatePopOutVisibility2(true)" class="add-btn">Ajouter Consultation</button>   </div>
   </div>
 </div>

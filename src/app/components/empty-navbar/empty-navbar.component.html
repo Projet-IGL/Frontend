@@ -1,9 +1,14 @@
 <div class="flex h-12 mt-5 justify-between space-x-2 mx-6 font-semibold">
-    <button class= "rounded-md ">
-        <img class="w-32 object-contain" src="/Capture_d_écran_2024-12-06_190425-removebg-preview.png">
+    <button class="rounded-md">
+      <img class="w-32 object-contain" src="/Capture_d_écran_2024-12-06_190425-removebg-preview.png">
     </button>
     <div class="flex items-center">
-    <span (click)="goToRecherchePage()" class="material-symbols-outlined out-icone rotate-180"> logout </span>  
-     <button (click)="goToLandingPage()"  class="bg-indigo-600 w-32 text-white text-sm p-2 w-fit rounded-md rounded-xl px-4"> Se déconnecter</button >
-     </div>
-</div>
+      <!-- Affiche le bouton "Rechercher" uniquement si l'utilisateur est médecin -->
+      <span *ngIf="isMedecin" (click)="goToRecherchePage()" class="material-symbols-outlined out-icone rotate-180">logout</span>
+  
+      <button (click)="goToLandingPage()" class="bg-indigo-600 w-32 text-white text-sm p-2 w-fit rounded-md rounded-xl px-4">
+        Se déconnecter
+      </button>
+    </div>
+  </div>
+  

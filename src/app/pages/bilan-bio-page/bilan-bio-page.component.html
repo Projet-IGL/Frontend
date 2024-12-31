@@ -3,33 +3,6 @@
 <div class="flex justify-center items-center">
     <div class="blue-container">
         <h3 class="Rech-title">Bilan Biologique :</h3>
-       <div class="white-container">
-        <table>
-            <thead> 
-            <tr>
-              <th>Paramètre</th>
-              <th>Résultat</th>
-              <th>Remarque</th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let bilan of bilanBioList">
-                <td>{{bilan.parametre}}</td>
-                <td>{{bilan.resultat}}</td>
-                <td>{{bilan.remarque}}</td>
-            </tr>
-            </tbody>
-            </table>
-       </div> 
-       <div class="flex justify-between items-center mt-10 w-full max-w-4xl mx-auto">
-         <div class="flex items-center gap-2">
-           <h2>Signature :</h2>
-           <p>Dr.{{consultation.medecin.nom}}</p>
-         </div>
-         <div class="flex items-center gap-2">
-           <h2>Date :</h2>
-           <p>{{consultation.date}}</p>
-         </div>
-       </div>    
-    </div>
-       </div>
+        <app-mon-bilan-bio/> 
+    </div>    
+</div>

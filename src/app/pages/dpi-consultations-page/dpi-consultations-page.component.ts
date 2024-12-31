@@ -7,7 +7,10 @@ import { CommonModule } from '@angular/common';
 import { AddOrdonnanceComponent } from '../../components/add-ordonnance/add-ordonnance.component';
 import { AddBilanComponent } from '../../components/add-bilan/add-bilan.component';
 import { AjouterConsultationComponent } from '../../components/ajouter-consultation/ajouter-consultation.component';
+import { AuthService } from '../../services/auth.service'; // Importez AuthService pour récupérer l'utilisateur
+
 import { PatientService } from '../../services/patient.service';
+
 @Component({
   selector: 'app-dpi-consultations-page',
 imports: [DpiNavbarComponent, EmptyNavbarComponent,CommonModule,AjouterConsultationComponent,AddOrdonnanceComponent,AddBilanComponent],
@@ -16,7 +19,8 @@ imports: [DpiNavbarComponent, EmptyNavbarComponent,CommonModule,AjouterConsultat
 })
 export class DpiConsultationsPageComponent implements OnInit{
 
-  constructor(private router: Router,private consultationService: ConsultationService,private patientService: PatientService) {}
+  constructor(private router: Router,private consultationService: ConsultationService,private patientService: PatientService,    private authService: AuthService  // Injectez AuthService pour récupérer l'utilisateur
+  ) {}
 
   goToMedecinPage(consultation: any){
     this.consultationService.setConsultation(consultation);
@@ -55,9 +59,14 @@ export class DpiConsultationsPageComponent implements OnInit{
   }
 
   consultationList: any[] = [];  // Liste des consultations à afficher
+  isMedecin: boolean = false;  // Variable pour savoir si l'utilisateur est un médecin
 //-------------------------------------------integration-------------------------------------------------
 ngOnInit(): void {
   // Récupérer le NSS du patient depuis le service patient
+  const user = this.authService.getUser();
+    if (user && user.role === 'Medecin') {
+      this.isMedecin = true;  // Si l'utilisateur est médecin, on autorise l'affichage du bouton
+    }
   const nss = this.patientService.getPatient().patient_data.nss;
 
   // Appeler leservice pour obtenir les consultations en fonction du NSS

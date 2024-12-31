@@ -209,8 +209,23 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
           },
         });
 
-        // Sauvegarder le graphique en tant qu'image après sa création
-        this.graphImage = ctx.toDataURL('image/png');
+        // Convertir le graphique en base64
+        const graphBase64 = ctx.toDataURL('image/png');
+        this.graphImage = graphBase64;
+
+        // Créer un fichier Blob à partir de l'image base64
+        const byteString = atob(graphBase64.split(',')[1]);
+        const mimeString = graphBase64.split(',')[0].split(':')[1].split(';')[0];
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) {
+          ia[i] = byteString.charCodeAt(i);
+        }
+        const blob = new Blob([ab], { type: mimeString });
+
+        // Créer un fichier à partir du Blob
+        this.imageFile = new File([blob], 'graphique.png', { type: mimeString });
+        console.log('Graphique converti en fichier :', this.imageFile.name);
       }, 0);
     } else {
       alert('Veuillez entrer des valeurs strictement positives pour tous les champs.');
