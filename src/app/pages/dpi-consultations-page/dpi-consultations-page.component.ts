@@ -61,16 +61,21 @@ export class DpiConsultationsPageComponent implements OnInit{
   consultationList: any[] = [];  // Liste des consultations à afficher
   isMedecin: boolean = false;  // Variable pour savoir si l'utilisateur est un médecin
 //-------------------------------------------integration-------------------------------------------------
+nss: string = '';
 ngOnInit(): void {
   // Récupérer le NSS du patient depuis le service patient
   const user = this.authService.getUser();
     if (user && user.role === 'Medecin') {
       this.isMedecin = true;  // Si l'utilisateur est médecin, on autorise l'affichage du bouton
-    }
-  const nss = this.patientService.getPatient().patient_data.nss;
+       this.nss = this.patientService.getPatient().patient_data.nss;
 
+    }
+    if (user && user.role === 'Patient') {
+       this.nss = this.patientService.getPatient().data.nss;
+
+    }
   // Appeler leservice pour obtenir les consultations en fonction du NSS
-  this.consultationService.getData(nss).subscribe((data) => {
+  this.consultationService.getData(this.nss).subscribe((data) => {
     this.consultationList = data;  // Stocker les consultations dans le tableau
     console.log(this.consultationList);  // Afficher la liste des consultations dans la console pour débogage
   });

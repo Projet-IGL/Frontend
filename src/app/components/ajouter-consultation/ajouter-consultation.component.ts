@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { PatientService } from './../../services/patient.service';
 import { ConsultationService } from './../../services/consultation.service';
 import { CommonModule } from '@angular/common';
@@ -14,12 +15,13 @@ export class AjouterConsultationComponent {
   @Output() popOutVisibilityChange = new EventEmitter<boolean>();
   @Output() openOtherPopout = new EventEmitter<any>();
   // Variables pour stocker les états
-  
+
   action: string = ''; // L'action sélectionnée (ordonnance, bilan, aucun)
-  consultationData = { dateTime: '', resume: '', bilan: '',dpi:'' }; // To store entered data
-  constructor(private ConsultationService:ConsultationService, private PatientService:PatientService) {}
+  consultationData = { dateTime: '', resume: '', bilan: '',dpi:'' ,medecinConsultant:''}; // To store entered data
+  constructor(private ConsultationService:ConsultationService, private PatientService:PatientService,private AuthService:AuthService) {}
   //patient:any={data:{nss:120}};
   patient:any;
+  medecinId:any;
   // Méthode pour fermer la pop-up
   closePopup(): void {
    this.popOutVisible=false
@@ -62,7 +64,8 @@ export class AjouterConsultationComponent {
     this.popOutVisibilityChange.emit(this.popOutVisible);
     console.log("hada patient",this.PatientService.getPatient());
     this.patient=this.PatientService.getPatient();
-    this.consultationData = { dateTime: datetime, resume: resume, bilan: this.action,dpi:this.patient.patient_data.nss };
+    this.medecinId=this.AuthService.getUser().data.id;
+    this.consultationData = { dateTime: datetime, resume: resume, bilan: this.action,dpi:this.patient.patient_data.nss,medecinConsultant:this.medecinId };
     this.ConsultationService.saveConsultation(this.consultationData).subscribe(
       (response) => {
         console.log('Data saved successfully:', response);
@@ -75,9 +78,9 @@ export class AjouterConsultationComponent {
       case 'ordonnance':
         this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
         break;
-      case 'bilan2':
-      case 'bilanBio':
-      case 'bilanRadio':
+      case 'bilan biologique,bilan radiologique':
+      case 'Bilan biologique':
+      case 'Bilan radiologique':
         this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
         break;
       case 'aucun':
