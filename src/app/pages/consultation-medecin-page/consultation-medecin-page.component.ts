@@ -13,5 +13,7 @@ export class ConsultationMedecinPageComponent implements OnInit{
       consultation: any;
       ngOnInit(): void {
          this.consultation = this.consultationService.getConsultation();
+         console.log(this.consultation);
     }
+
 }

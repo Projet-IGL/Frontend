@@ -12,12 +12,12 @@ import {InfoPatientComponent} from '../../components/info-patient/info-patient.c
 export class ProfilPatientComponent {
   // Méthode pour rediriger vers la page de déconnexion
   constructor(private router: Router) {}
-  
+
   logout() {
     this.router.navigate(['/Landing-page']);
   }
   ouvrirDPI() {
-    this.router.navigate(['/Landing-page']);
+    this.router.navigate(['Rech-dpi/Consultations']);
   }
 
 }

@@ -13,7 +13,11 @@ export class OrdonnanceService {
     console.log('Saving ordonnance data:', ordonnanceData);
     return this.Http.post<any>(this.apiUrl, ordonnanceData);
   }
-  getData(): Observable<any> {
-      return this.Http.get('/Tests/Ordonnance.json');
-    }
+
+  getData(nss: string, numero_consultation: string): Observable<any> {
+      const body = {
+        nss: nss,
+        numero_consultation: numero_consultation
+      };
+      return this.Http.post<any>('http://127.0.0.1:8000/api/get_ordonnace/', body);    }
 }

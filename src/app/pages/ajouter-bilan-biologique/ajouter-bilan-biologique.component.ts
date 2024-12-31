@@ -67,11 +67,11 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
         (error) => {
           console.error('Erreur lors de la vérification du NSS:', error);
           this.isNssInvalid = true;
-  
+
         }
       );
-    } 
-  
+    }
+
     // Vérification du numéro de consultation
     checkConsultationExistence() {
       this.ajouterBilanBiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
@@ -83,7 +83,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
           console.error('Erreur lors de la vérification de la consultation:', error);
           this.isConsInvalid = true;
           console.log('this.isConsInvalid',this.isConsInvalid );
-  
+
         }
       );
     }
@@ -106,7 +106,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       if (!this.laborantinId) {
         alert('Utilisateur non authentifié ou rôle incorrect.');
         return;
-      } 
+      }
 
       // Créer un objet de bilan biologique avec l'ID du laborantin et l'image
       const formData = new FormData();
@@ -167,6 +167,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.imageFile = event.target.files[0];
+      console.log('Selected file:', this.imageFile);
     }
   }
 

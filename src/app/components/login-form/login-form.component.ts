@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PatientService } from '../../services/patient.service';
+import { RechercheService } from '../../services/recherche.service';
 
 @Component({
   selector: 'app-login-form',
@@ -16,13 +18,13 @@ export class LoginFormComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private patientService : PatientService , private rechercheService : RechercheService ) {}
 
   login() {
     this.authService.login(this.username, this.password).subscribe(
       (user) => {
-        
-        
+
+
         // Redirection selon le rôle de l'utilisateur
         switch (user.role) {
           case 'Administrateur':
@@ -35,7 +37,10 @@ export class LoginFormComponent {
             this.router.navigate(['/profilInfermier']);
             break;
           case 'Patient':
+            this.patientService.setPatient(user);
+            console.log('user',user);
             this.router.navigate(['/profilPatient']);  // Redirection vers profil patient
+            console.log(this.patientService.getPatient());
             break;
           case 'Laborantin':
             this.router.navigate(['/profilLaborantin']);  // Redirection vers profil laborantin

@@ -4,7 +4,7 @@
     <div class="blue-container">
         <h1>Compte Rendu :</h1>
          <div *ngIf="bilanRadio; else noData">
-          <p>{{bilanRadio.compteRendu}}</p>
+          <p>{{bilanRadio.bilan_radiologique.compte_rendu}}</p>
          </div>
         <ng-template #noData>
           <p>Aucun bilan radiologique dans cette consultation.</p>

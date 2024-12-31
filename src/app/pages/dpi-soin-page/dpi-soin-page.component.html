@@ -5,17 +5,17 @@
     <h3 class="Rech-title">Liste des soins :</h3>
    <div class="white-container">
    <table>
-   <thead> 
+   <thead>
    <tr>
-     <th>Soin</th> 
-     <th>Infirmier</th> 
+
+     <th>Infirmier</th>
      <th>Date</th>
      <th>Médicament administré</th>
    </tr>
    </thead>
    <tbody>
     <tr *ngFor="let soin of soinsList">
-     <td>{{soin.soin}}</td>
+    
      <td> {{soin.infirmier}} </td>
      <td> {{soin.date_soin}} </td>
      <td> {{soin.medicament_pris}} </td>
