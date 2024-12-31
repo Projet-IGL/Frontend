@@ -2,6 +2,7 @@ import { OrdonnanceService } from '../../services/ordonnance.service';
 import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ConsultationService } from '../../services/consultation.service';
 @Component({
   selector: 'app-add-ordonnance',
   standalone: true,
@@ -13,7 +14,7 @@ export class AddOrdonnanceComponent {
   @Input() popOutVisible = false;
   @Input() initialordonnanceData: any; // Data received from the first popout
   @Output() popOutVisibilityChange = new EventEmitter<boolean>();
-  constructor(private ordonnanceService : OrdonnanceService){};
+  constructor(private ordonnanceService : OrdonnanceService, private ConsultationService:ConsultationService){};
   medications = [{ medicament: '', dose: '', duree: '' }];
 
   onAddMedicament() {
@@ -21,6 +22,15 @@ export class AddOrdonnanceComponent {
   }
 
   onSave() {
+    this.ConsultationService.saveConsultation(this.initialordonnanceData).subscribe(
+      (response) => {
+        console.log('Data saved successfully:', response);
+      },
+      (error) => {
+        console.error('Error saving data:', error);
+      }
+    );
+
     const combinedData = {
       consultationDate:this.initialordonnanceData.dateTime,
       nss:this.initialordonnanceData.dpi,
@@ -49,4 +59,6 @@ export class AddOrdonnanceComponent {
     this.popOutVisible = false;
     this.popOutVisibilityChange.emit(this.popOutVisible);
   }
+
+  
 }

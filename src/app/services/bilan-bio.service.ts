@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class BilanBioService {
  
   // URL statique de votre API backend Django
-  private apiUrl = 'Tests/bilans.json'; // Remplacez cette URL par celle de votre API Django
+  private apiUrl = 'http://127.0.0.1:8000/api/recuperer_bilan_biologique/'; // Remplacez cette URL par celle de votre API Django
 
   constructor(private http: HttpClient) {}
 
   // Fonction pour récupérer les données du bilan biologique avec une requête POST
-  getBilanBio(nss: string, numeroConsultation: string): Observable<any> {
+  getBilanBio(nss: string, numcons: string): Observable<any> {
     const body = {
       nss: nss,
-      numeroConsultation: numeroConsultation
+      numcons: numcons
     };
     return this.http.post<any>(this.apiUrl, body); // Envoi de la requête POST avec le corps
   }

@@ -66,14 +66,7 @@ export class AjouterConsultationComponent {
     this.patient=this.PatientService.getPatient();
     this.medecinId=this.AuthService.getUser().data.id;
     this.consultationData = { dateTime: datetime, resume: resume, bilan: this.action,dpi:this.patient.patient_data.nss,medecinConsultant:this.medecinId };
-    this.ConsultationService.saveConsultation(this.consultationData).subscribe(
-      (response) => {
-        console.log('Data saved successfully:', response);
-      },
-      (error) => {
-        console.error('Error saving data:', error);
-      }
-    );
+
     switch (this.action) {
       case 'ordonnance':
         this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
@@ -85,6 +78,14 @@ export class AjouterConsultationComponent {
         break;
       case 'aucun':
         this.closePopup();
+        this.ConsultationService.saveConsultation(this.consultationData).subscribe(
+          (response) => {
+            console.log('Data saved successfully:', response);
+          },
+          (error) => {
+            console.error('Error saving data:', error);
+          }
+        );
         break;
 
       default:

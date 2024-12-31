@@ -53,7 +53,7 @@ export class DpiConsultationsPageComponent implements OnInit{
     if (event.action === 'ordonnance') {
       this.popOutVisible1 = true; // Open AddOrdonnance popout
     }
-    else if(event.action==='bilan2'||event.action==='bilanBio'||event.action==='bilanRadio'){
+    else if(event.action==='bilan biologique,bilan radiologique'||event.action==='Bilan biologique'||event.action==='Bilan radiologique'){
       this.popOutVisible = true;
     }
   }

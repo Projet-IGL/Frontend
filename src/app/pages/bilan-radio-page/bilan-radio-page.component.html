@@ -5,11 +5,10 @@
         <h3 class="Rech-title">Bilan Radiologique :</h3>
 
             <div *ngIf="bilanRadio; else noData">
-              <img [src]="bilanRadio.graphImageUrl" alt="Image radiologique"  />
+              <img [src]="'http://127.0.0.1:8000' + bilanRadio.bilan_radiologique.images" alt="Image radiologique" />
             </div>
             <ng-template #noData>
               <p>Aucun bilan radiologique dans cette consultation.</p>
             </ng-template>     
           </div>
        </div>
- 
