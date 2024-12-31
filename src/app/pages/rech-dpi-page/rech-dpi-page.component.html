@@ -41,7 +41,6 @@
           <tr *ngFor="let patient of filteredPatientsList">
             <td>{{ patient.patient_data.last_name }}{{" "}}{{ patient.patient_data.first_name }}</td>
             <td>{{ patient.patient_data.nss }}</td>
-            <td><span class="material-symbols-outlined delete-icone"> delete</span></td>
             <td class="align" (click)="goToPatientPage(patient)">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>
           </tr>
           </tbody>

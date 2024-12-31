@@ -2,21 +2,24 @@
   <button (click)="toggleMenu()" class="material-symbols-outlined menu-icone">menu</button>
 </div>
 <div [class.hidden]="!menuOpen" class="flex justify-center flex-col space-y-2 mt-2 sm:flex sm:flex-row sm:space-y-0 sm:space-x-4">
-<div class="flex flex-wrap items-center h-10 mt-5 justify-center space-y-2 sm:space-y-0 sm:space-x-4 mx-6 font-semibold">
+  <div class="flex flex-wrap items-center h-10 mt-5 justify-center space-y-2 sm:space-y-0 sm:space-x-4 mx-6 font-semibold">
     <div class="flex flex-col sm:flex-row justify-center sm:space-x-28 w-full sm:w-auto">
-      <button (click)="goToPatientPage()" [ngClass]="getButtonCasePatient('Patient')" 
+      
+      <!-- Afficher le bouton "Patient" uniquement si l'utilisateur est un médecin -->
+      <button *ngIf="isMedecin" (click)="goToPatientPage()" [ngClass]="getButtonCasePatient('Patient')" 
         class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">
         Patient
       </button>
+
       <button (click)="goToConsultationPage()" [ngClass]="getButtonCaseConsult('Consultation')" 
         class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">
         Consultations
       </button>
+      
       <button (click)="goToSoinPage()" [ngClass]="getButtonClassesSoin('Soin')" 
         class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">
         Soins
       </button>
-    </div>
+    </div> 
   </div>
 </div>
-  

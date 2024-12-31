@@ -1,0 +1,36 @@
+<!-- Section des résultats -->
+<div class="result-section">
+    <!-- Tableau des résultats -->
+    <table *ngIf="bilanDisponible" class="result-table">
+        <thead>
+            <tr class="header-row">
+                <th>Paramètre</th>
+                <th>Résultat</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <tr>
+                <td>Glycémie (mg/dL)</td>
+                <td><input id="glycemie" class="result-input" type="number" [(ngModel)]="glycemie" min="1"  required [value]="glycemie || ''" disabled></td>
+            </tr>
+            <tr class="colored-row">
+                <td>Pression Artérielle (mmHg)</td>
+                <td><input id="pression" class="result-input" type="number" [(ngModel)]="pression" min="1"  required [value]="pression || ''" disabled></td>
+            </tr>
+            <tr>
+                <td>Cholestérol (mg/dL)</td>
+                <td><input id="cholesterol" class="result-input" type="number" [(ngModel)]="cholesterol" min="1" required [value]="cholesterol || ''" disabled></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Affichage du graphique si disponible -->
+    <div *ngIf="graphImageUrl" class="graph-container">
+        <img [src]="graphImageUrl" alt="Graphique" />
+    </div>
+
+    <!-- Message si aucun bilan n'est disponible -->
+    <div *ngIf="!bilanDisponible" class="no-bilan-message">
+        <p>Aucun bilan biologique dans cette consultation.</p>
+    </div>
+</div>

@@ -6,10 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BilanRadiologiqueService {
-constructor(private http: HttpClient) { };
+  private readonly apiUrl = 'Tests/bilans.json'; // URL fixe
 
-  getData(): Observable<any> {
-      return this.http.get('/Tests/BilanRadio.json');
-    }
+  constructor(private http: HttpClient) {}
 
+  // Méthode pour obtenir un bilan radiologique
+  getBilanRadiologique(nss: string, consultationId: string): Observable<any> {
+    // Envoyer les paramètres NSS et consultationId dans le corps de la requête
+    const body = { nss, consultationId };
+    return this.http.post(this.apiUrl, body);
   }
+}

@@ -1,21 +1,27 @@
-.blue-container{
+/* Conteneur bleu */
+.blue-container {
     display: grid;
-    justify-content: center;
     width: 1100px;
     margin-top: 50px;
     background-color: #DEEBFF;
     padding: 50px;
     border-radius: 20px;
-    text-align: justify;
+    text-align: justify; /* Justifie le texte, mais le titre sera à gauche grâce à 'h1' */
   }
-
-  h1{
+  
+  /* Style pour le titre h1 */
+  h1 {
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 40px;
+    text-align: left; /* Aligne le titre à gauche */
   }
-
-  h2{
-    font-weight: 700;
-    margin-right: 20px;
+  
+  /* Style pour le texte "Aucune donnée disponible" */
+  .noData {
+    font-size: 18px;
+    color: red;
+    text-align: center;
+    margin-top: 30px;
   }
+  

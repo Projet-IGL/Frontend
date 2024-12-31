@@ -1,0 +1,63 @@
+ /* Section des résultats */
+.result-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    display: flex; /* Utiliser flex pour aligner les éléments enfants */
+    flex-direction: column; /* Aligner les éléments dans une colonne */
+    align-items: center; /* Centrer le bouton horizontalement */
+    justify-content: center; /* Facultatif pour centrer verticalement */
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.result-table .header-row {
+    background-color: #DEEBFF;
+    font-weight: bold;
+}
+
+.result-table .colored-row {
+    background-color: #F9F9F9;
+}
+
+.result-input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Graph container */
+.graph-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Message lorsqu'il n'y a pas de bilan */
+.no-bilan-message {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #FF0000;
+}
