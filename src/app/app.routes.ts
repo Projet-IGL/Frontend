@@ -32,6 +32,7 @@ import { infermierGuard } from './Guard/infermier.guard';
 import { radiologueGuard } from './Guard/radiologue.guard';
 import { laborantinGuard } from './Guard/laborantin.guard';
 import { patientGuard } from './Guard/patient.guard';
+import { adminMedecinGuard } from './Guard/admin-medecin.guard';
 export const routes: Routes = [
     { 
         path: '',
@@ -54,7 +55,7 @@ export const routes: Routes = [
         path: 'add-dpi',
         component: AddDpiPageComponent ,
         pathMatch: 'full' ,
-        canActivate: [medecinGuard]
+        canActivate: [adminMedecinGuard]
       },
       { 
         path: 'add-staff', 
