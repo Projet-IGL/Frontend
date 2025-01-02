@@ -52,6 +52,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
   }
 
   logout() {
+    this.authService.logout();
     this.router.navigate(['/Landing-page']);
   }
 
@@ -139,7 +140,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
           if (error.status === 500) {
             console.error('Erreur interne du serveur:', error.message);
           }
-          alert('Erreur lors de l\'ajout du bilan, veuillez réessayer.');
+          alert('Ce bilan est déjà effectué');
         }
       );
     } else {

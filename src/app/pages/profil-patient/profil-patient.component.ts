@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {InfoPatientComponent} from '../../components/info-patient/info-patient.component';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -11,9 +12,10 @@ import {InfoPatientComponent} from '../../components/info-patient/info-patient.c
 })
 export class ProfilPatientComponent {
   // Méthode pour rediriger vers la page de déconnexion
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   logout() {
+    this.authService.logout();
     this.router.navigate(['/Landing-page']);
   }
   ouvrirDPI() {
