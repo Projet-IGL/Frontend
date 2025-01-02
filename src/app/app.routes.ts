@@ -25,6 +25,13 @@ import { ProfilLaborantinComponent } from './pages/profil-laborantin/profil-labo
 import { ProfilRadiologueComponent } from './pages/profil-radiologue/profil-radiologue.component';
 import { AjouterBilanRadiologiqueComponent } from './pages/ajouter-bilan-radiologique/ajouter-bilan-radiologique.component';
 import { AjouterBilanBiologiqueComponent } from './pages/ajouter-bilan-biologique/ajouter-bilan-biologique.component';
+import { medecinGuard } from './Guard/medecin.guard';
+import { adminGuard } from './Guard/admin.guard';
+import { patientMedecinGuard } from './Guard/patient-medecin.guard';
+import { infermierGuard } from './Guard/infermier.guard';
+import { radiologueGuard } from './Guard/radiologue.guard';
+import { laborantinGuard } from './Guard/laborantin.guard';
+import { patientGuard } from './Guard/patient.guard';
 export const routes: Routes = [
     { 
         path: '',
@@ -46,98 +53,118 @@ export const routes: Routes = [
       { 
         path: 'add-dpi',
         component: AddDpiPageComponent ,
-        pathMatch: 'full' 
+        pathMatch: 'full' ,
+        canActivate: [medecinGuard]
       },
       { 
         path: 'add-staff', 
         component: AddStaffPageComponent ,
-        pathMatch: 'full' 
+        pathMatch: 'full' ,
+        canActivate: [adminGuard]
       },
       { 
         path: 'profilAdmin', 
         component: ProfilAdminComponent ,
-        pathMatch: 'full' 
+        pathMatch: 'full', 
+        canActivate: [adminGuard]
       },
       { 
         path: 'Rech-dpi', 
         component: RechDpiPageComponent ,
-        pathMatch: 'full' 
+        pathMatch: 'full' ,
+        canActivate: [medecinGuard]
       },
       {
         path: 'Rech-dpi/Patient',
         component: DpiPatientPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [medecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations',
         component: DpiConsultationsPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Soins',
         component: DpiSoinPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations/Medecin',
         component: ConsultationMedecinPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations/Resume',
         component: ResumePageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations/Ordonnance',
         component: OrdonnancePageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations/Bilan-Radiologique',
         component: BilanRadioPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations/Bilan-Biologique',
         component: BilanBioPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'Rech-dpi/Consultations/Compte-Rendu',
         component: CompteRenduPageComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [patientMedecinGuard]
       },
       {
         path: 'ajouterSoin', 
-        component: AjouterSoinPageComponent 
+        component: AjouterSoinPageComponent, 
+        canActivate: [infermierGuard]
       },
       {
         path: 'ajouterBilanRadio', 
-        component: AjouterBilanRadiologiqueComponent 
+        component: AjouterBilanRadiologiqueComponent ,
+        canActivate: [radiologueGuard]
       },
       {
         path: 'ajouterBilanBio', 
-        component: AjouterBilanBiologiqueComponent 
+        component: AjouterBilanBiologiqueComponent,
+        canActivate : [laborantinGuard]
       },
      
      
       { 
         path: 'ajouterConsultation', 
-        component: AjouterConsultationComponent 
+        component: AjouterConsultationComponent, 
+        canActivate : [medecinGuard]
       },
 
       { 
         path: 'profilInfermier', 
-        component: ProfilInfermierComponent 
+        component: ProfilInfermierComponent ,
+        canActivate: [infermierGuard]
       },
       { 
         path: 'profilLaborantin', 
-        component: ProfilLaborantinComponent 
+        component: ProfilLaborantinComponent ,
+        canActivate: [laborantinGuard]
       },
       { 
         path: 'profilRadiologue', 
-        component: ProfilRadiologueComponent 
+        component: ProfilRadiologueComponent ,
+        canActivate : [radiologueGuard]
       },
     
       { 
@@ -147,17 +174,18 @@ export const routes: Routes = [
 
       { 
         path: 'profilMedecin', 
-        component: ProfilMedecinComponent 
+        component: ProfilMedecinComponent ,
+        canActivate: [medecinGuard]
       },
 
       { 
         path: 'profilPatient', 
-        component: ProfilPatientComponent 
+        component: ProfilPatientComponent ,
+        canActivate: [patientGuard]
       },
 
       { 
         path: 'infoPatient', 
-        component: InfoPatientComponent 
-
+        component: InfoPatientComponent,   
       },
 ];

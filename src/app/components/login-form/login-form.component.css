@@ -90,3 +90,9 @@
     font-size: 14px; /* Taille du texte pour l'erreur */
     margin-top: 10px; /* Ajoute un espacement au-dessus du message */
 }
+
+@media (max-width : 600px){
+    .logo-pic{
+        display: none;
+    }
+}
