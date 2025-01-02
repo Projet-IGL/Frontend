@@ -28,9 +28,6 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
   showGraph: boolean = false;
   graphImage: string | null = null;
   laborantinId: string | null = null; // ID du laborantin
-  existingNss = ['123456789', '987654321', '112233445'];
-  existingConsultations = ['2024-01-01T10:00', '2024-01-15T14:30', '2024-02-01T08:45']; // Simuler des consultations valides
-
   user: any = null; // Informations utilisateur
 
   constructor(
@@ -67,11 +64,11 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
         (error) => {
           console.error('Erreur lors de la vérification du NSS:', error);
           this.isNssInvalid = true;
-
+  
         }
       );
-    }
-
+    } 
+  
     // Vérification du numéro de consultation
     checkConsultationExistence() {
       this.ajouterBilanBiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
@@ -83,7 +80,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
           console.error('Erreur lors de la vérification de la consultation:', error);
           this.isConsInvalid = true;
           console.log('this.isConsInvalid',this.isConsInvalid );
-
+  
         }
       );
     }
@@ -106,7 +103,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       if (!this.laborantinId) {
         alert('Utilisateur non authentifié ou rôle incorrect.');
         return;
-      }
+      } 
 
       // Créer un objet de bilan biologique avec l'ID du laborantin et l'image
       const formData = new FormData();
@@ -116,13 +113,17 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       formData.append('glycemie', this.glycemie.toString());
       formData.append('pression', this.pression.toString());
       formData.append('cholesterol', this.cholesterol.toString());
+       
+      if (this.imageFile) {
+        console.log('Nom:', this.imageFile.name);
+        console.log('Type:', this.imageFile.type);
+        console.log('Taille:', this.imageFile.size);
+      }
       if (this.imageFile) {
         formData.append('imageFile', this.imageFile, this.imageFile.name);
       }
       formData.append('laborantinId', this.laborantinId);
-      //console.log('formData ', formData);
       console.log('IMAGEFILE', this.imageFile);
-      //console.log('IMAGEFILENAME', this.imageFile.name);
 
       // Appel du service pour sauvegarder le bilan avec une image
       this.ajouterBilanBiologiqueService.addBilan(formData).subscribe(
@@ -163,13 +164,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
     this.imageFile = null; // Réinitialiser le fichier image
   }
 
-  // Gestion de l'image
-  onFileChange(event: any) {
-    if (event.target.files.length > 0) {
-      this.imageFile = event.target.files[0];
-      console.log('Selected file:', this.imageFile);
-    }
-  }
+  
 
   // Génération du graphique
   generateGraph() {
@@ -192,9 +187,9 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
           },
         ],
       };
-
+  
       this.showGraph = true;
-
+  
       setTimeout(() => {
         const ctx = document.getElementById('resultGraph') as HTMLCanvasElement;
         const chart = new Chart(ctx, {
@@ -209,24 +204,25 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
             },
           },
         });
-
-        // Convertir le graphique en base64
-        const graphBase64 = ctx.toDataURL('image/png');
-        this.graphImage = graphBase64;
-
-        // Créer un fichier Blob à partir de l'image base64
-        const byteString = atob(graphBase64.split(',')[1]);
-        const mimeString = graphBase64.split(',')[0].split(':')[1].split(';')[0];
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) {
-          ia[i] = byteString.charCodeAt(i);
-        }
-        const blob = new Blob([ab], { type: mimeString });
-
-        // Créer un fichier à partir du Blob
-        this.imageFile = new File([blob], 'graphique.png', { type: mimeString });
-        console.log('Graphique converti en fichier :', this.imageFile.name);
+  
+        // Attendre un court délai pour être sûr que le graphique est entièrement dessiné
+        setTimeout(() => {
+          // Convertir le canvas en base64 une fois le graphique dessiné
+          const graphBase64 = ctx.toDataURL('image/png');
+          this.graphImage = graphBase64;
+  
+          // Créer un fichier Blob à partir de l'image base64
+          const byteString = atob(graphBase64.split(',')[1]);
+          const mimeString = graphBase64.split(',')[0].split(':')[1].split(';')[0];
+          const ab = new ArrayBuffer(byteString.length);
+          const ia = new Uint8Array(ab);
+          for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+          }
+  
+          this.imageFile = new File([ia], 'graphique.png', { type: mimeString });
+          console.log('Graphique converti en fichier :', this.imageFile.name);
+        }, 100); // Attendre un peu pour que le graphique soit bien dessiné avant la conversion
       }, 0);
     } else {
       alert('Veuillez entrer des valeurs strictement positives pour tous les champs.');

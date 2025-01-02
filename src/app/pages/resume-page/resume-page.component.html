@@ -3,16 +3,16 @@
 <div class="flex justify-center">
    <div class="blue-container">
        <h1>Résumé :</h1>
-        <p>{{consultation.resume}}</p>
-        <div class="flex justify-between items-center mt-10 w-full max-w-4xl mx-auto">
-         <div class="flex items-center gap-2">
+       <p class="resume-text">{{consultation.resume}}</p>
+       <div class="footer">
+        <div class="flex items-center gap-2">
            <h2>Signature :</h2>
-           <p>Dr.{{consultation.medecinConsultant.last_name}}{{consultation.medecinConsultant.first_name}}</p>
+           <p>Dr.{{consultation.medecin.nom}}</p>
          </div>
          <div class="flex items-center gap-2">
            <h2>Date :</h2>
-           <p>{{consultation.date_consultation}}</p>
+           <p>{{consultation.date}}</p>
          </div>
        </div>
    </div>
-</div>
+</div> 
