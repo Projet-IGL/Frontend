@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service'; // Pour gérer les cookies
 import { map } from 'rxjs/operators';
+import { ConsultationService } from './consultation.service';
 
 // Interface définissant la structure d'un utilisateur
 interface User {
@@ -25,7 +26,7 @@ export class AuthService {
 
   private user: User | null = null; // Informations de l'utilisateur connecté
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService, private consultationService: ConsultationService) {}
 
   // Méthode pour envoyer les identifiants au backend et récupérer les informations utilisateur
   login(username: string, password: string): Observable<User> {
@@ -77,7 +78,9 @@ export class AuthService {
   logout() {
     this.deleteToken();
     this.deleteUser();
+    this.consultationService.clearConsultation();
   }
+  
 
   
 }

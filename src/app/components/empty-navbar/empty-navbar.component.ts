@@ -22,6 +22,7 @@ export class EmptyNavbarComponent implements OnInit {
   }
 
   goToLandingPage() {
+    this.authService.logout();
     this.router.navigate(['/Landing-page']);
   }
 
