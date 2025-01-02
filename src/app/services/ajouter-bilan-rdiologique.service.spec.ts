@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AjouterBilanRdiologiqueService } from './ajouter-bilan-rdiologique.service';
+import { AjouterBilanRadiologiqueService } from './ajouter-bilan-rdiologique.service';
 
 describe('AjouterBilanRdiologiqueService', () => {
-  let service: AjouterBilanRdiologiqueService;
+  let service: AjouterBilanRadiologiqueService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AjouterBilanRdiologiqueService);
+    service = TestBed.inject(AjouterBilanRadiologiqueService);
   });
 
   it('should be created', () => {
