@@ -3,8 +3,10 @@
     <p class="mb-8 ml-8 text-3xl font-bold font-pop ">Créer un nouveau DPI</p>
   </div>
   <div [ngClass]="{'visible': errorMsg.length!=0}" class="mb-8 flex justify-center z-30">
-    <div [ngClass]="{'bg-red-300': errorMsg.length!=0}" class="flex rounded justify-center w-32 h-8">
+    <div [ngClass]="{'bg-red-300': errorMsg.length!=0}" class="flex rounded justify-center  h-8">
       <h3 class="mt-1.5 text-red-600"> {{errorMsg}}</h3>
+      <div [ngClass]="{'bg-lime-300': confirmationMsg.length!=0}" class="flex rounded justify-center  h-8">
+        <h3 class="mt-1.5 text-lime-500"> {{confirmationMsg}}</h3>
     </div>
   </div>
   <form [formGroup]="dpiForm" (ngSubmit)="onSubmit()">

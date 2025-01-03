@@ -24,6 +24,10 @@ export class AddDpiFormComponent {
    * Message d'erreur pour l'affichage en cas d'échec.
    */
   errorMsg: string = '';
+  /**
+   * Message de confirmation d'enregistrement.
+   */
+  confirmationMsg: string = '';
 
   /**
    * URL générée pour le QR code.
@@ -94,9 +98,10 @@ export class AddDpiFormComponent {
       ).subscribe(
         (response) => {
           console.log('Réponse du service :', response);  // Affichage de la réponse du backend
+          this.confirmationMsg="Le DPI est enregistré avec succès";
         },
         (error) => {
-          this.errorMsg = error;  // Mise à jour du message d'erreur
+          this.errorMsg = "Les informations que vous avez entrées sont invalides";  // Mise à jour du message d'erreur
           console.error('Une erreur s\'est produite :', error);  // Debug de l'erreur
         }
       );
