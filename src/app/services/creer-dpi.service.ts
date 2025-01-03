@@ -52,9 +52,9 @@ export class CreerDPIService {
     adresse: string,
     medecin: string,
     mutuelle: string,
-    antécedents:string,
+    antécédents:string,
   ): Observable<any> {
-    const newDpi = { nom, prenom, email, nss, numtel, numtelurg, username, password, dateDeNaissance, adresse, medecin, mutuelle, antécedents };
+    const newDpi = { nom, prenom, email, nss, numtel, numtelurg, username, password, dateDeNaissance, adresse, medecin, mutuelle, antécédents };
     console.log('Mocking a request with:', newDpi);
     return this.http.post<any>(this.apiUrl, newDpi); 
   }
