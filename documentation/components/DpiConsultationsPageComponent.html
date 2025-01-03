@@ -1,0 +1,1361 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nom-du-projet documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nom-du-projet documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DpiConsultationsPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Composant pour afficher la page de consultations du DPI (Dossier Patient Informatisé).
+Permet de gérer l&#39;affichage et les interactions avec les consultations d&#39;un patient.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dpi-consultations-page</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/DpiNavbarComponent.html" target="_self" >DpiNavbarComponent</a></code>
+                                <code><a href="../components/EmptyNavbarComponent.html" target="_self" >EmptyNavbarComponent</a></code>
+                            <code>CommonModule</code>
+                                <code><a href="../components/AjouterConsultationComponent.html" target="_self" >AjouterConsultationComponent</a></code>
+                                <code><a href="../components/AddOrdonnanceComponent.html" target="_self" >AddOrdonnanceComponent</a></code>
+                                <code><a href="../components/AddBilanComponent.html" target="_self" >AddBilanComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dpi-consultations-page.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./dpi-consultations-page.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#consultationData" >consultationData</a>
+                            </li>
+                            <li>
+                                <a href="#consultationList" >consultationList</a>
+                            </li>
+                            <li>
+                                <a href="#isMedecin" >isMedecin</a>
+                            </li>
+                            <li>
+                                <a href="#nss" >nss</a>
+                            </li>
+                            <li>
+                                <a href="#popOutVisible" >popOutVisible</a>
+                            </li>
+                            <li>
+                                <a href="#popOutVisible1" >popOutVisible1</a>
+                            </li>
+                            <li>
+                                <a href="#popOutVisible2" >popOutVisible2</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#goToMedecinPage" >goToMedecinPage</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openOtherPopout" >openOtherPopout</a>
+                            </li>
+                            <li>
+                                <a href="#updatePopOutVisibility" >updatePopOutVisibility</a>
+                            </li>
+                            <li>
+                                <a href="#updatePopOutVisibility1" >updatePopOutVisibility1</a>
+                            </li>
+                            <li>
+                                <a href="#updatePopOutVisibility2" >updatePopOutVisibility2</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, consultationService: <a href="../injectables/ConsultationService.html" target="_self">ConsultationService</a>, patientService: <a href="../injectables/PatientService.html" target="_self">PatientService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur du composant.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service pour la navigation.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>consultationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConsultationService.html" target="_self" >ConsultationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service pour gérer les consultations.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>patientService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PatientService.html" target="_self" >PatientService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service pour récupérer les informations du patient.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service pour récupérer les informations de l&#39;utilisateur authentifié.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToMedecinPage"></a>
+                    <span class="name">
+                        <span ><b>goToMedecinPage</b></span>
+                        <a href="#goToMedecinPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToMedecinPage(consultation: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour naviguer vers la page du médecin et afficher les détails de la consultation.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>consultation</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Données de la consultation à afficher.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode d&#39;initialisation du composant.
+Récupère les informations sur le patient et les consultations en fonction du rôle de l&#39;utilisateur.
+Appelle le service pour obtenir la liste des consultations à afficher.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openOtherPopout"></a>
+                    <span class="name">
+                        <span ><b>openOtherPopout</b></span>
+                        <a href="#openOtherPopout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openOtherPopout(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Ouvre un autre pop-out en fonction de l&#39;action de l&#39;événement.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Données de l&#39;événement contenant l&#39;action à réaliser et les données de la consultation.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePopOutVisibility"></a>
+                    <span class="name">
+                        <span ><b>updatePopOutVisibility</b></span>
+                        <a href="#updatePopOutVisibility"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePopOutVisibility(visible: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Met à jour la visibilité du pop-out pour le bilan biologique.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>visible</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Indique si le pop-out doit être visible ou non.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePopOutVisibility1"></a>
+                    <span class="name">
+                        <span ><b>updatePopOutVisibility1</b></span>
+                        <a href="#updatePopOutVisibility1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePopOutVisibility1(data: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Met à jour la visibilité du pop-out pour l&#39;ordonnance.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Indique si le pop-out pour l&#39;ordonnance doit être visible ou non.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePopOutVisibility2"></a>
+                    <span class="name">
+                        <span ><b>updatePopOutVisibility2</b></span>
+                        <a href="#updatePopOutVisibility2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePopOutVisibility2(visible: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Met à jour la visibilité du pop-out pour la consultation.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>visible</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Indique si le pop-out pour la consultation doit être visible ou non.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="consultationData"></a>
+                    <span class="name">
+                        <span ><b>consultationData</b></span>
+                        <a href="#consultationData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Données de la consultation actuelle.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="consultationList"></a>
+                    <span class="name">
+                        <span ><b>consultationList</b></span>
+                        <a href="#consultationList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Liste des consultations à afficher.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMedecin"></a>
+                    <span class="name">
+                        <span ><b>isMedecin</b></span>
+                        <a href="#isMedecin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicateur pour savoir si l&#39;utilisateur est un médecin.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nss"></a>
+                    <span class="name">
+                        <span ><b>nss</b></span>
+                        <a href="#nss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Le numéro de sécurité sociale (NSS) du patient.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popOutVisible"></a>
+                    <span class="name">
+                        <span ><b>popOutVisible</b></span>
+                        <a href="#popOutVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variable pour contrôler la visibilité du pop-out pour le bilan biologique.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popOutVisible1"></a>
+                    <span class="name">
+                        <span ><b>popOutVisible1</b></span>
+                        <a href="#popOutVisible1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variable pour contrôler la visibilité du pop-out pour l&#39;ordonnance.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popOutVisible2"></a>
+                    <span class="name">
+                        <span ><b>popOutVisible2</b></span>
+                        <a href="#popOutVisible2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/dpi-consultations-page/dpi-consultations-page.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variable pour contrôler la visibilité du pop-out pour la consultation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { DpiNavbarComponent } from &quot;../../components/dpi-navbar/dpi-navbar.component&quot;;
+import { EmptyNavbarComponent } from &quot;../../components/empty-navbar/empty-navbar.component&quot;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { ConsultationService } from &#x27;../../services/consultation.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { AddOrdonnanceComponent } from &#x27;../../components/add-ordonnance/add-ordonnance.component&#x27;;
+import { AddBilanComponent } from &#x27;../../components/add-bilan/add-bilan.component&#x27;;
+import { AjouterConsultationComponent } from &#x27;../../components/ajouter-consultation/ajouter-consultation.component&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;; // Importez AuthService pour récupérer l&#x27;utilisateur
+import { PatientService } from &#x27;../../services/patient.service&#x27;;
+
+/**
+ * Composant pour afficher la page de consultations du DPI (Dossier Patient Informatisé).
+ * Permet de gérer l&#x27;affichage et les interactions avec les consultations d&#x27;un patient.
+ */
+@Component({
+  selector: &#x27;app-dpi-consultations-page&#x27;,
+  imports: [
+    DpiNavbarComponent, // Composant de la barre de navigation DPI
+    EmptyNavbarComponent, // Composant pour la barre de navigation vide
+    CommonModule, // Module de base Angular pour des fonctionnalités communes
+    AjouterConsultationComponent, // Composant pour ajouter une consultation
+    AddOrdonnanceComponent, // Composant pour ajouter une ordonnance
+    AddBilanComponent // Composant pour ajouter un bilan
+  ],
+  templateUrl: &#x27;./dpi-consultations-page.component.html&#x27;, // Template HTML pour le composant
+  styleUrl: &#x27;./dpi-consultations-page.component.css&#x27; // Feuille de style CSS pour le composant
+})
+export class DpiConsultationsPageComponent implements OnInit {
+
+  /** 
+   * Constructeur du composant. 
+   * @param router Service pour la navigation.
+   * @param consultationService Service pour gérer les consultations.
+   * @param patientService Service pour récupérer les informations du patient.
+   * @param authService Service pour récupérer les informations de l&#x27;utilisateur authentifié.
+   */
+  constructor(
+    private router: Router,
+    private consultationService: ConsultationService,
+    private patientService: PatientService,
+    private authService: AuthService
+  ) {}
+
+  /** Variable pour contrôler la visibilité du pop-out pour le bilan biologique. */
+  popOutVisible &#x3D; false; 
+
+  /** Variable pour contrôler la visibilité du pop-out pour l&#x27;ordonnance. */
+  popOutVisible1 &#x3D; false;
+
+  /** Variable pour contrôler la visibilité du pop-out pour la consultation. */
+  popOutVisible2 &#x3D; false;
+
+  /** Données de la consultation actuelle. */
+  consultationData: any;
+
+  /** Liste des consultations à afficher. */
+  consultationList: any[] &#x3D; [];
+
+  /** Indicateur pour savoir si l&#x27;utilisateur est un médecin. */
+  isMedecin: boolean &#x3D; false;
+
+  /** Le numéro de sécurité sociale (NSS) du patient. */
+  nss: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * Méthode pour naviguer vers la page du médecin et afficher les détails de la consultation.
+   * @param consultation Données de la consultation à afficher.
+   */
+  goToMedecinPage(consultation: any) {
+    this.consultationService.setConsultation(consultation);
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Medecin&#x27;]);
+  }
+
+  /**
+   * Met à jour la visibilité du pop-out pour le bilan biologique.
+   * @param visible Indique si le pop-out doit être visible ou non.
+   */
+  updatePopOutVisibility(visible: boolean): void {
+    this.popOutVisible &#x3D; visible;
+    console.log(&quot;visible&quot;, this.popOutVisible);
+  }
+
+  /**
+   * Met à jour la visibilité du pop-out pour l&#x27;ordonnance.
+   * @param data Indique si le pop-out pour l&#x27;ordonnance doit être visible ou non.
+   */
+  updatePopOutVisibility1(data: boolean): void {
+    this.popOutVisible1 &#x3D; data;
+    console.log(&quot;visible1&quot;, this.popOutVisible1);
+  }
+
+  /**
+   * Met à jour la visibilité du pop-out pour la consultation.
+   * @param visible Indique si le pop-out pour la consultation doit être visible ou non.
+   */
+  updatePopOutVisibility2(visible: boolean): void {
+    this.popOutVisible2 &#x3D; visible;
+    console.log(&quot;visible2&quot;, this.popOutVisible2);
+  }
+
+  /**
+   * Ouvre un autre pop-out en fonction de l&#x27;action de l&#x27;événement.
+   * @param event Données de l&#x27;événement contenant l&#x27;action à réaliser et les données de la consultation.
+   */
+  openOtherPopout(event: any): void {
+    this.consultationData &#x3D; event.consultationData;
+    console.log(&#x27;consu:&#x27;, this.consultationList);
+
+    // Si l&#x27;action est &quot;ordonnance&quot;, ouvre le pop-out pour ajouter une ordonnance
+    if (event.action &#x3D;&#x3D;&#x3D; &#x27;ordonnance&#x27;) {
+      this.popOutVisible1 &#x3D; true;
+    }
+    // Si l&#x27;action concerne un bilan biologique ou radiologique, ouvre le pop-out pour ajouter un bilan
+    else if (event.action &#x3D;&#x3D;&#x3D; &#x27;bilan biologique,bilan radiologique&#x27; || event.action &#x3D;&#x3D;&#x3D; &#x27;Bilan biologique&#x27; || event.action &#x3D;&#x3D;&#x3D; &#x27;Bilan radiologique&#x27;) {
+      this.popOutVisible &#x3D; true;
+    }
+  }
+
+  /**
+   * Méthode d&#x27;initialisation du composant.
+   * Récupère les informations sur le patient et les consultations en fonction du rôle de l&#x27;utilisateur.
+   * Appelle le service pour obtenir la liste des consultations à afficher.
+   */
+  ngOnInit(): void {
+    const user &#x3D; this.authService.getUser();
+
+    // Vérifie si l&#x27;utilisateur est un médecin et récupère le NSS du patient
+    if (user &amp;&amp; user.role &#x3D;&#x3D;&#x3D; &#x27;Medecin&#x27;) {
+      this.isMedecin &#x3D; true;
+      this.nss &#x3D; this.patientService.getPatient().patient_data.nss;
+    }
+
+    // Si l&#x27;utilisateur est un patient, récupère son NSS
+    if (user &amp;&amp; user.role &#x3D;&#x3D;&#x3D; &#x27;Patient&#x27;) {
+      this.nss &#x3D; this.patientService.getPatient().data.nss;
+    }
+
+    // Appeler le service de consultation pour obtenir les données selon le NSS du patient
+    this.consultationService.getData(this.nss).subscribe((data) &#x3D;&gt; {
+      this.consultationList &#x3D; data; // Stocke les consultations dans la liste
+      console.log(this.consultationList); // Affiche les consultations pour débogage
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-add-bilan
+[popOutVisible]&#x3D;&quot;popOutVisible&quot;
+(popOutVisibilityChange)&#x3D;&quot;updatePopOutVisibility($event)&quot;
+[initialordonnanceData]&#x3D;&quot;consultationData&quot;
+/&gt;
+ &lt;app-ajouter-consultation
+ [popOutVisible]&#x3D;&quot;popOutVisible2&quot;
+(popOutVisibilityChange)&#x3D;&quot;updatePopOutVisibility2($event)&quot;
+(openOtherPopout)&#x3D;&quot;openOtherPopout($event)&quot;/&gt;
+&lt;app-add-ordonnance
+[popOutVisible]&#x3D;&quot;popOutVisible1&quot;
+[initialordonnanceData]&#x3D;&quot;consultationData&quot;
+(popOutVisibilityChange)&#x3D;&quot;updatePopOutVisibility1($event)&quot;&gt;
+
+&lt;/app-add-ordonnance&gt;
+&lt;div  [ngClass]&#x3D;&quot;{&#x27;blur-sm&#x27;: popOutVisible||popOutVisible1||popOutVisible2}&quot;&gt;
+&lt;app-empty-navbar&gt;&lt;/app-empty-navbar&gt;
+&lt;app-dpi-navbar&gt;&lt;/app-dpi-navbar&gt;
+&lt;div class&#x3D;&quot;flex justify-center&quot;&gt;
+&lt;div class&#x3D;&quot;blue-container&quot;&gt;
+    &lt;h3 class&#x3D;&quot;Rech-title&quot;&gt;Consultations récentes :&lt;/h3&gt;
+   &lt;div class&#x3D;&quot;white-container&quot;&gt;
+   &lt;table&gt;
+   &lt;thead&gt;
+   &lt;tr&gt;
+     &lt;th&gt;Numéro consultation &lt;/th&gt;
+     &lt;th&gt;Date&lt;/th&gt;
+     &lt;th&gt;&lt;/th&gt;
+   
+   &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+    &lt;tr *ngFor&#x3D;&quot;let consultation of consultationList&quot;&gt;
+     &lt;td&gt;{{consultation.numero_consultation}}&lt;/td&gt;
+     &lt;td&gt; {{consultation.date_consultation}} &lt;/td&gt;
+     &lt;td class&#x3D;&quot;align&quot; (click)&#x3D;&quot;goToMedecinPage(consultation)&quot;&gt;voir plus &lt;span class&#x3D;&quot;material-symbols-outlined&quot;&gt; arrow_right_alt&lt;/span&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;/tbody&gt;
+   &lt;/table&gt;
+   &lt;/div&gt;
+&lt;!-- Affiche le bouton &quot;Ajouter Consultation&quot; uniquement si l&#x27;utilisateur est un médecin --&gt;
+&lt;button *ngIf&#x3D;&quot;isMedecin&quot; (click)&#x3D;&quot;updatePopOutVisibility2(true)&quot; class&#x3D;&quot;add-btn&quot;&gt;Ajouter Consultation&lt;/button&gt;   &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-add-bilan[popOutVisible]="popOutVisible"(popOutVisibilityChange)="updatePopOutVisibility($event)"[initialordonnanceData]="consultationData"/> <app-ajouter-consultation [popOutVisible]="popOutVisible2"(popOutVisibilityChange)="updatePopOutVisibility2($event)"(openOtherPopout)="openOtherPopout($event)"/><app-add-ordonnance[popOutVisible]="popOutVisible1"[initialordonnanceData]="consultationData"(popOutVisibilityChange)="updatePopOutVisibility1($event)"></app-add-ordonnance><div  [ngClass]="{\'blur-sm\': popOutVisible||popOutVisible1||popOutVisible2}"><app-empty-navbar></app-empty-navbar><app-dpi-navbar></app-dpi-navbar><div class="flex justify-center"><div class="blue-container">    <h3 class="Rech-title">Consultations récentes :</h3>   <div class="white-container">   <table>   <thead>   <tr>     <th>Numéro consultation </th>     <th>Date</th>     <th></th>      </tr>   </thead>   <tbody>    <tr *ngFor="let consultation of consultationList">     <td>{{consultation.numero_consultation}}</td>     <td> {{consultation.date_consultation}} </td>     <td class="align" (click)="goToMedecinPage(consultation)">voir plus <span class="material-symbols-outlined"> arrow_right_alt</span></td>   </tr>   </tbody>   </table>   </div><!-- Affiche le bouton "Ajouter Consultation" uniquement si l\'utilisateur est un médecin --><button *ngIf="isMedecin" (click)="updatePopOutVisibility2(true)" class="add-btn">Ajouter Consultation</button>   </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AddBilanComponent', 'selector': 'app-add-bilan'},{'name': 'AddDpiFormComponent', 'selector': 'app-add-dpi-form'},{'name': 'AddDpiHeroComponent', 'selector': 'app-add-dpi-hero'},{'name': 'AddDpiNavBarComponent', 'selector': 'app-add-dpi-nav-bar'},{'name': 'AddDpiPageComponent', 'selector': 'app-add-dpi-page'},{'name': 'AddOrdonnanceComponent', 'selector': 'app-add-ordonnance'},{'name': 'AddStaffPageComponent', 'selector': 'app-add-staff-page'},{'name': 'AjouterBilanBiologiqueComponent', 'selector': 'app-ajouter-bilan-biologique'},{'name': 'AjouterBilanRadiologiqueComponent', 'selector': 'app-ajouter-bilan-radiologique'},{'name': 'AjouterConsultationComponent', 'selector': 'app-ajouter-consultation'},{'name': 'AjouterSoinPageComponent', 'selector': 'app-ajouter-soin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BilanBioPageComponent', 'selector': 'app-bilan-bio-page'},{'name': 'BilanRadioPageComponent', 'selector': 'app-bilan-radio-page'},{'name': 'CompteRenduPageComponent', 'selector': 'app-compte-rendu-page'},{'name': 'ConsultationMedecinPageComponent', 'selector': 'app-consultation-medecin-page'},{'name': 'ConsultationNavbarComponent', 'selector': 'app-consultation-navbar'},{'name': 'DpiConsultationsPageComponent', 'selector': 'app-dpi-consultations-page'},{'name': 'DpiNavbarComponent', 'selector': 'app-dpi-navbar'},{'name': 'DpiPatientPageComponent', 'selector': 'app-dpi-patient-page'},{'name': 'DpiSoinPageComponent', 'selector': 'app-dpi-soin-page'},{'name': 'EmptyNavbarComponent', 'selector': 'app-empty-navbar'},{'name': 'InfoPatientComponent', 'selector': 'app-info-patient'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'MonBilanBioComponent', 'selector': 'app-mon-bilan-bio'},{'name': 'OrdonnancePageComponent', 'selector': 'app-ordonnance-page'},{'name': 'PersonnelFormComponent', 'selector': 'app-personnel-form'},{'name': 'ProfilAdminComponent', 'selector': 'app-profil-admin'},{'name': 'ProfilInfermierComponent', 'selector': 'app-profil-infermier'},{'name': 'ProfilLaborantinComponent', 'selector': 'app-profil-laborantin'},{'name': 'ProfilMedecinComponent', 'selector': 'app-profil-medecin'},{'name': 'ProfilPatientComponent', 'selector': 'app-profil-patient'},{'name': 'ProfilRadiologueComponent', 'selector': 'app-profil-radiologue'},{'name': 'ProfilStaffComponent', 'selector': 'app-profil-staff'},{'name': 'RechDpiPageComponent', 'selector': 'app-rech-dpi-page'},{'name': 'ResumePageComponent', 'selector': 'app-resume-page'},{'name': 'UpFormComponent', 'selector': 'app-up-form'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DpiConsultationsPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DpiConsultationsPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

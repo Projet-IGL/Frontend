@@ -15,20 +15,34 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./ajouter-bilan-biologique.component.css'],
 })
 export class AjouterBilanBiologiqueComponent implements OnInit {
+  /** Heure de l'examen */
   time: string = '';
+  /** Numéro de sécurité sociale */
   nss: string = '';
+  /** Numéro de consultation */
   numcons: string = '';
+  /** Valeur de la glycémie */
   glycemie: number | null = null;
+  /** Valeur de la pression artérielle */
   pression: number | null = null;
+  /** Valeur du cholestérol */
   cholesterol: number | null = null;
-  imageFile: File | null = null;  // Stocke le fichier image
+  /** Fichier image (graphique ou autre) */
+  imageFile: File | null = null;
+  /** Indicateur de succès lors de l'enregistrement */
   isSaved: boolean = false;
+  /** Indicateur si le NSS est invalide */
   isNssInvalid: boolean = false;
+  /** Indicateur si le numéro de consultation est invalide */
   isConsInvalid: boolean = false;
+  /** Indicateur pour afficher le graphique */
   showGraph: boolean = false;
+  /** Image générée du graphique en base64 */
   graphImage: string | null = null;
-  laborantinId: string | null = null; // ID du laborantin
-  user: any = null; // Informations utilisateur
+  /** ID du laborantin authentifié */
+  laborantinId: string | null = null;
+  /** Informations sur l'utilisateur connecté */
+  user: any = null;
 
   constructor(
     private router: Router,
@@ -37,6 +51,11 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
     private http: HttpClient
   ) {}
 
+  /**
+   * Méthode d'initialisation du composant
+   * Récupère l'utilisateur authentifié et initialise son rôle.
+   * Si l'utilisateur est un laborantin, son ID est stocké pour les actions suivantes.
+   */
   ngOnInit() {
     this.user = this.authService.getUser();
     if (this.user && this.user.role === 'Laborantin') {
@@ -46,47 +65,63 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
     }
   }
 
-  // Méthodes de navigation
+  /**
+   * Redirige l'utilisateur vers son profil de laborantin.
+   */
   voirProfile() {
     this.router.navigate(['/profilLaborantin']);
   }
 
+  /**
+   * Déconnecte l'utilisateur et le redirige vers la page d'accueil.
+   */
   logout() {
     this.authService.logout();
     this.router.navigate(['/Landing-page']);
   }
 
-    // Vérification du NSS
-    checkNssExistence() {
-      this.ajouterBilanBiologiqueService.checkNssExistence(this.nss).subscribe(
-        (response) => {
-          this.isNssInvalid = !response.exists;
-        },
-        (error) => {
-          console.error('Erreur lors de la vérification du NSS:', error);
-          this.isNssInvalid = true;
-  
-        }
-      );
-    } 
-  
-    // Vérification du numéro de consultation
-    checkConsultationExistence() {
-      this.ajouterBilanBiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
-        (response) => {
-          this.isConsInvalid = !response.exists;
-          console.log('this.isConsInvalid',this.isConsInvalid );
-        },
-        (error) => {
-          console.error('Erreur lors de la vérification de la consultation:', error);
-          this.isConsInvalid = true;
-          console.log('this.isConsInvalid',this.isConsInvalid );
-  
-        }
-      );
-    }
+  /**
+   * Vérifie si le NSS existe via le service `ajouterBilanBiologiqueService`.
+   * Met à jour l'état `isNssInvalid` pour indiquer si le NSS est valide ou non.
+   * Affiche une erreur dans la console en cas de problème.
+   */
+  checkNssExistence() {
+    this.ajouterBilanBiologiqueService.checkNssExistence(this.nss).subscribe(
+      (response) => {
+        this.isNssInvalid = !response.exists;
+      },
+      (error) => {
+        console.error('Erreur lors de la vérification du NSS:', error);
+        this.isNssInvalid = true;
+      }
+    );
+  }
 
-  // Sauvegarde
+  /**
+   * Vérifie si le numéro de consultation est valide via le service `ajouterBilanBiologiqueService`.
+   * Met à jour l'état `isConsInvalid` pour indiquer si le numéro de consultation existe ou non.
+   * Affiche une erreur dans la console en cas de problème.
+   */
+  checkConsultationExistence() {
+    this.ajouterBilanBiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
+      (response) => {
+        this.isConsInvalid = !response.exists;
+        console.log('this.isConsInvalid',this.isConsInvalid );
+      },
+      (error) => {
+        console.error('Erreur lors de la vérification de la consultation:', error);
+        this.isConsInvalid = true;
+        console.log('this.isConsInvalid',this.isConsInvalid );
+      }
+    );
+  }
+
+  /**
+   * Méthode pour sauvegarder le bilan biologique.
+   * Vérifie si tous les champs sont remplis et valides avant d'envoyer les données.
+   * Si des erreurs sont détectées, elles sont affichées sous forme d'alertes.
+   * Envoie le bilan avec une image (si disponible) au backend.
+   */
   onSave() {
     if (
       this.time.trim() !== '' &&
@@ -104,9 +139,9 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       if (!this.laborantinId) {
         alert('Utilisateur non authentifié ou rôle incorrect.');
         return;
-      } 
+      }
 
-      // Créer un objet de bilan biologique avec l'ID du laborantin et l'image
+      // Création du formulaire avec les données à envoyer
       const formData = new FormData();
       formData.append('time', this.time);
       formData.append('nss', this.nss);
@@ -114,7 +149,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       formData.append('glycemie', this.glycemie.toString());
       formData.append('pression', this.pression.toString());
       formData.append('cholesterol', this.cholesterol.toString());
-       
+      
       if (this.imageFile) {
         console.log('Nom:', this.imageFile.name);
         console.log('Type:', this.imageFile.type);
@@ -126,7 +161,7 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
       formData.append('laborantinId', this.laborantinId);
       console.log('IMAGEFILE', this.imageFile);
 
-      // Appel du service pour sauvegarder le bilan avec une image
+      // Envoie du formulaire au backend pour sauvegarde
       this.ajouterBilanBiologiqueService.addBilan(formData).subscribe(
         (response) => {
           console.log('Bilan enregistré avec succès!', response);
@@ -148,11 +183,16 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
     }
   }
 
-  // Annulation
+  /**
+   * Annule l'action en réinitialisant le formulaire et les valeurs de l'état.
+   */
   onCancel() {
     this.resetForm();
   }
 
+  /**
+   * Réinitialise toutes les valeurs du formulaire et les états associés.
+   */
   resetForm() {
     this.time = '';
     this.nss = '';
@@ -165,9 +205,11 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
     this.imageFile = null; // Réinitialiser le fichier image
   }
 
-  
-
-  // Génération du graphique
+  /**
+   * Génère un graphique avec les valeurs de glycémie, pression et cholestérol.
+   * Affiche le graphique sous forme d'image, puis convertit le graphique en un fichier image base64.
+   * Ce fichier image peut être utilisé comme un fichier dans le formulaire.
+   */
   generateGraph() {
     if (
       this.glycemie !== null &&
@@ -206,13 +248,10 @@ export class AjouterBilanBiologiqueComponent implements OnInit {
           },
         });
   
-        // Attendre un court délai pour être sûr que le graphique est entièrement dessiné
         setTimeout(() => {
-          // Convertir le canvas en base64 une fois le graphique dessiné
           const graphBase64 = ctx.toDataURL('image/png');
           this.graphImage = graphBase64;
   
-          // Créer un fichier Blob à partir de l'image base64
           const byteString = atob(graphBase64.split(',')[1]);
           const mimeString = graphBase64.split(',')[0].split(':')[1].split(';')[0];
           const ab = new ArrayBuffer(byteString.length);

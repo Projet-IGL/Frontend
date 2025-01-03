@@ -1,0 +1,943 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nom-du-projet documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nom-du-projet documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  OrdonnancePageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/ordonnance-page/ordonnance-page.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ordonnance-page</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/EmptyNavbarComponent.html" target="_self" >EmptyNavbarComponent</a></code>
+                                <code><a href="../components/ConsultationNavbarComponent.html" target="_self" >ConsultationNavbarComponent</a></code>
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ordonnance-page.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ordonnance-page.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#consultation" >consultation</a>
+                            </li>
+                            <li>
+                                <a href="#nss" >nss</a>
+                            </li>
+                            <li>
+                                <a href="#numero_consultation" >numero_consultation</a>
+                            </li>
+                            <li>
+                                <a href="#ordoList" >ordoList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ordonnanceService: <a href="../injectables/OrdonnanceService.html" target="_self">OrdonnanceService</a>, consultationService: <a href="../injectables/ConsultationService.html" target="_self">ConsultationService</a>, patientService: <a href="../injectables/PatientService.html" target="_self">PatientService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/ordonnance-page/ordonnance-page.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ordonnanceService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrdonnanceService.html" target="_self" >OrdonnanceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>consultationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConsultationService.html" target="_self" >ConsultationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>patientService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PatientService.html" target="_self" >PatientService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/pages/ordonnance-page/ordonnance-page.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode d&#39;initialisation qui s&#39;exécute dès que le composant est créé.</p>
+<ul>
+<li>Récupère les données de l&#39;utilisateur connecté et son rôle.</li>
+<li>En fonction du rôle (médecin ou patient), récupère le numéro de sécurité sociale (NSS).</li>
+<li>Récupère les détails de la consultation en cours.</li>
+<li>Effectue une requête pour récupérer les ordonnances associées au NSS et au numéro de consultation.</li>
+</ul>
+<p>Les données récupérées sont ensuite affichées dans la console pour la vérification.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="consultation"></a>
+                    <span class="name">
+                        <span ><b>consultation</b></span>
+                        <a href="#consultation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/ordonnance-page/ordonnance-page.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Détails de la consultation en cours, incluant des informations telles que le numéro de consultation,
+la date, et potentiellement d&#39;autres informations relatives à la consultation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nss"></a>
+                    <span class="name">
+                        <span ><b>nss</b></span>
+                        <a href="#nss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/ordonnance-page/ordonnance-page.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Numéro de sécurité sociale (NSS) du patient.
+Il est récupéré en fonction du rôle de l&#39;utilisateur (médecin ou patient) et est utilisé
+pour rechercher les ordonnances correspondant à ce patient.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numero_consultation"></a>
+                    <span class="name">
+                        <span ><b>numero_consultation</b></span>
+                        <a href="#numero_consultation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/ordonnance-page/ordonnance-page.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Numéro de consultation unique associé à la consultation actuelle.
+Utilisé pour récupérer les ordonnances spécifiques à cette consultation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ordoList"></a>
+                    <span class="name">
+                        <span ><b>ordoList</b></span>
+                        <a href="#ordoList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/ordonnance-page/ordonnance-page.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Liste des ordonnances associées à la consultation et au patient.
+Cette variable est remplie après un appel à <code>ordonnanceService.getData</code> qui retourne
+la liste des ordonnances pour le patient et la consultation en cours.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { EmptyNavbarComponent } from &quot;../../components/empty-navbar/empty-navbar.component&quot;;
+import { ConsultationNavbarComponent } from &quot;../../components/consultation-navbar/consultation-navbar.component&quot;;
+import { OrdonnanceService } from &#x27;../../services/ordonnance.service&#x27;;
+import { ConsultationService } from &#x27;../../services/consultation.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { PatientService } from &#x27;../../services/patient.service&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+
+@Component({
+  selector: &#x27;app-ordonnance-page&#x27;,
+  imports: [EmptyNavbarComponent, ConsultationNavbarComponent, CommonModule],
+  templateUrl: &#x27;./ordonnance-page.component.html&#x27;,
+  styleUrls: [&#x27;./ordonnance-page.component.css&#x27;]
+})
+export class OrdonnancePageComponent implements OnInit {
+
+  /** 
+   * Liste des ordonnances associées à la consultation et au patient.
+   * Cette variable est remplie après un appel à &#x60;ordonnanceService.getData&#x60; qui retourne
+   * la liste des ordonnances pour le patient et la consultation en cours.
+   * @type {any}
+   */
+  ordoList: any;
+
+  /** 
+   * Détails de la consultation en cours, incluant des informations telles que le numéro de consultation,
+   * la date, et potentiellement d&#x27;autres informations relatives à la consultation.
+   * @type {any}
+   */
+  consultation: any;
+
+  /** 
+   * Numéro de consultation unique associé à la consultation actuelle.
+   * Utilisé pour récupérer les ordonnances spécifiques à cette consultation.
+   * @type {string}
+   */
+  numero_consultation: string &#x3D; &#x27;&#x27;;
+
+  /** 
+   * Numéro de sécurité sociale (NSS) du patient.
+   * Il est récupéré en fonction du rôle de l&#x27;utilisateur (médecin ou patient) et est utilisé
+   * pour rechercher les ordonnances correspondant à ce patient.
+   * @type {string}
+   */
+  nss: string &#x3D; &#x27;&#x27;;
+
+  constructor(
+    /** Service utilisé pour récupérer les ordonnances depuis le backend */
+    private ordonnanceService: OrdonnanceService,
+
+    /** Service utilisé pour récupérer les données de consultation */
+    private consultationService: ConsultationService,
+
+    /** Service utilisé pour récupérer les informations du patient */
+    private patientService: PatientService,
+
+    /** Service utilisé pour gérer l&#x27;authentification et récupérer les informations de l&#x27;utilisateur connecté */
+    private authService: AuthService
+  ) {}
+
+  /**
+   * Méthode d&#x27;initialisation qui s&#x27;exécute dès que le composant est créé.
+   * - Récupère les données de l&#x27;utilisateur connecté et son rôle.
+   * - En fonction du rôle (médecin ou patient), récupère le numéro de sécurité sociale (NSS).
+   * - Récupère les détails de la consultation en cours.
+   * - Effectue une requête pour récupérer les ordonnances associées au NSS et au numéro de consultation.
+   * 
+   * Les données récupérées sont ensuite affichées dans la console pour la vérification.
+   * 
+   * @memberof OrdonnancePageComponent
+   */
+  ngOnInit(): void {
+    // Récupère les informations de l&#x27;utilisateur connecté
+    const user &#x3D; this.authService.getUser();
+
+    // Si l&#x27;utilisateur est un médecin, on récupère le NSS à partir des données du patient
+    if (user &amp;&amp; user.role &#x3D;&#x3D;&#x3D; &#x27;Medecin&#x27;) {
+      this.nss &#x3D; this.patientService.getPatient().patient_data.nss;
+      console.log(this.nss);
+    }
+
+    // Si l&#x27;utilisateur est un patient, on récupère également le NSS à partir de ses données
+    if (user &amp;&amp; user.role &#x3D;&#x3D;&#x3D; &#x27;Patient&#x27;) {
+      this.nss &#x3D; this.patientService.getPatient().data.nss;
+      console.log(this.nss);
+    }
+
+    // Récupère la consultation en cours via le service ConsultationService
+    this.consultation &#x3D; this.consultationService.getConsultation();
+
+    // On récupère le numéro de consultation spécifique à la consultation actuelle
+    this.numero_consultation &#x3D; this.consultation.numero_consultation;
+
+    // Récupère les ordonnances pour le NSS et le numéro de consultation
+    this.ordonnanceService.getData(this.nss, this.numero_consultation).subscribe((data) &#x3D;&gt; {
+      // On stocke les ordonnances récupérées dans &#x60;ordoList&#x60;
+      this.ordoList &#x3D; data;
+      // Affiche les données récupérées dans la console pour le débogage
+      console.log(data);
+      console.log(this.ordoList);
+    });
+
+    // Affiche les données des ordonnances et le numéro de consultation dans la console pour vérification
+    console.log(&#x27;ordoooonance&#x27;, this.ordoList);
+    console.log(&#x27;num cons&#x27;, this.numero_consultation);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-empty-navbar&gt;&lt;/app-empty-navbar&gt;
+&lt;app-consultation-navbar&gt;&lt;/app-consultation-navbar&gt;
+&lt;div class&#x3D;&quot;flex justify-center items-center&quot;&gt;
+    &lt;div class&#x3D;&quot;blue-container&quot;&gt;
+        &lt;h3 class&#x3D;&quot;Rech-title&quot;&gt;Ordonnance :&lt;/h3&gt;
+       &lt;div class&#x3D;&quot;white-container&quot;&gt;
+       &lt;table&gt;
+       &lt;thead&gt;
+       &lt;tr&gt;
+         &lt;th&gt;Médicament&lt;/th&gt;
+         &lt;th&gt;Dose&lt;/th&gt;
+         &lt;th&gt;Durée&lt;/th&gt;
+       &lt;/tr&gt;
+       &lt;/thead&gt;
+       &lt;tbody&gt;
+        &lt;tr *ngFor&#x3D;&quot;let medicament of ordoList.medicaments&quot;&gt;
+        &lt;td&gt;{{medicament.nom}}&lt;/td&gt;
+        &lt;td&gt;{{medicament.dose}}&lt;/td&gt;
+        &lt;td&gt;{{medicament.duree}}&lt;/td&gt;
+       &lt;/tbody&gt;
+       &lt;/table&gt;
+       &lt;/div&gt;
+       &lt;div class&#x3D;&quot;flex justify-between items-center mt-10 w-full max-w-4xl mx-auto&quot;&gt;
+         &lt;div class&#x3D;&quot;flex items-center gap-2&quot;&gt;
+           &lt;h2&gt;Signature :&lt;/h2&gt;
+           &lt;p&gt;Dr.{{consultation.medecinConsultant.last_name}}&lt;/p&gt;
+         &lt;/div&gt;
+         &lt;div class&#x3D;&quot;flex items-center gap-2&quot;&gt;
+           &lt;h2&gt;Date :&lt;/h2&gt;
+           &lt;p&gt;{{consultation.date_consultation}}&lt;/p&gt;
+         &lt;/div&gt;
+       &lt;/div&gt;
+    &lt;/div&gt;
+       &lt;/div&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./ordonnance-page.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 20px;
+}
+
+th {
+  background-color: #DEEBFF;
+  font-weight: bold; 
+}
+
+tr:nth-child(even) {
+  background-color: #DEEBFF; /* Ligne bleue pour les lignes paires */
+}
+
+tr:nth-child(even):hover {
+  background-color: aliceblue;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff; /* Ligne blanche pour les lignes impaires */
+}
+
+tr:nth-child(odd):hover {
+  background-color: aliceblue;
+}
+
+.blue-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ajuste à la largeur disponible */
+  max-width: 1100px; /* Limite maximale */
+  margin-top: 50px;
+  background-color: #DEEBFF;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.white-container {
+  width: 100%; /* Prend toute la largeur disponible */
+  max-width: 900px; /* Limite maximale */
+  background-color: white;
+  padding: 80px 60px;
+  border-radius: 20px;
+  box-shadow: 0 3px 5px rgba(180, 180, 180, 0.765);
+}
+
+.Rech-title {
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: left; /* Aligne le texte à gauche */
+  align-self: flex-start; /* Annule l&#x27;alignement centré pour cet élément */
+  margin-left: 20px; /* Supprime toute marge inutile */
+  margin-bottom: 30px;
+}
+
+.align {
+  display: flex;
+  align-items: center;
+  color: #3D3BF3;
+  cursor: pointer;
+}
+
+.search-icone {
+  margin-left: -40px;
+  margin-right: 10px;
+  z-index: 20;
+  cursor: pointer;
+  color: #484848;
+}
+
+.close-icon {
+  position: absolute;
+  right: 0;
+  font-size: 30px;
+  color: #000000;
+  cursor: pointer;
+  z-index: 10;
+  background-color: #3131318f;
+  border-radius: 30px;
+}
+
+.close-icon:hover {
+  color: rgb(37, 37, 37);
+}
+
+.delete-icone {
+  color: #C82222;
+  cursor: pointer;
+}
+
+/* Media Queries pour les écrans plus petits */
+@media (max-width: 768px) {
+
+  .blue-container {
+    padding: 15px; /* Réduit l&#x27;espace intérieur */
+    margin-top: 100px;
+  }
+
+  .white-container {
+    padding: 15px; /* Réduit l&#x27;espace intérieur */
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 14px; /* Réduit la taille du texte */
+  }
+}
+
+@media (max-width: 480px) {
+  .Rech-title {
+    font-size: 18px; /* Réduit la taille du texte */
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 12px; /* Texte encore plus petit */
+  }
+}
+
+
+h2{
+    font-weight: 700;
+    margin-right: 20px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-empty-navbar></app-empty-navbar><app-consultation-navbar></app-consultation-navbar><div class="flex justify-center items-center">    <div class="blue-container">        <h3 class="Rech-title">Ordonnance :</h3>       <div class="white-container">       <table>       <thead>       <tr>         <th>Médicament</th>         <th>Dose</th>         <th>Durée</th>       </tr>       </thead>       <tbody>        <tr *ngFor="let medicament of ordoList.medicaments">        <td>{{medicament.nom}}</td>        <td>{{medicament.dose}}</td>        <td>{{medicament.duree}}</td>       </tbody>       </table>       </div>       <div class="flex justify-between items-center mt-10 w-full max-w-4xl mx-auto">         <div class="flex items-center gap-2">           <h2>Signature :</h2>           <p>Dr.{{consultation.medecinConsultant.last_name}}</p>         </div>         <div class="flex items-center gap-2">           <h2>Date :</h2>           <p>{{consultation.date_consultation}}</p>         </div>       </div>    </div>       </div></div>'
+    var COMPONENTS = [{'name': 'AddBilanComponent', 'selector': 'app-add-bilan'},{'name': 'AddDpiFormComponent', 'selector': 'app-add-dpi-form'},{'name': 'AddDpiHeroComponent', 'selector': 'app-add-dpi-hero'},{'name': 'AddDpiNavBarComponent', 'selector': 'app-add-dpi-nav-bar'},{'name': 'AddDpiPageComponent', 'selector': 'app-add-dpi-page'},{'name': 'AddOrdonnanceComponent', 'selector': 'app-add-ordonnance'},{'name': 'AddStaffPageComponent', 'selector': 'app-add-staff-page'},{'name': 'AjouterBilanBiologiqueComponent', 'selector': 'app-ajouter-bilan-biologique'},{'name': 'AjouterBilanRadiologiqueComponent', 'selector': 'app-ajouter-bilan-radiologique'},{'name': 'AjouterConsultationComponent', 'selector': 'app-ajouter-consultation'},{'name': 'AjouterSoinPageComponent', 'selector': 'app-ajouter-soin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BilanBioPageComponent', 'selector': 'app-bilan-bio-page'},{'name': 'BilanRadioPageComponent', 'selector': 'app-bilan-radio-page'},{'name': 'CompteRenduPageComponent', 'selector': 'app-compte-rendu-page'},{'name': 'ConsultationMedecinPageComponent', 'selector': 'app-consultation-medecin-page'},{'name': 'ConsultationNavbarComponent', 'selector': 'app-consultation-navbar'},{'name': 'DpiConsultationsPageComponent', 'selector': 'app-dpi-consultations-page'},{'name': 'DpiNavbarComponent', 'selector': 'app-dpi-navbar'},{'name': 'DpiPatientPageComponent', 'selector': 'app-dpi-patient-page'},{'name': 'DpiSoinPageComponent', 'selector': 'app-dpi-soin-page'},{'name': 'EmptyNavbarComponent', 'selector': 'app-empty-navbar'},{'name': 'InfoPatientComponent', 'selector': 'app-info-patient'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'MonBilanBioComponent', 'selector': 'app-mon-bilan-bio'},{'name': 'OrdonnancePageComponent', 'selector': 'app-ordonnance-page'},{'name': 'PersonnelFormComponent', 'selector': 'app-personnel-form'},{'name': 'ProfilAdminComponent', 'selector': 'app-profil-admin'},{'name': 'ProfilInfermierComponent', 'selector': 'app-profil-infermier'},{'name': 'ProfilLaborantinComponent', 'selector': 'app-profil-laborantin'},{'name': 'ProfilMedecinComponent', 'selector': 'app-profil-medecin'},{'name': 'ProfilPatientComponent', 'selector': 'app-profil-patient'},{'name': 'ProfilRadiologueComponent', 'selector': 'app-profil-radiologue'},{'name': 'ProfilStaffComponent', 'selector': 'app-profil-staff'},{'name': 'RechDpiPageComponent', 'selector': 'app-rech-dpi-page'},{'name': 'ResumePageComponent', 'selector': 'app-resume-page'},{'name': 'UpFormComponent', 'selector': 'app-up-form'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OrdonnancePageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OrdonnancePageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
