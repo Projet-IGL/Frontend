@@ -54,7 +54,8 @@ export class AddDpiFormComponent {
       medecinTraitant: ['', Validators.required],
       nomUtilisateur: ['', Validators.required],
       motDePasse: ['', Validators.required],
-      mutuelle: ['']  // Champ optionnel pour la mutuelle
+      mutuelle: [''],  // Champ optionnel pour la mutuelle
+      antécédents:['']
     });
   }
 
@@ -94,7 +95,8 @@ export class AddDpiFormComponent {
         this.dpiForm.value.dateNaissance,
         this.dpiForm.value.adresse,
         this.dpiForm.value.medecinTraitant,
-        this.dpiForm.value.mutuelle
+        this.dpiForm.value.mutuelle,
+        this.dpiForm.value.antécédents
       ).subscribe(
         (response) => {
           console.log('Réponse du service :', response);  // Affichage de la réponse du backend

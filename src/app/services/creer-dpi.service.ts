@@ -36,6 +36,7 @@ export class CreerDPIService {
    * @param adresse - Adresse du patient.
    * @param medecin - Médecin référent du patient.
    * @param mutuelle - Mutuelle du patient.
+   * @param antécédents -Antécédents médecaux du patient
    * @returns Un observable contenant la réponse de l'API.
    */
   CreerDpi(
@@ -51,8 +52,9 @@ export class CreerDPIService {
     adresse: string,
     medecin: string,
     mutuelle: string,
+    antécedents:string,
   ): Observable<any> {
-    const newDpi = { nom, prenom, email, nss, numtel, numtelurg, username, password, dateDeNaissance, adresse, medecin, mutuelle };
+    const newDpi = { nom, prenom, email, nss, numtel, numtelurg, username, password, dateDeNaissance, adresse, medecin, mutuelle, antécedents };
     console.log('Mocking a request with:', newDpi);
     return this.http.post<any>(this.apiUrl, newDpi); 
   }
