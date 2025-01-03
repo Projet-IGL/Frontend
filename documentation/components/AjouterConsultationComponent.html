@@ -1,0 +1,1466 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nom-du-projet documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nom-du-projet documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AjouterConsultationComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/ajouter-consultation/ajouter-consultation.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Composant pour ajouter une consultation.
+Ce composant permet à l&#39;utilisateur de saisir les informations relatives à une consultation,
+de sélectionner une action à entreprendre (ordonnance, bilan, aucun),
+et de valider ou annuler l&#39;ajout de la consultation.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ajouter-consultation</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ajouter-consultation.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ajouter-consultation.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#action" >action</a>
+                            </li>
+                            <li>
+                                <a href="#consultationData" >consultationData</a>
+                            </li>
+                            <li>
+                                <a href="#medecinId" >medecinId</a>
+                            </li>
+                            <li>
+                                <a href="#patient" >patient</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#annuler" >annuler</a>
+                            </li>
+                            <li>
+                                <a href="#closePopup" >closePopup</a>
+                            </li>
+                            <li>
+                                <a href="#selectAction" >selectAction</a>
+                            </li>
+                            <li>
+                                <a href="#suivant" >suivant</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#popOutVisible" >popOutVisible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#openOtherPopout" >openOtherPopout</a>
+                            </li>
+                            <li>
+                                <a href="#popOutVisibilityChange" >popOutVisibilityChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ConsultationService: <a href="../injectables/ConsultationService.html" target="_self">ConsultationService</a>, PatientService: <a href="../injectables/PatientService.html" target="_self">PatientService</a>, AuthService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur du composant AjouterConsultationComponent.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ConsultationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConsultationService.html" target="_self" >ConsultationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour gérer les consultations</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>PatientService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PatientService.html" target="_self" >PatientService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour gérer les informations du patient</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>AuthService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour gérer l&#39;authentification et récupérer les informations de l&#39;utilisateur connecté</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popOutVisible"></a>
+                        <b>popOutVisible</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:26</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Contrôle de la visibilité de la pop-up (entrée du composant).
+Utilisé pour afficher ou masquer la pop-up dans l&#39;interface utilisateur.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openOtherPopout"></a>
+                        <b>openOtherPopout</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:42</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Émet un événement pour ouvrir une autre pop-up.
+Cet événement est émis lorsqu&#39;une action requiert l&#39;ouverture d&#39;une pop-up différente de celle actuellement visible.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popOutVisibilityChange"></a>
+                        <b>popOutVisibilityChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:35</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Émet un événement pour changer la visibilité de la pop-up.
+Cet événement est émis lorsqu&#39;un changement de visibilité doit être appliqué (par exemple, lors de l&#39;ouverture ou de la fermeture).</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">this.popOutVisibilityChange.emit(true); // Pour rendre visible la pop-up</code></pre></div></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="annuler"></a>
+                    <span class="name">
+                        <span ><b>annuler</b></span>
+                        <a href="#annuler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>annuler()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour annuler l&#39;opération et fermer la pop-up.
+Affiche également un message dans la console indiquant que le formulaire a été annulé.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closePopup"></a>
+                    <span class="name">
+                        <span ><b>closePopup</b></span>
+                        <a href="#closePopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closePopup()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour fermer la pop-up.
+Elle émet un événement pour mettre à jour la visibilité de la pop-up.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectAction"></a>
+                    <span class="name">
+                        <span ><b>selectAction</b></span>
+                        <a href="#selectAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectAction(selectedAction: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour gérer la sélection de l&#39;action (ordonnance, bilan, aucun).</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selectedAction</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Action sélectionnée par l&#39;utilisateur.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="suivant"></a>
+                    <span class="name">
+                        <span ><b>suivant</b></span>
+                        <a href="#suivant"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>suivant(datetime: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, resume: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour passer à l&#39;étape suivante après avoir validé la saisie des données.
+Cette méthode vérifie la validité des données saisies avant de procéder.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>datetime</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Date et heure de la consultation</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>resume</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Résumé de la consultation</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="action"></a>
+                    <span class="name">
+                        <span ><b>action</b></span>
+                        <a href="#action"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>L&#39;action sélectionnée pour la consultation.
+Permet de spécifier l&#39;action que l&#39;utilisateur souhaite effectuer (par exemple, une ordonnance, un bilan, ou aucune action).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="consultationData"></a>
+                    <span class="name">
+                        <span ><b>consultationData</b></span>
+                        <a href="#consultationData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ dateTime: &#x27;&#x27;, resume: &#x27;&#x27;, bilan: &#x27;&#x27;, dpi: &#x27;&#x27;, medecinConsultant: &#x27;&#x27; }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Données de la consultation à sauvegarder.
+Ces données incluent des informations essentielles telles que la date et l&#39;heure de la consultation, le résumé, les bilans, le DPI et le médecin consultant.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="medecinId"></a>
+                    <span class="name">
+                        <span ><b>medecinId</b></span>
+                        <a href="#medecinId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Identifiant du médecin responsable de la consultation.
+Permet d&#39;associer la consultation à un médecin spécifique via son identifiant.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patient"></a>
+                    <span class="name">
+                        <span ><b>patient</b></span>
+                        <a href="#patient"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/components/ajouter-consultation/ajouter-consultation.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Objet pour stocker les informations du patient.
+Ce champ contient toutes les données pertinentes concernant un patient pour cette consultation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AuthService } from &#x27;./../../services/auth.service&#x27;;
+import { PatientService } from &#x27;./../../services/patient.service&#x27;;
+import { ConsultationService } from &#x27;./../../services/consultation.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Component, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+
+/**
+ * Composant pour ajouter une consultation.
+ * Ce composant permet à l&#x27;utilisateur de saisir les informations relatives à une consultation,
+ * de sélectionner une action à entreprendre (ordonnance, bilan, aucun),
+ * et de valider ou annuler l&#x27;ajout de la consultation.
+ */
+@Component({
+  selector: &#x27;app-ajouter-consultation&#x27;, // Sélecteur du composant
+  templateUrl: &#x27;./ajouter-consultation.component.html&#x27;, // Template HTML du composant
+  styleUrls: [&#x27;./ajouter-consultation.component.css&#x27;], // Fichier CSS du composant
+  imports: [CommonModule] // Import de CommonModule pour permettre l&#x27;utilisation de directives comme ngIf, ngFor
+})
+export class AjouterConsultationComponent {
+  
+  /**
+   * Contrôle de la visibilité de la pop-up (entrée du composant).
+   * Utilisé pour afficher ou masquer la pop-up dans l&#x27;interface utilisateur.
+   * @default false
+   */
+  @Input() popOutVisible &#x3D; false;
+
+  /**
+   * Émet un événement pour changer la visibilité de la pop-up.
+   * Cet événement est émis lorsqu&#x27;un changement de visibilité doit être appliqué (par exemple, lors de l&#x27;ouverture ou de la fermeture).
+   * @type {EventEmitter&lt;boolean&gt;}
+   * @example
+   * this.popOutVisibilityChange.emit(true); // Pour rendre visible la pop-up
+   */
+  @Output() popOutVisibilityChange &#x3D; new EventEmitter&lt;boolean&gt;();
+
+  /**
+   * Émet un événement pour ouvrir une autre pop-up.
+   * Cet événement est émis lorsqu&#x27;une action requiert l&#x27;ouverture d&#x27;une pop-up différente de celle actuellement visible.
+   * @type {EventEmitter&lt;any&gt;}
+   */
+  @Output() openOtherPopout &#x3D; new EventEmitter&lt;any&gt;();
+
+  /**
+   * L&#x27;action sélectionnée pour la consultation.
+   * Permet de spécifier l&#x27;action que l&#x27;utilisateur souhaite effectuer (par exemple, une ordonnance, un bilan, ou aucune action).
+   * @type {string}
+   * @default &#x27;&#x27;
+   */
+  action: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * Données de la consultation à sauvegarder.
+   * Ces données incluent des informations essentielles telles que la date et l&#x27;heure de la consultation, le résumé, les bilans, le DPI et le médecin consultant.
+   * @example { dateTime: &#x27;2025-01-02T14:00:00&#x27;, resume: &#x27;Consultation de suivi&#x27;, bilan: &#x27;aucun&#x27;, dpi: &#x27;123456&#x27;, medecinConsultant: &#x27;12&#x27; }
+   */
+  consultationData &#x3D; { dateTime: &#x27;&#x27;, resume: &#x27;&#x27;, bilan: &#x27;&#x27;, dpi: &#x27;&#x27;, medecinConsultant: &#x27;&#x27; };
+
+  /**
+   * Objet pour stocker les informations du patient.
+   * Ce champ contient toutes les données pertinentes concernant un patient pour cette consultation.
+   * @type {any}
+   */
+  patient: any;
+
+  /**
+   * Identifiant du médecin responsable de la consultation.
+   * Permet d&#x27;associer la consultation à un médecin spécifique via son identifiant.
+   * @type {any}
+   */
+  medecinId: any;
+
+  /**
+   * Constructeur du composant AjouterConsultationComponent.
+   * @param ConsultationService - Service pour gérer les consultations
+   * @param PatientService - Service pour gérer les informations du patient
+   * @param AuthService - Service pour gérer l&#x27;authentification et récupérer les informations de l&#x27;utilisateur connecté
+   */
+  constructor(private ConsultationService: ConsultationService, private PatientService: PatientService, private AuthService: AuthService) {}
+
+  /**
+   * Méthode pour fermer la pop-up.
+   * Elle émet un événement pour mettre à jour la visibilité de la pop-up.
+   */
+  closePopup(): void {
+    this.popOutVisible &#x3D; false;
+    this.popOutVisibilityChange.emit(this.popOutVisible);
+  }
+
+  /**
+   * Méthode pour gérer la sélection de l&#x27;action (ordonnance, bilan, aucun).
+   * @param selectedAction - Action sélectionnée par l&#x27;utilisateur.
+   */
+  selectAction(selectedAction: string): void {
+    this.action &#x3D; selectedAction;  // Met à jour l&#x27;action sélectionnée
+  }
+
+  /**
+   * Méthode pour annuler l&#x27;opération et fermer la pop-up.
+   * Affiche également un message dans la console indiquant que le formulaire a été annulé.
+   */
+  annuler(): void {
+    this.closePopup();
+    console.log(&#x27;Formulaire annulé.&#x27;);
+  }
+
+  /**
+   * Méthode pour passer à l&#x27;étape suivante après avoir validé la saisie des données.
+   * Cette méthode vérifie la validité des données saisies avant de procéder.
+   * @param datetime - Date et heure de la consultation
+   * @param resume - Résumé de la consultation
+   */
+  suivant(datetime: string, resume: string): void {
+    // Vérification des champs requis
+    if (!datetime) {
+      alert(&#x27;Veuillez sélectionner une date et une heure.&#x27;);
+      return;
+    }
+
+    if (!resume.trim()) {
+      alert(&#x27;Veuillez entrer un résumé de la consultation.&#x27;);
+      return;
+    }
+
+    if (!this.action) {
+      alert(&#x27;Veuillez sélectionner une des options: &quot;Etablir ordonnance&quot;, &quot;Demander les bilans&quot;, &quot;Aucun&quot;.&#x27;);
+      return;
+    }
+
+    // Affichage des données dans la console pour débogage
+    console.log(&#x27;Date et Heure:&#x27;, datetime);
+    console.log(&#x27;Résumé:&#x27;, resume);
+    console.log(&#x27;Action choisie:&#x27;, this.action);
+
+    // Fermeture de la pop-up après validation des données
+    this.popOutVisible &#x3D; false;
+    this.popOutVisibilityChange.emit(this.popOutVisible);
+
+    // Récupération des informations du patient et de l&#x27;utilisateur (médecin)
+    console.log(&quot;hada patient&quot;, this.PatientService.getPatient());
+    this.patient &#x3D; this.PatientService.getPatient();
+    this.medecinId &#x3D; this.AuthService.getUser().data.id;
+
+    // Préparation des données de la consultation à sauvegarder
+    this.consultationData &#x3D; {
+      dateTime: datetime,
+      resume: resume,
+      bilan: this.action,
+      dpi: this.patient.patient_data.nss,
+      medecinConsultant: this.medecinId
+    };
+
+    // Traitement selon l&#x27;action sélectionnée
+    switch (this.action) {
+      case &#x27;ordonnance&#x27;:
+      case &#x27;bilan biologique,bilan radiologique&#x27;:
+      case &#x27;Bilan biologique&#x27;:
+      case &#x27;Bilan radiologique&#x27;:
+        // Ouverture d&#x27;une autre pop-up pour l&#x27;ordonnance ou le bilan
+        this.openOtherPopout.emit({ action: this.action, consultationData: this.consultationData });
+        break;
+
+      case &#x27;aucun&#x27;:
+        // Sauvegarde de la consultation sans action (aucune ordonnance ou bilan)
+        this.closePopup();
+        this.ConsultationService.saveConsultation(this.consultationData).subscribe(
+          (response) &#x3D;&gt; {
+            console.log(&#x27;Data saved successfully:&#x27;, response);
+          },
+          (error) &#x3D;&gt; {
+            console.error(&#x27;Error saving data:&#x27;, error);
+          }
+        );
+        break;
+
+      default:
+        console.error(&#x27;Action non reconnue:&#x27;, this.action);
+        break;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;popOutVisible&quot; class&#x3D;&quot;popup-container shadow-lg z-20&quot;&gt;
+    &lt;div class&#x3D;&quot;popup-header&quot;&gt;
+      &lt;div class&#x3D;&quot;circle-filled&quot;&gt;1&lt;/div&gt;
+      &lt;div class&#x3D;&quot;circle-empty&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  
+    &lt;div class&#x3D;&quot;popup-title&quot;&gt;
+      &lt;strong&gt;Créer une nouvelle consultation&lt;/strong&gt;
+    &lt;/div&gt;
+  
+    &lt;div class&#x3D;&quot;datetime-picker&quot;&gt;
+      &lt;input type&#x3D;&quot;datetime-local&quot; id&#x3D;&quot;datetime&quot; name&#x3D;&quot;datetime&quot; #datetimeInput&gt;
+    &lt;/div&gt;
+  
+    &lt;div class&#x3D;&quot;resume-consultation&quot;&gt;
+      &lt;textarea
+        id&#x3D;&quot;resume&quot;
+        name&#x3D;&quot;resume&quot;
+        rows&#x3D;&quot;6&quot;
+        cols&#x3D;&quot;50&quot;
+        placeholder&#x3D;&quot;Entrez le résumé de la consultation...&quot;
+        #resumeInput
+      &gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+  
+    &lt;div class&#x3D;&quot;choice-container&quot;&gt;
+      &lt;div class&#x3D;&quot;choices&quot;&gt;
+        &lt;label&gt;
+          &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;action&quot; value&#x3D;&quot;ordonnance&quot; (change)&#x3D;&quot;selectAction(&#x27;ordonnance&#x27;)&quot;&gt; Établir ordonnance
+        &lt;/label&gt;
+        &lt;label&gt;
+          &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;action&quot; value&#x3D;&quot;bilan biologique,bilan radiologique&quot; (change)&#x3D;&quot;selectAction(&#x27;bilan biologique,bilan radiologique&#x27;)&quot;&gt; Demander bilan radiologique et biologique        &lt;/label&gt;
+        &lt;label&gt;
+        &lt;label&gt;
+          &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;action&quot; value&#x3D;&quot;Bilan radiologique&quot; (change)&#x3D;&quot;selectAction(&#x27;Bilan radiologique&#x27;)&quot;&gt; Demander bilan radiologique
+        &lt;/label&gt;
+        &lt;label&gt;
+          &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;action&quot; value&#x3D;&quot;Bilan biologique&quot; (change)&#x3D;&quot;selectAction(&#x27;Bilan biologique&#x27;)&quot;&gt; Demander bilan biologique
+        &lt;/label&gt;
+          &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;action&quot; value&#x3D;&quot;aucun&quot; (change)&#x3D;&quot;selectAction(&#x27;aucun&#x27;)&quot;&gt; Aucun
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+    &lt;div class&#x3D;&quot;buttons&quot;&gt;
+      &lt;button class&#x3D;&quot;cancel-button&quot; (click)&#x3D;&quot;annuler()&quot;&gt;Annuler&lt;/button&gt;
+      &lt;button class&#x3D;&quot;next-button&quot; (click)&#x3D;&quot;suivant(datetimeInput.value, resumeInput.value)&quot;&gt;Suivant&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./ajouter-consultation.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Style global pour le popup */
+.popup-container {
+    background-color: #DEEBFF;
+    border-radius: 20px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    font-family: &#x27;Poppins&#x27;, sans-serif; /* Police Arial */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pour s&#x27;assurer que tout est aligné */
+    height: 500px; /* Hauteur fixe pour centrer verticalement */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrer le popup à l&#x27;écran */
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Style pour les cercles dans l&#x27;en-tête */
+  .circle-filled,
+  .circle-empty {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    background-color: #3D3BF3; /* Couleur bleue claire */
+    width: 10px; /* Plus petit que le premier cercle */
+    height: 10px;
+  }
+  
+  .circle-filled {
+    color: white;
+    width: 20px; 
+    height: 20px;
+    gap: 2px;
+  }
+  
+  .popup-title {
+    font-size: 1.2em;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Style du champ datetime */
+  .datetime-picker input[type&#x3D;&quot;datetime-local&quot;],
+  .resume-consultation textarea {
+    width: 100%;
+  }
+  
+  .datetime-picker input[type&#x3D;&quot;datetime-local&quot;]{
+    width: 100%;
+    height: 30px; /* Agrandir le champ résumé */
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px; /* Agrandir le champ résumé */
+  }
+  
+  /* Espacement du deuxième cercle */
+  .popup-header .circle-empty {
+    margin-top: 5px; /* Déplacer le deuxième cercle légèrement vers le bas */
+  }
+  
+  /* Style pour la zone de texte résumé */
+  .resume-consultation {
+    margin-top: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px; /* Agrandir le champ résumé */
+  }
+  
+  /* Style pour les éléments radio */
+  .choice-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    accent-color: #3D3BF3; /* Couleur personnalisée pour la checkRadio */
+  }
+  
+  .choices label {
+    display: inline-block;
+    margin-right: 20px; /* Espacer davantage les éléments */
+    font-size: 1em;
+  }
+  
+  .choices input[type&#x3D;&quot;radio&quot;]:checked + label {
+    color: #3D3BF3; /* Changer la couleur du texte quand sélectionné */
+    font-weight: bold; /* Mettre en gras */
+  }
+  
+  .choices label:hover {
+    cursor: pointer;
+  }
+  
+  /* Style pour les boutons */
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Assure un espacement en bas */
+  }
+  
+  .cancel-button,
+  .next-button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  
+  .cancel-button {
+    background-color: red;
+    color: white;
+    border: none;
+  }
+  
+  .next-button {
+    background-color: #3D3BF3;
+    color: white;
+    border: none;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media (max-width: 768px) {
+    .popup-container {
+      width: 90%; /* Width adjustment on smaller screens */
+      height: auto; /* Allow height to adjust based on content */
+      padding: 15px; /* Slightly reduce padding */
+    }
+  
+    .popup-header {
+      gap: 5px; /* Reduce gap between circles */
+    }
+  
+    .circle-filled,
+    .circle-empty {
+      width: 15px;
+      height: 15px;
+      font-size: 14px;
+    }
+  
+    .popup-title {
+      font-size: 1.1em;
+    }
+  
+    /* Adjust input fields and textarea for smaller screens */
+    .datetime-picker input[type&#x3D;&quot;datetime-local&quot;],
+    .resume-consultation textarea {
+      height: 35px;
+    }
+  
+    .resume-consultation textarea {
+      height: 100px; /* Smaller height for text area */
+    }
+  
+    /* Adjust radio button container */
+    .choice-container {
+      margin-top: 15px;
+      flex-direction: column; /* Stack radio buttons vertically */
+      justify-content: flex-start;
+    }
+  
+    .choices label {
+      margin-right: 0;
+      margin-bottom: 10px; /* Add spacing between radio buttons */
+    }
+  
+    .buttons {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center;
+      margin-top: 15px;
+    }
+  
+    .cancel-button,
+    .next-button {
+      width: 100%; /* Full-width buttons on smaller screens */
+      padding: 12px 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .popup-container {
+      width: 95%; /* Even smaller width for very small screens */
+      padding: 10px; /* Reduce padding */
+    }
+  
+    .popup-title {
+      font-size: 1em; /* Make title text smaller */
+    }
+  
+    .datetime-picker input[type&#x3D;&quot;datetime-local&quot;],
+    .resume-consultation textarea {
+      height: 30px;
+    }
+  
+    .resume-consultation textarea {
+      height: 80px; /* Further reduce textarea height */
+    }
+  
+    .buttons {
+      gap: 5px; /* Reduce space between buttons */
+    }
+  
+    .cancel-button,
+    .next-button {
+      padding: 10px 15px; /* Smaller buttons on very small screens */
+    }
+  }
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="popOutVisible" class="popup-container shadow-lg z-20">    <div class="popup-header">      <div class="circle-filled">1</div>      <div class="circle-empty"></div>    </div>      <div class="popup-title">      <strong>Créer une nouvelle consultation</strong>    </div>      <div class="datetime-picker">      <input type="datetime-local" id="datetime" name="datetime" #datetimeInput>    </div>      <div class="resume-consultation">      <textarea        id="resume"        name="resume"        rows="6"        cols="50"        placeholder="Entrez le résumé de la consultation..."        #resumeInput      ></textarea>    </div>      <div class="choice-container">      <div class="choices">        <label>          <input type="radio" name="action" value="ordonnance" (change)="selectAction(\'ordonnance\')"> Établir ordonnance        </label>        <label>          <input type="radio" name="action" value="bilan biologique,bilan radiologique" (change)="selectAction(\'bilan biologique,bilan radiologique\')"> Demander bilan radiologique et biologique        </label>        <label>        <label>          <input type="radio" name="action" value="Bilan radiologique" (change)="selectAction(\'Bilan radiologique\')"> Demander bilan radiologique        </label>        <label>          <input type="radio" name="action" value="Bilan biologique" (change)="selectAction(\'Bilan biologique\')"> Demander bilan biologique        </label>          <input type="radio" name="action" value="aucun" (change)="selectAction(\'aucun\')"> Aucun        </label>      </div>    </div>      <div class="buttons">      <button class="cancel-button" (click)="annuler()">Annuler</button>      <button class="next-button" (click)="suivant(datetimeInput.value, resumeInput.value)">Suivant</button>    </div>  </div>  </div>'
+    var COMPONENTS = [{'name': 'AddBilanComponent', 'selector': 'app-add-bilan'},{'name': 'AddDpiFormComponent', 'selector': 'app-add-dpi-form'},{'name': 'AddDpiHeroComponent', 'selector': 'app-add-dpi-hero'},{'name': 'AddDpiNavBarComponent', 'selector': 'app-add-dpi-nav-bar'},{'name': 'AddDpiPageComponent', 'selector': 'app-add-dpi-page'},{'name': 'AddOrdonnanceComponent', 'selector': 'app-add-ordonnance'},{'name': 'AddStaffPageComponent', 'selector': 'app-add-staff-page'},{'name': 'AjouterBilanBiologiqueComponent', 'selector': 'app-ajouter-bilan-biologique'},{'name': 'AjouterBilanRadiologiqueComponent', 'selector': 'app-ajouter-bilan-radiologique'},{'name': 'AjouterConsultationComponent', 'selector': 'app-ajouter-consultation'},{'name': 'AjouterSoinPageComponent', 'selector': 'app-ajouter-soin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BilanBioPageComponent', 'selector': 'app-bilan-bio-page'},{'name': 'BilanRadioPageComponent', 'selector': 'app-bilan-radio-page'},{'name': 'CompteRenduPageComponent', 'selector': 'app-compte-rendu-page'},{'name': 'ConsultationMedecinPageComponent', 'selector': 'app-consultation-medecin-page'},{'name': 'ConsultationNavbarComponent', 'selector': 'app-consultation-navbar'},{'name': 'DpiConsultationsPageComponent', 'selector': 'app-dpi-consultations-page'},{'name': 'DpiNavbarComponent', 'selector': 'app-dpi-navbar'},{'name': 'DpiPatientPageComponent', 'selector': 'app-dpi-patient-page'},{'name': 'DpiSoinPageComponent', 'selector': 'app-dpi-soin-page'},{'name': 'EmptyNavbarComponent', 'selector': 'app-empty-navbar'},{'name': 'InfoPatientComponent', 'selector': 'app-info-patient'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'MonBilanBioComponent', 'selector': 'app-mon-bilan-bio'},{'name': 'OrdonnancePageComponent', 'selector': 'app-ordonnance-page'},{'name': 'PersonnelFormComponent', 'selector': 'app-personnel-form'},{'name': 'ProfilAdminComponent', 'selector': 'app-profil-admin'},{'name': 'ProfilInfermierComponent', 'selector': 'app-profil-infermier'},{'name': 'ProfilLaborantinComponent', 'selector': 'app-profil-laborantin'},{'name': 'ProfilMedecinComponent', 'selector': 'app-profil-medecin'},{'name': 'ProfilPatientComponent', 'selector': 'app-profil-patient'},{'name': 'ProfilRadiologueComponent', 'selector': 'app-profil-radiologue'},{'name': 'ProfilStaffComponent', 'selector': 'app-profil-staff'},{'name': 'RechDpiPageComponent', 'selector': 'app-rech-dpi-page'},{'name': 'ResumePageComponent', 'selector': 'app-resume-page'},{'name': 'UpFormComponent', 'selector': 'app-up-form'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AjouterConsultationComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AjouterConsultationComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

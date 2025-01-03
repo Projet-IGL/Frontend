@@ -14,20 +14,30 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./ajouter-bilan-radiologique.component.css']
 })
 export class AjouterBilanRadiologiqueComponent implements OnInit {
+  /** Heure de l'examen */
   time: string = '';
+  /** Numéro de sécurité sociale */
   nss: string = '';
+  /** Compte rendu de l'examen radiologique */
   compteRendu: string = '';
-  numcons: string = '';  // Date de consultation
+  /** Numéro de consultation */
+  numcons: string = '';
+  /** Indicateur de succès lors de l'enregistrement */
   isSaved: boolean = false;
+  /** Indicateur de validité du NSS */
   isNssInvalid: boolean = false;
+  /** Indicateur de validité du numéro de consultation */
   isConsInvalid: boolean = false;
-  imageRadiographie: File | null = null;  // L'image Radiographie à envoyer sous forme de fichier
-  imageRadiographiePreview: string | null = null;  // Prévisualisation de l'image
-  imageType: string = 'Radiographie';  // Le type d'image à utiliser
-  user: any = null;  // Informations utilisateur
-  radiologueId: string | null = null;  // ID de l'utilisateur, spécifiquement un laborantin
-  existingNss = ['123456789', '987654321', '112233445'];
-  existingConsultations = ['2024-01-01T10:00', '2024-01-15T14:30', '2024-02-01T08:45']; // Simuler des consultations valides
+  /** Fichier d'image de radiographie */
+  imageRadiographie: File | null = null;
+  /** Prévisualisation de l'image de radiographie */
+  imageRadiographiePreview: string | null = null;
+  /** Type d'image à utiliser (Radiographie) */
+  imageType: string = 'Radiographie';
+  /** Informations de l'utilisateur authentifié */
+  user: any = null;
+  /** ID du radiologue authentifié */
+  radiologueId: string | null = null;
 
   constructor(
     private router: Router,
@@ -36,15 +46,24 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     private http: HttpClient
   ) {}
 
+  /**
+   * Méthode d'initialisation du composant.
+   * Récupère les informations de l'utilisateur connecté et valide son rôle de radiologue.
+   * Si l'utilisateur est un radiologue, son ID est stocké pour les actions suivantes.
+   */
   ngOnInit() {
     this.user = this.authService.getUser();
     if (this.user && this.user.role === 'Radiologue') {
       console.log(this.user);
-      this.radiologueId = this.user.data.id;  // Assurez-vous que l'utilisateur est authentifié
+      this.radiologueId = this.user.data.id;
     }
   }
 
-  // Vérification du NSS
+  /**
+   * Vérifie si le NSS existe via le service `ajouterBilanRadiologiqueService`.
+   * Met à jour l'état `isNssInvalid` pour indiquer si le NSS est valide ou non.
+   * Affiche une erreur dans la console en cas de problème.
+   */
   checkNssExistence() {
     this.ajouterBilanRadiologiqueService.checkNssExistence(this.nss).subscribe(
       (response) => {
@@ -54,28 +73,35 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
       (error) => {
         console.error('Erreur lors de la vérification du NSS:', error);
         this.isNssInvalid = true;
-
       }
     );
   }
 
-  // Vérification du numéro de consultation
+  /**
+   * Vérifie si le numéro de consultation existe via le service `ajouterBilanRadiologiqueService`.
+   * Met à jour l'état `isConsInvalid` pour indiquer si le numéro de consultation existe ou non.
+   * Affiche un message d'erreur en cas de problème.
+   */
   checkConsultationExistence() {
     this.ajouterBilanRadiologiqueService.checkConsultationExistence(this.nss, this.numcons).subscribe(
       (response) => {
-        this.isConsInvalid = !response.exists; // Utilisez le champ 'exists'
+        this.isConsInvalid = !response.exists;
         if (!response.exists && response.message) {
-          alert(response.message); // Affichez le message d'erreur retourné par le backend
+          alert(response.message);  // Affiche le message d'erreur retourné par le backend
         }
       },
       (error) => {
         console.error('Erreur lors de la vérification de la consultation:', error);
-        this.isConsInvalid = true; // Considérer comme invalide en cas d'erreur
+        this.isConsInvalid = true;
       }
     );
   }
-  
 
+  /**
+   * Méthode pour sauvegarder le bilan radiologique.
+   * Vérifie que tous les champs nécessaires sont remplis avant d'envoyer les données.
+   * Si une erreur se produit, un message d'erreur est affiché à l'utilisateur.
+   */
   onSave() {
     if (
       this.time.trim() !== '' &&
@@ -83,35 +109,35 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
       !this.isNssInvalid &&
       this.numcons.trim() !== '' &&
       !this.isConsInvalid &&
-      this.imageRadiographie  // Vérifiez uniquement l'image Radiographie
+      this.imageRadiographie
     ) {
       if (!this.radiologueId) {
         alert('Utilisateur non authentifié ou rôle incorrect.');
         return;
       }
 
-      // Créer un objet FormData pour envoyer les données et l'image au backend
+      // Crée un objet FormData pour envoyer les données et l'image au backend
       const formData = new FormData();
       formData.append('time', this.time);
       formData.append('nss', this.nss);
       formData.append('numcons', this.numcons);
       formData.append('compteRendu', this.compteRendu);
-      formData.append('radiologueId', this.radiologueId);  // Ajouter l'ID du radiologue
-      // Afficher les données dans la console avant l'envoi
-    console.log('Données à envoyer :');
-    console.log('Time:', this.time);
-    console.log('NSS:', this.nss);
-    console.log('Date de consultation:', this.numcons);
-    console.log('Compte rendu:', this.compteRendu);
-    console.log('Radiologue ID:', this.radiologueId);
-    if (this.imageRadiographie) {
-      formData.append('imageRadiographie', this.imageRadiographie, this.imageRadiographie.name);  // Ajouter l'image sous forme de fichier
-      console.log('Nom de l\'image:', this.imageRadiographie.name);
-      console.log('Taille de l\'image:', this.imageRadiographie.size, 'octets');
-    }
+      formData.append('radiologueId', this.radiologueId);  // Ajoute l'ID du radiologue
 
-      
+      // Affichage des données dans la console avant l'envoi
+      console.log('Données à envoyer :');
+      console.log('Time:', this.time);
+      console.log('NSS:', this.nss);
+      console.log('Date de consultation:', this.numcons);
+      console.log('Compte rendu:', this.compteRendu);
+      console.log('Radiologue ID:', this.radiologueId);
 
+      // Ajoute l'image radiographie si elle existe
+      if (this.imageRadiographie) {
+        formData.append('imageRadiographie', this.imageRadiographie, this.imageRadiographie.name); 
+        console.log('Nom de l\'image:', this.imageRadiographie.name);
+        console.log('Taille de l\'image:', this.imageRadiographie.size, 'octets');
+      }
 
       // Appel du service pour sauvegarder le bilan radiologique
       this.ajouterBilanRadiologiqueService.addBilan(formData).subscribe(
@@ -135,11 +161,17 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     }
   }
 
+  /**
+   * Annule l'action en réinitialisant le formulaire et les valeurs de l'état.
+   */
   onCancel() {
     console.log('Formulaire annulé');
     this.resetForm();
   }
 
+  /**
+   * Réinitialise toutes les valeurs du formulaire et les états associés.
+   */
   resetForm() {
     this.time = '';
     this.nss = '';
@@ -149,6 +181,10 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     this.numcons = '';
   }
 
+  /**
+   * Déclenche l'ouverture de la fenêtre de sélection de fichier pour l'upload d'une image.
+   * @param {string} imageType Type d'image à télécharger (par exemple, Radiographie).
+   */
   triggerFileInput(imageType: string) {
     const inputElement = document.getElementById('image' + imageType) as HTMLInputElement;
     if (inputElement) {
@@ -156,12 +192,18 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     }
   }
 
+  /**
+   * Méthode pour traiter l'upload de l'image de radiographie.
+   * Crée une prévisualisation de l'image pour l'affichage à l'utilisateur.
+   * @param {Event} event L'événement d'upload de fichier.
+   * @param {string} imageType Le type d'image (par exemple, 'Radiographie').
+   */
   onImageUpload(event: Event, imageType: string) {
     const input = event.target as HTMLInputElement;
     const file = input.files ? input.files[0] : null;
 
     if (file) {
-      // Assigner le fichier à l'image
+      // Assigner le fichier à l'image de radiographie
       if (imageType === 'Radiographie') {
         this.imageRadiographie = file;
 
@@ -175,10 +217,16 @@ export class AjouterBilanRadiologiqueComponent implements OnInit {
     }
   }
 
+  /**
+   * Redirige l'utilisateur vers son profil radiologue.
+   */
   voirProfile() {
     this.router.navigate(['/profilRadiologue']);
   }
 
+  /**
+   * Déconnecte l'utilisateur et le redirige vers la page d'accueil.
+   */
   logout() {
     this.authService.logout();
     this.router.navigate(['/Landing-page']);

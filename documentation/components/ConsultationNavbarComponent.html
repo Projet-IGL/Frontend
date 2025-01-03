@@ -1,0 +1,1036 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nom-du-projet documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nom-du-projet documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ConsultationNavbarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/consultation-navbar/consultation-navbar.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Composant de la barre de navigation pour la page des consultations.
+Ce composant permet de naviguer entre différentes sections liées aux consultations
+et de gérer l&#39;affichage dynamique des boutons en fonction de la route actuelle.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-consultation-navbar</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./consultation-navbar.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./consultation-navbar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#menuOpen" >menuOpen</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getButtonClass" >getButtonClass</a>
+                            </li>
+                            <li>
+                                <a href="#goToBilanBioPage" >goToBilanBioPage</a>
+                            </li>
+                            <li>
+                                <a href="#goToBilanRadioPage" >goToBilanRadioPage</a>
+                            </li>
+                            <li>
+                                <a href="#goToCompteRenduPage" >goToCompteRenduPage</a>
+                            </li>
+                            <li>
+                                <a href="#goToConsultationPage" >goToConsultationPage</a>
+                            </li>
+                            <li>
+                                <a href="#goToMedecinPage" >goToMedecinPage</a>
+                            </li>
+                            <li>
+                                <a href="#goToOrdonnancePage" >goToOrdonnancePage</a>
+                            </li>
+                            <li>
+                                <a href="#goToResumePage" >goToResumePage</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMenu" >toggleMenu</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur du composant ConsultationNavbarComponent.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service utilisé pour la navigation entre les différentes pages</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getButtonClass"></a>
+                    <span class="name">
+                        <span ><b>getButtonClass</b></span>
+                        <a href="#getButtonClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getButtonClass(page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour obtenir la classe CSS d&#39;un bouton en fonction de la page active.
+Cette méthode applique une classe &quot;bg-violet&quot; si la page actuelle correspond à la section spécifiée,
+sinon elle applique &quot;bg-transparent&quot;.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>page</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Nom de la page pour laquelle on souhaite obtenir la classe CSS (par exemple, &#39;Medecin&#39;, &#39;Resume&#39;, etc.)</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Une chaîne de caractères représentant la classe CSS à appliquer</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToBilanBioPage"></a>
+                    <span class="name">
+                        <span ><b>goToBilanBioPage</b></span>
+                        <a href="#goToBilanBioPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToBilanBioPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page &quot;Bilan Biologique&quot; dans la section consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToBilanRadioPage"></a>
+                    <span class="name">
+                        <span ><b>goToBilanRadioPage</b></span>
+                        <a href="#goToBilanRadioPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToBilanRadioPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page &quot;Bilan Radiologique&quot; dans la section consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToCompteRenduPage"></a>
+                    <span class="name">
+                        <span ><b>goToCompteRenduPage</b></span>
+                        <a href="#goToCompteRenduPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToCompteRenduPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page &quot;Compte Rendu&quot; dans la section consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToConsultationPage"></a>
+                    <span class="name">
+                        <span ><b>goToConsultationPage</b></span>
+                        <a href="#goToConsultationPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToConsultationPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page principale des consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToMedecinPage"></a>
+                    <span class="name">
+                        <span ><b>goToMedecinPage</b></span>
+                        <a href="#goToMedecinPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToMedecinPage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page &quot;Médecin&quot; dans la section consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToOrdonnancePage"></a>
+                    <span class="name">
+                        <span ><b>goToOrdonnancePage</b></span>
+                        <a href="#goToOrdonnancePage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToOrdonnancePage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page &quot;Ordonnance&quot; dans la section consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToResumePage"></a>
+                    <span class="name">
+                        <span ><b>goToResumePage</b></span>
+                        <a href="#goToResumePage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToResumePage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour rediriger l&#39;utilisateur vers la page &quot;Résumé&quot; dans la section consultations.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMenu"></a>
+                    <span class="name">
+                        <span ><b>toggleMenu</b></span>
+                        <a href="#toggleMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMenu()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Méthode pour basculer l&#39;état du menu (ouvert/fermé).
+Lorsque l&#39;utilisateur clique sur le bouton du menu, l&#39;état du menu est inversé.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menuOpen"></a>
+                    <span class="name">
+                        <span ><b>menuOpen</b></span>
+                        <a href="#menuOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/components/consultation-navbar/consultation-navbar.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>État du menu pour savoir s&#39;il est ouvert ou fermé.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;; 
+
+/**
+ * Composant de la barre de navigation pour la page des consultations.
+ * Ce composant permet de naviguer entre différentes sections liées aux consultations
+ * et de gérer l&#x27;affichage dynamique des boutons en fonction de la route actuelle.
+ */
+@Component({
+  selector: &#x27;app-consultation-navbar&#x27;,
+  imports: [CommonModule], // Import des modules nécessaires
+  templateUrl: &#x27;./consultation-navbar.component.html&#x27;, // Template HTML associé au composant
+  styleUrls: [&#x27;./consultation-navbar.component.css&#x27;] // Styles CSS associés au composant
+})
+export class ConsultationNavbarComponent {
+  
+  /**
+   * Constructeur du composant ConsultationNavbarComponent.
+   * @param router - Service utilisé pour la navigation entre les différentes pages
+   */
+  constructor(private router: Router) {}
+
+  /**
+   * Méthode pour obtenir la classe CSS d&#x27;un bouton en fonction de la page active.
+   * Cette méthode applique une classe &quot;bg-violet&quot; si la page actuelle correspond à la section spécifiée,
+   * sinon elle applique &quot;bg-transparent&quot;.
+   * @param page - Nom de la page pour laquelle on souhaite obtenir la classe CSS (par exemple, &#x27;Medecin&#x27;, &#x27;Resume&#x27;, etc.)
+   * @returns Une chaîne de caractères représentant la classe CSS à appliquer
+   */
+  getButtonClass(page: string): string {
+    const currentRoute &#x3D; this.router.url;
+    // Si la route actuelle inclut la page spécifiée, applique la classe &#x27;bg-violet&#x27;
+    return currentRoute.includes(&#x60;/Rech-dpi/Consultations/${page}&#x60;)
+      ? &#x27;bg-violet&#x27;
+      : &#x27;bg-transparent&#x27;;  // Sinon applique &#x27;bg-transparent&#x27;
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page &quot;Médecin&quot; dans la section consultations.
+   */
+  goToMedecinPage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Medecin&#x27;]);  // Redirection vers la page Médecin
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page &quot;Résumé&quot; dans la section consultations.
+   */
+  goToResumePage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Resume&#x27;]);  // Redirection vers la page Résumé
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page &quot;Ordonnance&quot; dans la section consultations.
+   */
+  goToOrdonnancePage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Ordonnance&#x27;]);  // Redirection vers la page Ordonnance
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page &quot;Bilan Radiologique&quot; dans la section consultations.
+   */
+  goToBilanRadioPage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Bilan-Radiologique&#x27;]);  // Redirection vers la page Bilan Radiologique
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page &quot;Bilan Biologique&quot; dans la section consultations.
+   */
+  goToBilanBioPage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Bilan-Biologique&#x27;]);  // Redirection vers la page Bilan Biologique
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page &quot;Compte Rendu&quot; dans la section consultations.
+   */
+  goToCompteRenduPage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations/Compte-Rendu&#x27;]);  // Redirection vers la page Compte Rendu
+  }
+
+  /**
+   * Méthode pour rediriger l&#x27;utilisateur vers la page principale des consultations.
+   */
+  goToConsultationPage() {
+    this.router.navigate([&#x27;/Rech-dpi/Consultations&#x27;]);  // Redirection vers la page principale des consultations
+  }
+
+  /**
+   * État du menu pour savoir s&#x27;il est ouvert ou fermé.
+   * @default false - Le menu est fermé au départ
+   */
+  menuOpen: boolean &#x3D; false; 
+
+  /**
+   * Méthode pour basculer l&#x27;état du menu (ouvert/fermé).
+   * Lorsque l&#x27;utilisateur clique sur le bouton du menu, l&#x27;état du menu est inversé.
+   */
+  toggleMenu(): void {
+    this.menuOpen &#x3D; !this.menuOpen; // Inverse l&#x27;état du menu
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex items-center justify-between&quot;&gt;
+    &lt;div class&#x3D;&quot;sm:hidden&quot;&gt;
+        &lt;button (click)&#x3D;&quot;toggleMenu()&quot; class&#x3D;&quot;material-symbols-outlined menu-icone&quot;&gt;menu&lt;/button&gt;
+      &lt;/div&gt;
+&lt;span class&#x3D;&quot;material-symbols-outlined back-icone&quot; (click)&#x3D;&quot;goToConsultationPage()&quot;&gt; arrow_back &lt;/span&gt;
+&lt;/div&gt;
+&lt;div [class.hidden]&#x3D;&quot;!menuOpen&quot; class&#x3D;&quot;flex justify-center flex-col space-y-2 mt-2 sm:flex sm:flex-row sm:space-y-0 sm:space-x-4&quot;&gt;
+&lt;div class&#x3D;&quot;flex flex-wrap z-10 items-center h-10 mt-5 justify-center space-y-2 sm:space-y-0 sm:space-x-4 mx-6 font-semibold&quot;&gt;
+    &lt;div class&#x3D;&quot;flex flex-col sm:flex-row justify-center sm:space-x-20 w-full sm:w-auto bg-white rounded-xl&quot;&gt;
+        &lt;button (click)&#x3D;&quot;goToMedecinPage()&quot; [ngClass]&#x3D;&quot;getButtonClass(&#x27;Medecin&#x27;)&quot; class&#x3D;&quot;rounded-xl text-sm w-full sm:w-auto text-center p-2 hover&quot;&gt;Médecin&lt;/button &gt;
+        &lt;button (click)&#x3D;&quot;goToResumePage()&quot; [ngClass]&#x3D;&quot;getButtonClass(&#x27;Resume&#x27;)&quot; class&#x3D;&quot; rounded-xl text-sm w-full sm:w-auto text-center p-2 hover&quot;&gt;Résumé&lt;/button &gt;
+        &lt;button (click)&#x3D;&quot;goToOrdonnancePage()&quot; [ngClass]&#x3D;&quot;getButtonClass(&#x27;Ordonnance&#x27;)&quot; class&#x3D;&quot;rounded-xl text-sm w-full sm:w-auto text-center p-2 hover&quot;&gt;Ordonnance&lt;/button &gt;
+        &lt;button (click)&#x3D;&quot;goToBilanRadioPage()&quot; [ngClass]&#x3D;&quot;getButtonClass(&#x27;Bilan-Radiologique&#x27;)&quot; class&#x3D;&quot;rounded-xl text-sm w-full sm:w-auto text-center p-2 hover&quot;&gt;Bilan Radiologique&lt;/button &gt;
+        &lt;button (click)&#x3D;&quot;goToBilanBioPage()&quot; [ngClass]&#x3D;&quot;getButtonClass(&#x27;Bilan-Biologique&#x27;)&quot; class&#x3D;&quot;rounded-xl text-sm w-full sm:w-auto text-center p-2 hover&quot;&gt;Bilan Biologique&lt;/button &gt;
+        &lt;button (click)&#x3D;&quot;goToCompteRenduPage()&quot; [ngClass]&#x3D;&quot;getButtonClass(&#x27;Compte-Rendu&#x27;)&quot; class&#x3D;&quot;rounded-xl text-sm w-full sm:w-auto text-center p-2 hover&quot;&gt;Compte Rendu&lt;/button &gt;
+    &lt;/div&gt;
+&lt;/div&gt;  
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./consultation-navbar.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.bg-violet{
+    background-color: #AE9DFD;
+}
+.back-icone{
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    cursor: pointer;
+} 
+.menu-icone{
+    font-size: 35px;
+}
+.hover{
+    transition: 0.3s;
+}
+.hover:hover{
+    background-color: #ece8ff;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="flex items-center justify-between">    <div class="sm:hidden">        <button (click)="toggleMenu()" class="material-symbols-outlined menu-icone">menu</button>      </div><span class="material-symbols-outlined back-icone" (click)="goToConsultationPage()"> arrow_back </span></div><div [class.hidden]="!menuOpen" class="flex justify-center flex-col space-y-2 mt-2 sm:flex sm:flex-row sm:space-y-0 sm:space-x-4"><div class="flex flex-wrap z-10 items-center h-10 mt-5 justify-center space-y-2 sm:space-y-0 sm:space-x-4 mx-6 font-semibold">    <div class="flex flex-col sm:flex-row justify-center sm:space-x-20 w-full sm:w-auto bg-white rounded-xl">        <button (click)="goToMedecinPage()" [ngClass]="getButtonClass(\'Medecin\')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Médecin</button >        <button (click)="goToResumePage()" [ngClass]="getButtonClass(\'Resume\')" class=" rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Résumé</button >        <button (click)="goToOrdonnancePage()" [ngClass]="getButtonClass(\'Ordonnance\')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Ordonnance</button >        <button (click)="goToBilanRadioPage()" [ngClass]="getButtonClass(\'Bilan-Radiologique\')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Bilan Radiologique</button >        <button (click)="goToBilanBioPage()" [ngClass]="getButtonClass(\'Bilan-Biologique\')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Bilan Biologique</button >        <button (click)="goToCompteRenduPage()" [ngClass]="getButtonClass(\'Compte-Rendu\')" class="rounded-xl text-sm w-full sm:w-auto text-center p-2 hover">Compte Rendu</button >    </div></div>  </div></div>'
+    var COMPONENTS = [{'name': 'AddBilanComponent', 'selector': 'app-add-bilan'},{'name': 'AddDpiFormComponent', 'selector': 'app-add-dpi-form'},{'name': 'AddDpiHeroComponent', 'selector': 'app-add-dpi-hero'},{'name': 'AddDpiNavBarComponent', 'selector': 'app-add-dpi-nav-bar'},{'name': 'AddDpiPageComponent', 'selector': 'app-add-dpi-page'},{'name': 'AddOrdonnanceComponent', 'selector': 'app-add-ordonnance'},{'name': 'AddStaffPageComponent', 'selector': 'app-add-staff-page'},{'name': 'AjouterBilanBiologiqueComponent', 'selector': 'app-ajouter-bilan-biologique'},{'name': 'AjouterBilanRadiologiqueComponent', 'selector': 'app-ajouter-bilan-radiologique'},{'name': 'AjouterConsultationComponent', 'selector': 'app-ajouter-consultation'},{'name': 'AjouterSoinPageComponent', 'selector': 'app-ajouter-soin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BilanBioPageComponent', 'selector': 'app-bilan-bio-page'},{'name': 'BilanRadioPageComponent', 'selector': 'app-bilan-radio-page'},{'name': 'CompteRenduPageComponent', 'selector': 'app-compte-rendu-page'},{'name': 'ConsultationMedecinPageComponent', 'selector': 'app-consultation-medecin-page'},{'name': 'ConsultationNavbarComponent', 'selector': 'app-consultation-navbar'},{'name': 'DpiConsultationsPageComponent', 'selector': 'app-dpi-consultations-page'},{'name': 'DpiNavbarComponent', 'selector': 'app-dpi-navbar'},{'name': 'DpiPatientPageComponent', 'selector': 'app-dpi-patient-page'},{'name': 'DpiSoinPageComponent', 'selector': 'app-dpi-soin-page'},{'name': 'EmptyNavbarComponent', 'selector': 'app-empty-navbar'},{'name': 'InfoPatientComponent', 'selector': 'app-info-patient'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'LoginPageComponent', 'selector': 'app-login-page'},{'name': 'MonBilanBioComponent', 'selector': 'app-mon-bilan-bio'},{'name': 'OrdonnancePageComponent', 'selector': 'app-ordonnance-page'},{'name': 'PersonnelFormComponent', 'selector': 'app-personnel-form'},{'name': 'ProfilAdminComponent', 'selector': 'app-profil-admin'},{'name': 'ProfilInfermierComponent', 'selector': 'app-profil-infermier'},{'name': 'ProfilLaborantinComponent', 'selector': 'app-profil-laborantin'},{'name': 'ProfilMedecinComponent', 'selector': 'app-profil-medecin'},{'name': 'ProfilPatientComponent', 'selector': 'app-profil-patient'},{'name': 'ProfilRadiologueComponent', 'selector': 'app-profil-radiologue'},{'name': 'ProfilStaffComponent', 'selector': 'app-profil-staff'},{'name': 'RechDpiPageComponent', 'selector': 'app-rech-dpi-page'},{'name': 'ResumePageComponent', 'selector': 'app-resume-page'},{'name': 'UpFormComponent', 'selector': 'app-up-form'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ConsultationNavbarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ConsultationNavbarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
