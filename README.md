@@ -1,4 +1,4 @@
-# NomDuProjet
+# Health
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
 
@@ -57,3 +57,18 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Documentation
+
+To generate the documentation files, run:
+
+```bash
+npm run doc
+```
+
+To serve and view the documentation in your browser, run:
+
+```bash
+npx compodoc -s
+```
+Once the documentation server is running, open your browser and navigate to http://localhost:8080/.
