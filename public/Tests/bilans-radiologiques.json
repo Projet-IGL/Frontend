@@ -1,7 +1,0 @@
-{
-    "bilans-radiologiques": [
-    ],
-    "checkNss/123456789": { "exists": true },
-    "checkConsultation/2024-01-01T10:00": { "exists": true }
-  }
-  
