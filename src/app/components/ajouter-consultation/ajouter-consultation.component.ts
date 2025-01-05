@@ -137,7 +137,7 @@ export class AjouterConsultationComponent {
     this.popOutVisibilityChange.emit(this.popOutVisible);
 
     // Récupération des informations du patient et de l'utilisateur (médecin)
-    console.log("hada patient", this.PatientService.getPatient());
+    console.log(" Patient", this.PatientService.getPatient());
     this.patient = this.PatientService.getPatient();
     this.medecinId = this.AuthService.getUser().data.id;
 
