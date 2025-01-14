@@ -5,7 +5,15 @@ body {
     font-family: Arial, sans-serif;
     box-sizing: border-box;
   }
-  
+  .couleur-p{
+    background: linear-gradient(to bottom, #534f68, #cdc8ee); 
+    -webkit-background-clip: text; /* Clips le background au texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour voir le dégradé */
+  }
+  .couleur-point{
+    color:#3D3BF3;
+    margin-top: -20px;
+  }
   /* En-tête */
   .top-right-image {
     position: absolute;
@@ -13,7 +21,7 @@ body {
     right: 0;
     width: 730px;
     height: 700px;
-    background-image: url('/myshape.png');
+    /* background-image: url('/myshape.png'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -116,7 +124,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 50px;
+    padding: 0px 50px ;
     flex-wrap: wrap;
     gap: 20px;
   }
@@ -156,8 +164,8 @@ body {
   /* Footer */
   .footer {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     padding: 20px;
     flex-wrap: wrap;
     gap: 50px;
@@ -181,7 +189,7 @@ body {
   
   .contact-icons {
     display: flex;
-    gap: 30px;
+    gap: 80px;
     flex-wrap: wrap;
   }
   

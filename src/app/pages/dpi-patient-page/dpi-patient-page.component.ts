@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DpiNavbarComponent } from "../../components/dpi-navbar/dpi-navbar.component";
 import { EmptyNavbarComponent } from "../../components/empty-navbar/empty-navbar.component";
 import { PatientService } from '../../services/patient.service';
+import { QRCodeComponent } from 'angularx-qrcode';
 
 /**
  * Composant pour afficher les informations du patient dans le Dossier Patient Informatisé (DPI).
@@ -11,7 +12,8 @@ import { PatientService } from '../../services/patient.service';
   selector: 'app-dpi-patient-page', // Sélecteur de ce composant
   imports: [
     DpiNavbarComponent, // Composant de la barre de navigation DPI
-    EmptyNavbarComponent // Composant pour la barre de navigation vide
+    EmptyNavbarComponent, // Composant pour la barre de navigation vide
+    QRCodeComponent
   ],
   templateUrl: './dpi-patient-page.component.html', // Template HTML pour le composant
   styleUrl: './dpi-patient-page.component.css' // Feuille de style CSS pour le composant
@@ -37,6 +39,13 @@ export class DpiPatientPageComponent implements OnInit {
   ngOnInit(): void {
     // Récupère les informations du patient à partir du service
     this.patient = this.patientService.getPatient();
+  }
+  downloadQrCode(): void {
+    const canvas: HTMLCanvasElement = document.querySelector('qrcode canvas')!;
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'qrcode.png';
+    link.click();
   }
 
 }
