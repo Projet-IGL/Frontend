@@ -77,5 +77,14 @@
         <p>{{ patient.data.mutuelle }}</p>
       </div>
     </div>
+    <div class="flex justify-end mt-10 sm:mt-10">
+      <div class="flex flex-col items-center">
+    <qrcode [qrdata]="patient.patient_data.nss" [width]="100" [errorCorrectionLevel]="'M'"></qrcode>
+    <button (click)="downloadQrCode()" class="telecharger">Télécharger 
+      <span class="material-symbols-outlined">
+      download
+      </span></button>
+    </div>
+    </div>
   </div>
   

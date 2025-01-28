@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'; // Importer AuthService
-
+import { QRCodeComponent } from 'angularx-qrcode';
 /**
  * Composant qui gère l'affichage des informations du patient.
  * Ce composant permet de récupérer les informations du patient
@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service'; // Importer AuthServi
  */
 @Component({
   selector: 'app-info-patient',
-  imports: [], // Aucun module supplémentaire ici
+  imports: [QRCodeComponent], // Aucun module supplémentaire ici
   templateUrl: './info-patient.component.html', // Template HTML associé au composant
   styleUrls: ['./info-patient.component.css'] // Styles CSS associés au composant
 })
@@ -43,6 +43,13 @@ export class InfoPatientComponent implements OnInit {
       // Si l'utilisateur n'est pas un patient, redirige vers une page d'erreur ou autre gestion
       console.error("Utilisateur non autorisé à accéder à cette page.");
     }
+  }
+  downloadQrCode(): void {
+    const canvas: HTMLCanvasElement = document.querySelector('qrcode canvas')!;
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'qrcode.png';
+    link.click();
   }
 }
 

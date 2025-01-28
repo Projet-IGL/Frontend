@@ -33,4 +33,22 @@
     margin: 0;
     color: #555;
   }
-  
+.telecharger{
+  padding: 15px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  background: #AE9DFD;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 150px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.telecharger:hover{
+background: #9687da;
+}
