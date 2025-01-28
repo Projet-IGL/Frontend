@@ -7,7 +7,7 @@
         <h3>{{ patient.data.last_name }} {{ patient.data.first_name }}</h3>
       </div>
     </div>
-  
+
     <div class="profile-box">
       <div class="icon">
         <i class="fa fa-credit-card" style="color: #3D3BF3;"></i>
@@ -27,7 +27,7 @@
         <p>{{ patient.data.date_naissance }}</p>
       </div>
     </div>
-  
+
     <div class="profile-box">
       <div class="icon">
         <i class="fa fa-envelope" style="color: #3D3BF3;"></i>
@@ -37,7 +37,7 @@
         <p>{{ patient.data.email }}</p>
       </div>
     </div>
-  
+
     <div class="profile-box">
       <div class="icon">
         <i class="fa fa-phone-square" style="color: #3D3BF3;"></i>
@@ -47,7 +47,7 @@
         <p>{{ patient.data.numero_telephone }}</p>
       </div>
     </div>
-  
+
     <div class="profile-box">
       <div class="icon">
         <i class="fa fa-phone-square" style="color: #3D3BF3;"></i>
@@ -57,7 +57,7 @@
         <p>{{ patient.data.telephone_urgence }}</p>
       </div>
     </div>
-  
+
     <div class="profile-box">
       <div class="icon">
         <i class="fa fa-user-md" style="color: #3D3BF3;"></i>
@@ -67,7 +67,7 @@
         <p>Dr.{{ patient.data.medecin_traitant.last_name }}</p>
       </div>
     </div>
-  
+
     <div class="profile-box">
       <div class="icon">
         <i class=" fa fa-hospital" style="color: #3D3BF3;"></i>
@@ -79,12 +79,11 @@
     </div>
     <div class="flex justify-end mt-10 sm:mt-10">
       <div class="flex flex-col items-center">
-    <qrcode [qrdata]="patient.patient_data.nss" [width]="100" [errorCorrectionLevel]="'M'"></qrcode>
-    <button (click)="downloadQrCode()" class="telecharger">Télécharger 
+    <qrcode [qrdata]="patient.data.nss" [width]="100" [errorCorrectionLevel]="'M'"></qrcode>
+    <button (click)="downloadQrCode()" class="telecharger">Télécharger
       <span class="material-symbols-outlined">
       download
       </span></button>
     </div>
     </div>
   </div>
-  

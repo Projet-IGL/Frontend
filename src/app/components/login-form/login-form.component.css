@@ -1,12 +1,12 @@
 .login {
     height: 100%;
     width: 100%;
-    position: fixed; 
+    position: fixed;
     top: 0;left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #8c80c5, #deebff); 
+    background: linear-gradient(to bottom, #8c80c5, #deebff);
     /* background: linear-gradient(to bottom right, #b6ceea, #ffffff); */
 }
 
@@ -15,8 +15,8 @@
     padding: 20px 40px;
     border-radius: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.539);
-    width: 350px;
-    height: 480px;
+    width: 400px;
+    height: 500px;
     display: grid;
 }
 .login-input{
